@@ -1,5 +1,5 @@
 # **Tournament Simulator**
 
-##IT-150-PROJECT
+IT-150-PROJECT
 
-###*(Exact How's and Who's to be determined later)*
+*(Exact How's and Who's to be determined later)*
