@@ -1,0 +1,68 @@
+   Tournament Simulator
+Goal: To simulate a football league amongst top nation by scheduling match fixture and simulating the tournament 
+
+Project is made more user-interactive and gamified by adding the feature of user to predict….
+
+Java File/Classes: - 
+Rough Overview (Subject to change) – 
+Team – datatype representing each team
+Player – datatype representing each player 
+Scheduling part – contain static methods to schedule league fixtures and knockout fixtures
+Tournament – class containing main method and representing whole tournament and the main application.
+User  – A class keeping record of state of each user who is predicting (users prediction and points).
+Input data – through text file 
+
+
+
+FLOW OF APPLICATION –
+First display teams and scheduled fixture 
+User Prediction for group stage
+Group stage fixture simulation 
+
+
+
+
+
+Then after league stage schedule the knockouts
+User prediction 
+Simulate knockouts
+
+
+API –
+User.java
+String prediction
+int points
+public User(String prediction)//initialize points to zero
+String toString()
+{
+User[Current Prediction - ,Points - ]
+}
+int getPoints()
+void setPoints(int x)
+String getPrediction()
+void setPrediction(String s)
+
+Tournament.java
+Team[] groupA;
+Team[] groupB;
+Fixture[] groupStage//array to scheduled match,length will be 20 
+Fixture[] RO16,QuaterFinal,Semifinal,Final;
+boolean isPrevRoundOver;//match true at end of last match and false at start of next round;
+boolean isNextStagescheduled;
+int matchNumber//initialized to zero
+
+Constructor –Tournament(String filename)//Parse the file and make groupA,groupB
+
+String getPointsTable()//display points table of both groups
+String getPointsTable(‘A’)//points table of GroupA
+String getPointsTable(‘B’)//points table of GroupB
+void scheduleGroupStage()
+String simulateGroupStage(int x)//simulates x matches 
+Call to static method which calculate is made in above method
+void scheduleRO16(),Quaterfinal,Semifinal,Final;
+String simulateRO16(),QuaterFinal,Semifinal,Final;
+
+
+
+
+
