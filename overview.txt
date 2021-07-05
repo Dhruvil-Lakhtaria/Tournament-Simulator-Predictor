@@ -28,41 +28,4 @@ User prediction
 Simulate knockouts
 
 
-API –
-User.java
-String prediction
-int points
-public User(String prediction)//initialize points to zero
-String toString()
-{
-User[Current Prediction - ,Points - ]
-}
-int getPoints()
-void setPoints(int x)
-String getPrediction()
-void setPrediction(String s)
-
-Tournament.java
-Team[] groupA;
-Team[] groupB;
-Fixture[] groupStage//array to scheduled match,length will be 20 
-Fixture[] RO16,QuaterFinal,Semifinal,Final;
-boolean isPrevRoundOver;//match true at end of last match and false at start of next round;
-boolean isNextStagescheduled;
-int matchNumber//initialized to zero
-
-Constructor –Tournament(String filename)//Parse the file and make groupA,groupB
-
-String getPointsTable()//display points table of both groups
-String getPointsTable(‘A’)//points table of GroupA
-String getPointsTable(‘B’)//points table of GroupB
-void scheduleGroupStage()
-String simulateGroupStage(int x)//simulates x matches 
-Call to static method which calculate is made in above method
-void scheduleRO16(),Quaterfinal,Semifinal,Final;
-String simulateRO16(),QuaterFinal,Semifinal,Final;
-
-
-
-
-
+API – 
