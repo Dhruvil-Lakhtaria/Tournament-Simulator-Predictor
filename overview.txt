@@ -29,3 +29,61 @@ Simulate knockouts
 
 
 API –-
+
+//
+6/7/2021
+
+I. Program Flow -
+	i)Game/project name and about.
+	ii)Ask user his/her name.
+	iii)Show user tournament groups.
+	iv)User will be shown the participating team's data.
+	loop {
+	  v)User will be asked to make prediction for stage/stages.
+	  vi)Run simulation for stage.
+	  vii)Show results of the stage
+	  viii)Update points.
+	  ix)Show matchups for next stage
+	}
+	x)Show tournament winner 
+	xi)username : points.
+
+II. Program Structure/Basic API
+	
+	i)Classes
+		User-
+			fields: name, points, prediction
+			methods: getter and setter for the fields.
+
+		Tournament-
+			fields: Groups, Knockouts, Final(optional), 
+				allTeams[],User
+			methods: start(), makeGroups()
+		
+		Group - 			
+			fields: Teams[5], Match[] matches, Row[5] pointsTable
+			methods: toString() displays group points
+				 schedule() //creates Match objects and fills in matches array
+				 simulate() {
+					  Match day #1
+					  toString() of Match Object {
+					  team x vs team y
+					}
+					  delay
+					  team x won
+					  delay
+					  next match
+					  .
+					  .
+					  . 
+					  5 times
+					  
+					  points table 
+					  delay
+					  Match day #2
+					  .
+					  .
+					}
+					printResult();
+					method to be called from tournament
+					returns qualifiedTeams[]	
