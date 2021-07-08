@@ -31,7 +31,9 @@ Simulate knockouts
 API –-
 
 //
-6/7/2021
+8/7/2021
+
+IT-150 Project
 
 I. Program Flow -
 	i)Game/project name and about.
@@ -56,14 +58,22 @@ II. Program Structure/Basic API
 			methods: getter and setter for the fields.
 
 		Tournament-
-			fields: Groups, Knockouts, Final(optional), 
+			fields: Groups, Knockouts, Final(optional), Player[] goalScorers
 				allTeams[],User
 			methods: start(), makeGroups()
 		
-		Group - 			
-			fields: Teams[5], Match[] matches, Row[5] pointsTable
-			methods: toString() displays group points
-				 schedule() //creates Match objects and fills in matches array
+		
+		Interface TournamentStage {
+			schedule()
+			simulate()
+			getGoalscorers()
+		}
+		
+		Group implements TournamentStage - 			
+			fields: Team[5], Match[] matches, Row[5] pointsTable
+			methods: schedule() 
+					//creates Match objects and fills in matches array then prints the schedule
+					//teams can't have consecutive matches
 				 simulate() {
 					  Match day #1
 					  toString() of Match Object {
@@ -78,12 +88,42 @@ II. Program Structure/Basic API
 					  . 
 					  5 times
 					  
-					  points table 
+					  print pointsTable 
 					  delay
 					  Match day #2
 					  .
 					  .
+					  print pointsTable
 					}
-					printResult();
-					method to be called from tournament
-					returns qualifiedTeams[]	
+				qualifiedTeams() //returns top 4 teams.
+		
+		Knockouts implements TournamentStage - 
+				fields: Team[] playingTeams, Match[] matches, Team[] qualified 
+				methods: schedule() 
+					//similar to Group.schedule, group Order must be maintained, teams can't have consecutive matches
+					 simulate() { 
+							//similar to Group.simulate() 
+						    }
+					qualifiedTeams() //returns qualified teams.
+		
+		Row 
+				fields: Team, points, goals scored, goals conceded, wins, losses
+				method: toString();
+		
+		Match
+			fields: Team team1, team2, String stadium(to be decided later), Team winner, Team loser, goalsWinner, 
+				goalsLoser, Player[] winningTeamScorers, Player[] losingTeamScorerScores  
+			methods: play()
+
+		Team 
+			fields: Player[] players, String name, String fifaCode, Player Captain, String/Object Manager
+				//fields determining outcomes
+			methods: toString()
+		
+		Player	
+			fields: String name, //stats 
+			methods: toString()
+		
+		Manager 
+			fields: String name, //stats
+			methods: toString()
