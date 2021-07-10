@@ -31,7 +31,7 @@ Simulate knockouts
 API –-
 
 //
-8/7/2021
+10/7/2021
 
 IT-150 Project
 
@@ -113,17 +113,30 @@ II. Program Structure/Basic API
 		Match
 			fields: Team team1, team2, String stadium(to be decided later), Team winner, Team loser, goalsWinner, 
 				goalsLoser, Player[] winningTeamScorers, Player[] losingTeamScorerScores  
-			methods: play()
+			methods: play() {
+					//fields determining outcomes
+						1. int rank
+						2. int starPlayers
+						3. double captainAbility 
+						4. double managerAbility
+						5. int ratingDiff
+				}
 
 		Team 
-			fields: Player[] players, String name, String fifaCode, Player Captain, String/Object Manager
+			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, double rank, int starPlayers,
+				
 				//fields determining outcomes
+					1. double rank
+					2. int starPlayers
+					3. double captainAbility 
+					4. double managerAbility  
+					
 			methods: toString()
 		
 		Player	
-			fields: String name, //stats 
+			fields: String name, String Club, int playerRating, boolean starPlayer, double shootingAbility, int goals, boolean isCaptain, Team team //stats 
 			methods: toString()
 		
 		Manager 
-			fields: String name, //stats
+			fields: String name, double ability, double experience //stats
 			methods: toString()
