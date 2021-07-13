@@ -28,14 +28,12 @@ User prediction
 Simulate knockouts
 
 
-API –-
 
-//
 10/7/2021
 
 IT-150 Project
 
-I. Program Flow -
+I. Program Flow:
 	i)Game/project name and about.
 	ii)Ask user his/her name.
 	iii)Show user tournament groups.
@@ -50,17 +48,19 @@ I. Program Flow -
 	x)Show tournament winner 
 	xi)username : points.
 
-II. Program Structure/Basic API
+II. Program Structure/Basic API:
+	i)Classes:
 	
-	i)Classes
-		User-
+		User -
 			fields: name, points, prediction
-			methods: getter and setter for the fields.
+			methods: toString(),
+				 getters and setters.
 
-		Tournament-
-			fields: Groups, Knockouts, Final(optional), Player[] goalScorers
-				allTeams[],User
-			methods: start(), makeGroups()
+		Tournament -
+			fields: Groups, Knockouts, Final (TBD), Player[] goalScorers, Team[] allTeams, User
+			methods: start(), 
+				 makeGroups(),
+				 getters and setters.
 		
 		
 		Interface TournamentStage {
@@ -71,10 +71,57 @@ II. Program Structure/Basic API
 		
 		Group implements TournamentStage - 			
 			fields: Team[5], Match[] matches, Row[5] pointsTable
-			methods: schedule() 
-					//creates Match objects and fills in matches array then prints the schedule
-					//teams can't have consecutive matches
-				 simulate() {
+			methods: schedule(),			//creates Match objects (keeping in mind teams can't have consecutive matches)
+								//fills in matches array and then prints the schedule
+				 simulate(),			//runs all matches in matches
+				 				//prints details of every match in each matchday
+								//prints points table at end of every matchday
+				 qualifiedTeams(),		//returns top 4 teams in pointsTable
+		
+		Knockouts implements TournamentStage - 
+			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
+			methods: schedule(), 			//similar to Group.schedule (brackets order must be maintained)
+				 simulate(),			//similar to Group.simulate() (no pointsTable to output)
+				 qualifiedTeams(), 		//returns qualified teams.
+		
+		Row -
+			fields: Team, points, goalsScored, goalsConceded, wins, losses
+			methods: toString(),
+				 getters and setters.
+		
+		Match -
+			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
+				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers,  String stadium (TBD)  
+			methods: play(),			//fields determining outcomes
+								//1. int teamRank
+								//2. int starPlayers
+								//3. double captainAbility 
+								//4. double managerAbility
+								//5. int ratingDiff
+				 toString(),
+				 getters and setters.
+
+		Team -
+			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, double rank, int starPlayers	
+			methods: toString(),
+				 getters and setters.
+		
+		Player -	
+			fields: String name, String Club, int playerRating, boolean isStarPlayer, double shootingAbility, int goals, boolean isCaptain, Team team 
+			methods: toString(),
+				 getters and setters.
+		
+		Manager -
+			fields: String name, double ability, double experience
+			methods: toString()
+				 getters and setters
+
+
+
+
+```
+Group.simulate() output structure for reference:
+					{
 					  Match day #1
 					  toString() of Match Object {
 					  team x vs team y
@@ -95,48 +142,4 @@ II. Program Structure/Basic API
 					  .
 					  print pointsTable
 					}
-				qualifiedTeams() //returns top 4 teams.
-		
-		Knockouts implements TournamentStage - 
-				fields: Team[] playingTeams, Match[] matches, Team[] qualified 
-				methods: schedule() 
-					//similar to Group.schedule, group Order must be maintained, teams can't have consecutive matches
-					 simulate() { 
-							//similar to Group.simulate() 
-						    }
-					qualifiedTeams() //returns qualified teams.
-		
-		Row 
-				fields: Team, points, goals scored, goals conceded, wins, losses
-				method: toString();
-		
-		Match
-			fields: Team team1, team2, String stadium(to be decided later), Team winner, Team loser, goalsWinner, 
-				goalsLoser, Player[] winningTeamScorers, Player[] losingTeamScorerScores  
-			methods: play() {
-					//fields determining outcomes
-						1. int rank
-						2. int starPlayers
-						3. double captainAbility 
-						4. double managerAbility
-						5. int ratingDiff
-				}
-
-		Team 
-			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, double rank, int starPlayers,
-				
-				//fields determining outcomes
-					1. double rank
-					2. int starPlayers
-					3. double captainAbility 
-					4. double managerAbility  
-					
-			methods: toString()
-		
-		Player	
-			fields: String name, String Club, int playerRating, boolean starPlayer, double shootingAbility, int goals, boolean isCaptain, Team team //stats 
-			methods: toString()
-		
-		Manager 
-			fields: String name, double ability, double experience //stats
-			methods: toString()
+```
