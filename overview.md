@@ -33,7 +33,7 @@ Simulate knockouts
 
 IT-150 Project
 
-I. Program Flow:
+I.Program Flow:
 	i)Game/project name and about.
 	ii)Ask user his/her name.
 	iii)Show user tournament groups.
@@ -50,25 +50,20 @@ I. Program Flow:
 
 II. Program Structure/Basic API:
 	i)Classes:
-	
 		User -
 			fields: name, points, prediction
 			methods: toString(),
 				 getters and setters.
-
 		Tournament -
 			fields: Groups, Knockouts, Final (TBD), Player[] goalScorers, Team[] allTeams, User
 			methods: start(), 
 				 makeGroups(),
 				 getters and setters.
-		
-		
 		Interface TournamentStage {
 			schedule()
 			simulate()
 			getGoalscorers()
 		}
-		
 		Group implements TournamentStage - 			
 			fields: Team[5], Match[] matches, Row[5] pointsTable
 			methods: schedule(),			//creates Match objects (keeping in mind teams can't have consecutive matches)
@@ -77,18 +72,15 @@ II. Program Structure/Basic API:
 				 				//prints details of every match in each matchday
 								//prints points table at end of every matchday
 				 qualifiedTeams(),		//returns top 4 teams in pointsTable
-		
 		Knockouts implements TournamentStage - 
 			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
 			methods: schedule(), 			//similar to Group.schedule (brackets order must be maintained)
 				 simulate(),			//similar to Group.simulate() (no pointsTable to output)
 				 qualifiedTeams(), 		//returns qualified teams.
-		
 		Row -
 			fields: Team, points, goalsScored, goalsConceded, wins, losses
 			methods: toString(),
 				 getters and setters.
-		
 		Match -
 			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
 				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers,  String stadium (TBD)  
@@ -100,17 +92,14 @@ II. Program Structure/Basic API:
 								//5. int ratingDiff
 				 toString(),
 				 getters and setters.
-
 		Team -
 			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, double rank, int starPlayers	
 			methods: toString(),
 				 getters and setters.
-		
 		Player -	
 			fields: String name, String Club, int playerRating, boolean isStarPlayer, double shootingAbility, int goals, boolean isCaptain, Team team 
 			methods: toString(),
 				 getters and setters.
-		
 		Manager -
 			fields: String name, double ability, double experience
 			methods: toString()
