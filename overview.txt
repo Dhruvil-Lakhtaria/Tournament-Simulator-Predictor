@@ -1,36 +1,3 @@
-   Tournament Simulator
-Goal: To simulate a football league amongst top nation by scheduling match fixture and simulating the tournament 
-
-Project is made more user-interactive and gamified by adding the feature of user to predict….
-
-Java File/Classes: - 
-Rough Overview (Subject to change) – 
-Team – datatype representing each team
-Player – datatype representing each player 
-Scheduling part – contain static methods to schedule league fixtures and knockout fixtures
-Tournament – class containing main method and representing whole tournament and the main application.
-User  – A class keeping record of state of each user who is predicting (users prediction and points).
-Input data – through text file 
-
-
-
-FLOW OF APPLICATION –
-First display teams and scheduled fixture 
-User Prediction for group stage
-Group stage fixture simulation 
-
-
-
-
-
-Then after league stage schedule the knockouts
-User prediction 
-Simulate knockouts
-
-
-
-10/7/2021
-
 IT-150 Project
 
 I. Program Flow:
@@ -48,7 +15,20 @@ I. Program Flow:
 	x)Show tournament winner 
 	xi)username : points.
 
+Date: 13/07/2021
+
 II. Program Structure/Basic API:
+
+		main() {
+			//Show project name, brief info and about
+			//Create User
+			//Create Tournament
+			//Set Tournament
+			//Tournament.makeGroups()
+			//Tournament.start()
+			//Display final user score
+		}
+
 	i)Classes:  
 	
 		User -
@@ -57,8 +37,29 @@ II. Program Structure/Basic API:
 				 getters and setters.  
   
 		Tournament -
-			fields: Groups, Knockouts, Final (TBD), Player[] goalScorers, Team[] allTeams, User
-			methods: start(), 
+			fields: Group1, Group2, Knockout q, Knockout s, Knockout f, Player[] goalScorers, Team[] allTeams, User
+			methods: Tournament(String fileName, User u) //file containing teams, parses Text file
+				 start() {
+					
+					//take prediction
+					//Simulate Group1
+					//Update User points
+					
+					//take prediction
+					//Simulate Group2
+					//Update User point
+
+					//Take prediction for knockout q
+					//calls schedule and simulate of all stages and initializes the next stage
+					//Update user score
+					//Change Predictions for next Knockout stage?
+					.
+					.
+					.
+					
+					
+				},
+				 toString(), 
 				 makeGroups(),
 				 getters and setters.  
 				 
@@ -70,49 +71,60 @@ II. Program Structure/Basic API:
 		
 		Group implements TournamentStage - 			
 			fields: Team[5], Match[] matches, Row[5] pointsTable
-			methods: schedule(),			//creates Match objects (keeping in mind teams can't have consecutive matches)
+			methods: Group(Team[]) 
+				schedule(),			//creates Match objects (keeping in mind teams can't have consecutive matches)
 								//fills in matches array and then prints the schedule
-				 simulate(),			//runs all matches in matches
+
+				 simulate(),			//runs all matches in matches, manipulates pointsTable, goals of players are updated
+								//use helper methods where required
 				 				//prints details of every match in each matchday
 								//prints points table at end of every matchday
+
 				 qualifiedTeams(),		//returns top 4 teams in pointsTable  
 				 
 		Knockouts implements TournamentStage - 
 			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
-			methods: schedule(), 			//similar to Group.schedule (brackets order must be maintained)
-				 simulate(),			//similar to Group.simulate() (no pointsTable to output)
+			methods: Knockouts(Team[])
+				schedule(), 			//similar to Group.schedule (brackets order must be maintained)
+				 simulate(),			//similar to Group.simulate() (no pointsTable to output, no match day)
 				 qualifiedTeams(), 		//returns qualified teams.  
 				 
 		Row -
 			fields: Team, points, goalsScored, goalsConceded, wins, losses
-			methods: toString(),
+			methods: Row(Team)
+				 toString(),
 				 getters and setters.  
 				 
 		Match -
 			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
-				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers,  String stadium (TBD)  
-			methods: play(),			//fields determining outcomes
-								//1. int teamRank
-								//2. int starPlayers
-								//3. double captainAbility 
-								//4. double managerAbility
-								//5. int ratingDiff
+				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers  
+			methods: 	Match(Team1, team2)
+					play(),			//fields determining outcomes
+									//1. int teamRank
+									//2. int starPlayers
+									//3. double captainAbility 
+									//4. double managerAbility
+									//5. int ratingDiff
 				 toString(),
 				 getters and setters.  
 				 
 		Team -
-			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, double rank, int starPlayers	
-			methods: toString(),
+			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, int rank, int starPlayers	
+			methods: Team(Player[] players, name, fifaCode, Captain, int starPlayer,.....)
+				 toString(),
 				 getters and setters.  
 				 
 		Player -	
-			fields: String name, String Club, int playerRating, boolean isStarPlayer, double shootingAbility, int goals, boolean isCaptain, Team team 
-			methods: toString(),
+			fields: String name, String Club, double playerRating, double shootingAbility, int goals, Team team 
+			methods: Player(fields...)
+				 toString(),
+				 setTeam(),
 				 getters and setters.  
 				 
 		Manager -
-			fields: String name, double ability, double experience
-			methods: toString()
+			fields: String name, double ability
+			methods: Manager(fields...)
+				 toString()
 				 getters and setters  
   
   
@@ -122,6 +134,7 @@ Group.simulate() output structure for reference:
 
 ```
 					{
+					  
 					  Match day #1
 					  toString() of Match Object {
 					  team x vs team y
@@ -133,13 +146,20 @@ Group.simulate() output structure for reference:
 					  .
 					  .
 					  . 
-					  5 times
+					  2 times
 					  
 					  print pointsTable 
 					  delay
+
 					  Match day #2
 					  .
 					  .
 					  print pointsTable
+					  .
+					  .
+					  Match day #5
 					}
-```
+				
+
+	
+	
