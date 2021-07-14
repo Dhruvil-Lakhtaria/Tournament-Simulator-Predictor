@@ -15,8 +15,6 @@ I. Program Flow:
 	x)Show tournament winner 
 	xi)username : points.
 
-Date: 13/07/2021
-
 II. Program Structure/Basic API:
 
 		main() {
@@ -28,6 +26,13 @@ II. Program Structure/Basic API:
 			//Tournament.start()
 			//Display final user score
 		}
+
+	Assingned Classes -
+	I. Classes to implement - Player, Team, Manager User
+		Abdullah: Team
+		Advaith: User 
+		Dhruvil: Player
+		Akheel: Manager
 
 	i)Classes:  
 	
@@ -85,12 +90,14 @@ II. Program Structure/Basic API:
 		Knockouts implements TournamentStage - 
 			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
 			methods: Knockouts(Team[])
-				schedule(), 			//similar to Group.schedule (brackets order must be maintained)
+				 schedule(), 			//similar to Group.schedule (brackets order must be maintained)
 				 simulate(),			//similar to Group.simulate() (no pointsTable to output, no match day)
 				 qualifiedTeams(), 		//returns qualified teams.  
 				 
 		Row -
 			fields: Team, points, goalsScored, goalsConceded, wins, losses
+				//winning team +3 points
+				//losing 0.
 			methods: Row(Team)
 				 toString(),
 				 getters and setters.  
@@ -99,12 +106,13 @@ II. Program Structure/Basic API:
 			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
 				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers  
 			methods: 	Match(Team1, team2)
-					play(),			//fields determining outcomes
-									//1. int teamRank
-									//2. int starPlayers
-									//3. double captainAbility 
-									//4. double managerAbility
-									//5. int ratingDiff
+					play(),			
+								//fields determining outcomes
+									//1. int difference of teamRank (w=1)
+									//2. double managerAbility (if teams are close w=1, else w=0.5)
+									//3. int starPlayers (depends on manager ability)
+									//4. double captainAbility (value added and subtracted -> 0.5)
+									//5. int avgPlayerRatingDiff (value added and subtracted -> 0.25)
 				 toString(),
 				 getters and setters.  
 				 
@@ -112,6 +120,7 @@ II. Program Structure/Basic API:
 			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, int rank, int starPlayers	
 			methods: Team(Player[] players, name, fifaCode, Captain, int starPlayer,.....)
 				 toString(),
+				 getAvgRating()
 				 getters and setters.  
 				 
 		Player -	
@@ -159,6 +168,7 @@ Group.simulate() output structure for reference:
 					  .
 					  Match day #5
 					}
+
 				
 
 	
