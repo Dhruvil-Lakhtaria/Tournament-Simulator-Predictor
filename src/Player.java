@@ -53,12 +53,17 @@ public class Player{
 	{
 		this.name = n;
 	}
-	//player position and jerseyno were not even in the api so their getter and setter not reqiured.....delete at end.... 
+
 	public String toString()
 	{
-		if(this.team.getCaptain().getName().equals(this.name))//getter for captain required in team class
-		return this.jerseyNumber + " " + this.position + " " + this.name + "(c)";
+		if(this.team.getCaptain().getName().equals(this.name))
+		{
+
+				return this.position + "-"+ this.jerseyNumber + "-" + this.name + "(c)";
+		}
 		else
-			return this.jerseyNumber + " " + this.position+ " " + this.name;
+		{
+			return this.position + "-"+ this.jerseyNumber + "-" + this.name;
+			}
 	}
 }
