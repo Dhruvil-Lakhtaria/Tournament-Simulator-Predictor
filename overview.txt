@@ -28,7 +28,6 @@ II. Program Structure/Basic API:
 		}
 
 	Assingned Classes -
-	I. Classes to implement - Player, Team, Manager User
 		Abdullah: Team, Row, TournamentStage
 		Advaith: User, Knockouts 
 		Dhruvil: Player, Group
