@@ -149,3 +149,41 @@ Nicolo Barella|24|MF|18|6
 Lorenzo Insigne|30|FW|10|10
 Ciro Immobile|31|FW|17|15
 Federico Chiesa|23|FW|14|2
+
+Denmark
+FIFA CODE-DEN
+Ranking-10
+W-D-L-405-179-288
+Manager-Kasper Hjulmand
+Captain-Simon Kjaer
+Name|Age|Position|Jersey Number|Goals
+Kasper Schmeichel|34|GK|1|0
+Andreas Christensen|25|DF|6|2
+Simon Kjaer|32|DF|4|3
+Joakim Maehle|24|DF|5|4
+Jannik Vestergaard|28|DF|3|1
+Christian Eriksen|29|MF|10|36
+Daniel Wass|32|MF|18|0
+Thomas Delaney|29|MF|8|6
+Mikel Damsgaard|21|FW|14|4
+Martin Braithwaite|30|FW|9|10
+Yusuf Poulsen|27|FW|20|10
+
+Croatia
+FIFA CODE-CRO
+Ranking-14
+W-D-L-176-85-68
+Manager-Zlatko Dalic
+Captain-Luka Modric
+Name|Age|Position|Jersey Number|Goals
+Dominic Livakovic|26|GK|1|0
+Sime Vrsaljko|29|DF|2|0
+Duje Caleta-Car|24|DF|5|0
+Dejan Lovren|32|DF|6|4
+Domagoj Vida|32|DF|21|4
+Luka Modric|35|MF|10|18
+Marcelo Brozovic|28|MF|11|6
+Mario Pasalic|26|MF|15|4
+Ivan Perisic|32|FW|4|30
+Ante Rebic|27|FW|17|3
+Josip Brekalo|23|FW|7|4
