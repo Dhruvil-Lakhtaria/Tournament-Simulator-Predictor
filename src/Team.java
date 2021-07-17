@@ -57,13 +57,10 @@ public class Team {
 
     @Override
     public String toString() {
-        
-        String out = "Team " + name + "\n" +
-                    "Fifa Code: " + fifaCode + '\n' +
-                    "World Ranking: " + rank + "\n" +
-                    "Manager: " + manager.getName() + '\n' +
-                    "Captain: " + captain.getName() + '\n' +
-                    "Players:\n";
+
+        String out = name.toUpperCase() + " (" + fifaCode + ")-" + rank + "\n" +
+                "Manager: " + manager.getName() + '\n' +
+                "Lineup:\n";
 
         for(Player p : players) {
             out += p + "\n";
