@@ -252,14 +252,14 @@ public class Match {
 
     public void setGoalsWinner(int goalsWinner) {
         if (goalsWinner < 0){
-            System.out.println("Invalid goalsWinner in setter");
+            System.out.println("\nInvalid goalsWinner in setter");
         }
         this.goalsWinner = goalsWinner;
     }
 
     public void setGoalsLoser(int goalsLoser) {
         if (goalsLoser < 0){
-            System.out.println("Invalid goalsLoser in setter");
+            System.out.println("\nInvalid goalsLoser in setter");
         }
         this.goalsLoser = goalsLoser;
     }
