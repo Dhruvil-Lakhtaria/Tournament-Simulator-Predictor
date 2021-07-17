@@ -74,7 +74,8 @@ public class Match {
         }
 
         /**
-         * 
+         * for captain and avg Rating attributes, using the same logic (as mentioned in API)
+         * if the value of one team is greater than the other, that team gets incremented a set amount while the other loses the same
          */
 
         p1 += (team1.getCaptain().getPlayerRating() > team2.getCaptain().getPlayerRating()) ? 0.5 : -0.5;
@@ -82,6 +83,13 @@ public class Match {
 
         p1 += (team1.getAvgRating() > team2.getAvgRating()) ? 0.25 : -0.25;
         p2 += (team1.getAvgRating() > team2.getAvgRating()) ? -0.25 : 0.25;
+
+        /**
+         * with the final p1 and p2 (probability of team1 and team2 winning respectively)
+         * we generate random number from [0,100) and check if generated number >= than the probability of one team
+         * if yes, then that team wins
+         * if not, then that implies generated number <= probability of the other team so the other team wins
+         */
 
         if (Math.random() * 100 >= p1){
             winner = team1;
@@ -92,32 +100,67 @@ public class Match {
             loser = team1;
         }
 
+        /**
+         * for goals scored, we set a 6 goals for a team to score. 
+         * so after generating the goals for the winning team (1 is added because the team cant win unless they atleast score one goal)
+         * and then we keep looping as long as goalsLoser >= goalsWinner (losing team has to score less)
+         * (assignment operator returns the value assigned)
+         */
+
         goalsWinner = 1 + (int) (Math.random() * 7);
-        for (goalsLoser = 7; (goalsLoser = (int) (Math.random() * 7)) < goalsWinner;);
+        for (goalsLoser = 7; (goalsLoser = (int) (Math.random() * 7)) >= goalsWinner;);
+
+        /**
+         * called a private helper function since too much code in one function mightve led to mistakes
+         * determineGoalScorers() as the name suggests, determins who all scored from each team
+         */
 
         determineGoalScorers();
     }
 
     private void determineGoalScorers(){
-        double winGoalProbability = Math.random() * 10.0;
-        double loseGoalProbability = Math.random()* 10.0;
+
+        /**
+         * (since not exactly specified but was discussed in meeting only, this is subject to discussion if needed)
+         * two for loops, one to account for all of the winning goals, the other to account for loosing.
+         * for each goal we generate a random value from [0,10)
+         * this is used as the least rating a player needs to score that particular goal
+         * then we keep looping (using random indexs) until we come across a scorer with ability >= requirement
+         * we add a goal to the tally of the scorer and if the scorer hasnt already scored, 
+         * we add him to the ArrayList for his team's scorers
+         */
 
         for (int i = 0; i < goalsWinner; ++i){
             Player scorer;
+            double winGoalProbability = Math.random() * 10.0;
             for (; (scorer = winner.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < winGoalProbability;);
             scorer.addGoal();
-            winningTeamScorers.add(scorer);
+            if (!winningTeamScorers.contains(scorer)){
+                winningTeamScorers.add(scorer);
+            }
         }
         
         for (int i = 0; i < goalsLoser; ++i){
             Player scorer;
+            double loseGoalProbability = Math.random()* 10.0;
             for (; (scorer = loser.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < loseGoalProbability;);
             scorer.addGoal();
-            losingTeamScorers.add(scorer);
+            if (!losingTeamScorers.contains(scorer)){
+                losingTeamScorers.add(scorer);
+            }
         }
     }
 
     public String toString() {
+
+        /**
+         * first case is if team1 won and team2 lost and other case is vice versa
+         * couldve just done winner vs loser order output 
+         * but then it would be weird that the winner is always on one side
+         * after showing the teams playing and the score line, we show goalscorers for winning and then losing.
+         * (if needed we can make them side by side, but not a priority for now)
+         */
+
         String s;
         if (team1 == winner){
             s = winner.getName() + " vs " + loser.getName() + "\n" + 
@@ -140,6 +183,12 @@ public class Match {
 
         return s;
     }
+
+    /**
+     * getters and setters
+     * (checked for input values for setters)
+     * (couldnt think of an invalid case for the winningTeamScorers and losingTeamScorers ArrayLists, any insight?)
+     */
 
     public Team getTeam1() {
         return team1;
