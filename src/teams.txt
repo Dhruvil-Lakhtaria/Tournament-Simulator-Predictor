@@ -171,7 +171,7 @@ Yusuf Poulsen|27|FW|20|10
 
 Croatia
 FIFA CODE-CRO
-Ranking-14
+Ranking-10
 W-D-L-176-85-68
 Manager-Zlatko Dalic
 Captain-Luka Modric
