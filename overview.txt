@@ -98,8 +98,21 @@ II. Program Structure/Basic API:
 				//winning team +3 points
 				//losing 0.
 			methods: Row(Team)
-				 toString(),
-				 getters and setters.  
+				 Team getTeam()
+				 int getPoints()
+				 int getGoalsScored()
+				 int getGoalsConceded()
+				 int getWins()
+				 int getLosses()
+				 void goalScored()
+				 void setGoalsScored()
+				 void goalConceded()
+				 void setGoalsConceded()
+				 void addWin()
+				 void setWins()
+				 void addLoss()
+				 void setLosses()
+				 toString(). 
 				 
 		Match -
 			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
