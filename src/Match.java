@@ -9,6 +9,9 @@ public class Match {
 
     Match(Team team1, Team team2){
 
+        winningTeamScorers = new ArrayList<Player>();
+        losingTeamScorers = new ArrayList<Player>();
+
         if (team1 == null || team2 == null){
             System.out.println("\nNull teams in Match constructor");
         }
@@ -175,7 +178,7 @@ public class Match {
 
         for (int i = 0; i < goalsWinner; ++i){
             Player scorer;
-            double winGoalProbability = winGoalProbabilities.get(Math.random() * winGoalProbabilities.size());
+            double winGoalProbability = winGoalProbabilities.get((int) (Math.random() * winGoalProbabilities.size()));
             for (; (scorer = winner.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < winGoalProbability;);
             scorer.addGoal();
             if (!winningTeamScorers.contains(scorer)){
@@ -185,7 +188,7 @@ public class Match {
         
         for (int i = 0; i < goalsLoser; ++i){
             Player scorer;
-            double loseGoalProbability = loseGoalProbabilities.get(Math.random() * loseGoalProbabilities.size());
+            double loseGoalProbability = loseGoalProbabilities.get((int) (Math.random() * loseGoalProbabilities.size()));
             for (; (scorer = loser.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < loseGoalProbability;);
             scorer.addGoal();
             if (!losingTeamScorers.contains(scorer)){
@@ -258,11 +261,11 @@ public class Match {
     }
 
     public ArrayList<Player> getWinningTeamScorers() {
-        return winningTeamScorers;
+        return new ArrayList<Player>(winningTeamScorers);
     }
 
     public ArrayList<Player> getLosingTeamScorers() {
-        return losingTeamScorers;
+        return new ArrayList<Player>(losingTeamScorers);
     }
 
     public void setTeam1(Team team1) {
