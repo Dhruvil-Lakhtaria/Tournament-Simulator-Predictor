@@ -89,7 +89,13 @@ public class Match {
          * we generate random number from [0,100) and check if generated number >= than the probability of one team
          * if yes, then that team wins
          * if not, then that implies generated number <= probability of the other team so the other team wins
+         * (also added a check for 100 to make sure our logic in the algorithm is correct)
+         * (if it is correct after testing we can just remove p2 and p1 and replace it with just one single p)
          */
+
+        if (p1 + p2 != 100){
+            System.out.println("Probabilities dont add up to 100");
+        }
 
         if (Math.random() * 100 >= p1){
             winner = team1;
@@ -121,18 +127,55 @@ public class Match {
     private void determineGoalScorers(){
 
         /**
-         * (since not exactly specified but was discussed in meeting only, this is subject to discussion if needed)
+         * ---------------------- initial method how implemented (can be found in earlier commit) --------------------------
+         * (since not exactly specified but was discussed in meeting only, this can be ignored or kept for discussion if needed)
          * two for loops, one to account for all of the winning goals, the other to account for loosing.
          * for each goal we generate a random value from [0,10)
          * this is used as the least rating a player needs to score that particular goal
          * then we keep looping (using random indexs) until we come across a scorer with ability >= requirement
          * we add a goal to the tally of the scorer and if the scorer hasnt already scored, 
          * we add him to the ArrayList for his team's scorers
+         * -----------------------------------------------------------------------------------------------------------------
+         * 
+         * we create two ArrayLists (one with probabilities of winners scoring and another with losers)
+         * by probabilities we mean we weighted ability of the players in that team, where the weight of the ability is the value of the ability itself
+         * ie, an abiliity 10 will have a weight 10 & an ability 5 will have a weight 5
+         * since a player of ability 10 is way more likely to score than a player with ability 5.
+         * we add these values repeatedly into the ArrayLists.
          */
+
+
+        ArrayList<Double> winGoalProbabilities = new ArrayList<>();
+        ArrayList<Double> loseGoalProbabilities = new ArrayList<>();
+
+        for (Player p : winner.getPlayers()){
+            if (!winGoalProbabilities.contains(p.getShootingAbility())){
+                for (int i = 0; i < p.getShootingAbility(); ++i){
+                    winGoalProbabilities.add(p.getShootingAbility());
+                }
+            }
+        }
+
+        for (Player p : loser.getPlayers()){
+            if (!loseGoalProbabilities.contains(p.getShootingAbility())){
+                for (int i = 0; i < p.getShootingAbility(); ++i){
+                    loseGoalProbabilities.add(p.getShootingAbility());
+                }
+            }
+        }
+
+        /**
+         * By here, the entering of values into the ArrayList is over, and now within two loops (one for winners one for losers)
+         * we pick one of these values from the probabilities list as the probability. this probability is taken as the minimum ability a player must have to score
+         * (By virtue of the abilities being their own weights, the higher weights obviously have more chance of being picked)
+         * then we loop through the players of each team RANDOMLY until we come across a player who crosses that threshold ability/probability we set.
+         * this player is chosen as the scorer.
+         */
+
 
         for (int i = 0; i < goalsWinner; ++i){
             Player scorer;
-            double winGoalProbability = Math.random() * 10.0;
+            double winGoalProbability = winGoalProbabilities.get(Math.random() * winGoalProbabilities.size());
             for (; (scorer = winner.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < winGoalProbability;);
             scorer.addGoal();
             if (!winningTeamScorers.contains(scorer)){
@@ -142,7 +185,7 @@ public class Match {
         
         for (int i = 0; i < goalsLoser; ++i){
             Player scorer;
-            double loseGoalProbability = Math.random()* 10.0;
+            double loseGoalProbability = loseGoalProbabilities.get(Math.random() * loseGoalProbabilities.size());
             for (; (scorer = loser.getPlayers().get((int) (Math.random() * 11))).getShootingAbility() < loseGoalProbability;);
             scorer.addGoal();
             if (!losingTeamScorers.contains(scorer)){
