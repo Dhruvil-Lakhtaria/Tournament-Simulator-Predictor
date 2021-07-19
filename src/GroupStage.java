@@ -8,7 +8,7 @@ public class GroupStage implements TournamentStage {
 //	Constructor
 	public GroupStage(ArrayList<Team>t)
 	{
-		this.teams = t;
+		this.playingTeams = t;
 		matches = new ArrayList<Match>();
 		pointsTable = new ArrayList<Row>();
 	}
@@ -23,7 +23,7 @@ public class GroupStage implements TournamentStage {
 		 */
 		for(int i = 0;i<=8;i+=2)
 		{
-			matches.add(new Match(teams.get(i%5),teams.get((i+1)%5)));
+			matches.add(new Match(playingTeams.get(i%5),playingTeams.get((i+1)%5)));
 		}
 		/*
 		 * setting teams alternatively 
@@ -32,7 +32,7 @@ public class GroupStage implements TournamentStage {
 		 */
 		for(int i = 0;i<=4;i++)
 		{
-			matches.add(new Match(teams.get(i%5),teams.get((i+2)%5)));
+			matches.add(new Match(playingTeams.get(i%5),playingTeams.get((i+2)%5)));
 		}
 		/*
 		 * final schedule ---
