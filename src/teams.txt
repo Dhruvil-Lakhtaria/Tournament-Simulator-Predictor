@@ -1,9 +1,9 @@
 Argentina
-ARG
-8
-561-256-220
-Lionel Scaloni
-Lionel Messi
+FIFA code - ARG
+Rankings - 8
+W-D-L - 561-256-220
+Manager - Lionel Scaloni
+Captain - Lionel Messi
 Name|Age|Position|Jersey Number|Goals
 Franco Armani|34|GK|1|0
 Nicolas Tagliafico|31|DF|3|0
@@ -18,11 +18,11 @@ Lionel Messi|34|FW|10|75
 Lautaro Martinez|26|FW|22|12
 
 Brazil
-FIFA code-BRA
-Rankings-3
-W-D-L-642-207-162
-Manager-Tite
-Captain-Thiago Silva
+FIFA code - BRA
+Rankings - 3
+W-D-L - 642-207-162
+Manager - Tite
+Captain - Thiago Silva
 Name|Age|Position|Jersey Number|Goals
 Aisson Becker|28|GK|1|0
 Thiago Silva|36|DF|3|7
@@ -56,11 +56,11 @@ Eden Hazard|30|FW|10|32
 Dries Mertens|34|FW|14|21
 
 England
-FIFA Code-ENG
-Rankings-4
-W-D-L-583-242-191
-Manager-Gareth Southgate
-Captain-Harry Kane
+FIFA Code - ENG
+Rankings - 4
+W-D-L - 583-242-191
+Manager - Gareth Southgate
+Captain - Harry Kane
 Name|Age|Position|Jersey Number|Goals
 Jordan Pickford|27|GK|1|0
 Kyle Walker|31|DF|2|0
@@ -75,11 +75,11 @@ Raheem Sterling|26|FW|10|17
 Marcus Rashford|23|FW|11|12
 
 France
-FIFA Code-FRA
-Ranking-2
-W-D-L-448-181-240
-Manager-Didier Desschamps
-Captain-Hugo Lloris
+FIFA Code - FRA
+Ranking - 2
+W-D-L - 448-181-240
+Manager - Didier Desschamps
+Captain - Hugo Lloris
 Name|Age|Position|Jersey Number|Goals
 Hugo Lloris|34|GK|1|0
 Benjamin Pavard|25|DF|2|2
@@ -94,11 +94,11 @@ Kylian Mbappe|22|FW|10|17
 Karim Benzema|33|FW|19|31
 
 Portugal
-FIFA Code-POR
-Ranking-5
-W-D-L-309-151-178
-Manager-Fernando Santos
-Captian-Cristiano Ronaldo
+FIFA Code - POR
+Ranking - 5
+W-D-L - 309-151-178
+Manager - Fernando Santos
+Captian - Cristiano Ronaldo
 Name|Age|Position|Jersey Number|Goals
 Rui Patricio|33|GK|1|0
 Nelson Semedo|27|DF|2|0
@@ -113,11 +113,11 @@ Cristiano Ronaldo|36|FW|7|109
 Joao Felix|21|FW|23|3
 
 Spain
-FIFA Code-SPA
-Ranking-6
-W-D-L-418-166-132
-Manager-Luis Enrique
-Captain-Sergio Busquets
+FIFA Code - SPA
+Ranking - 6
+W-D-L - 418-166-132
+Manager - Luis Enrique
+Captain - Sergio Busquets
 Name|Age|Position|Jersey Number|Goals
 Unai Simon|24|GK|23|0
 Cesar Azplicueta|31|DF|2|1
@@ -132,9 +132,9 @@ Gerard Moreno|29|FW|9|5
 Ferran Torres|21|FW|11|8
 
 Italy
-FIFA Code-ITA
-Ranking-7
-W-D-L-451-227-162
+FIFA Code - ITA
+Ranking - 7
+W-D-L - 451-227-162
 Manager-Roberto Mancini
 Captain-Giorgio Chiellini
 Name|Age|Position|Jersey Number|Goals
@@ -151,11 +151,11 @@ Ciro Immobile|31|FW|17|15
 Federico Chiesa|23|FW|14|2
 
 Denmark
-FIFA CODE-DEN
-Ranking-10
-W-D-L-405-179-288
-Manager-Kasper Hjulmand
-Captain-Simon Kjaer
+FIFA CODE - DEN
+Ranking - 9
+W-D-L - 405-179-288
+Manager - Kasper Hjulmand
+Captain - Simon Kjaer
 Name|Age|Position|Jersey Number|Goals
 Kasper Schmeichel|34|GK|1|0
 Andreas Christensen|25|DF|6|2
@@ -170,11 +170,11 @@ Martin Braithwaite|30|FW|9|10
 Yusuf Poulsen|27|FW|20|10
 
 Croatia
-FIFA CODE-CRO
-Ranking-10
-W-D-L-176-85-68
-Manager-Zlatko Dalic
-Captain-Luka Modric
+FIFA CODE - CRO
+Ranking - 10
+W-D-L - 176-85-68
+Manager - Zlatko Dalic
+Captain - Luka Modric
 Name|Age|Position|Jersey Number|Goals
 Dominic Livakovic|26|GK|1|0
 Sime Vrsaljko|29|DF|2|0
