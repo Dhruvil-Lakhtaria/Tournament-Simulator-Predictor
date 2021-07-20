@@ -1,16 +1,17 @@
 import java.util.ArrayList;
 
 public class GroupStage implements TournamentStage {
-	ArrayList<Team>playingTeams;
-	ArrayList<Match>matches;
-	ArrayList<Row>pointsTable;
-	 private ArrayList<Player> goalScorers;
+	private ArrayList<Team>playingTeams;
+	private ArrayList<Match>matches;
+	private ArrayList<Row>pointsTable;
+	private ArrayList<Player> goalScorers;
 //	Constructor
 	public GroupStage(ArrayList<Team>teams)
 	{
 		this.playingTeams = teams;
 		matches = new ArrayList<Match>();
 		pointsTable = new ArrayList<Row>();
+		goalScorers = new ArrayList<Player>();
 		for(Team t1 : this.playingTeams)
 		{
 			pointsTable.add(new Row(t1));
@@ -54,13 +55,14 @@ public class GroupStage implements TournamentStage {
 		for(Match match : this.matches)
 		{
 			System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
-			Delay.loadingDelay(4);/*
-			it will print something like TeamA VS TeamB
-										 ....(with delay effect)
-			*/
 			match.play();
-			/*
-			 * adding goalscorers ...
+			Delay.loadingDelay(4);/*
+			*it will print something like TeamA VS TeamB
+			*							 ....(with delay effect)
+			*
+			*/
+			 /*
+			 *  adding goalscorers ...
 			 */
 			goalScorers.addAll(match.getWinningTeamScorers());
             goalScorers.addAll(match.getLosingTeamScorers());
@@ -87,22 +89,57 @@ public class GroupStage implements TournamentStage {
             Delay.makeDelay(1000);
           
 //            points table at the end of every matchday
-            
+     
             if(matchesCompleted%2==0)
             {
-            	for(Row r : pointsTable)
-            	{
-            		System.out.println(r);
-            	}
+            	System.out.println(this.showPointTable());
             }
             Delay.makeDelay(3000);
 		}
 	}
 
+	public String showPointTable()
+	{
+		String s = "";
+		for(Row r : pointsTable)
+    	{
+    		s = s.concat(r.toString()).concat("\n");
+    	}
+		return s;
+	}
 	@Override
-	public ArrayList<Player> getGoalScorers() {
-		
-		return null;
+	public ArrayList<Player> getGoalScorers(){
+		return new ArrayList<Player>(this.goalScorers);
+	}
+	
+/*
+ * this is for getting the top four ranked teams
+ * and used to passed them to Knockout constructor....
+ */
+	public ArrayList<Team> getQualifiedTeam()
+	{
+		ArrayList<Team>qt = new ArrayList<Team>();
+		//after sorting remove last not including last team
+		for(int i = 0;i<4;i++)
+		{
+			for(Team t : this.playingTeams)
+			{
+				if(pointsTable.get(i).getTeam().getName().equals(t.getName()))
+				{
+					qt.add(t);
+				}
+			}
+		}
+		return qt;
 	}
 
+	public String toString()
+	{
+		String res = "GROUPSTAGE SCHEDULE\n";
+		for(Match match : this.matches)
+		{
+			res = res + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + "\n";
+		}
+		return res;
+	}
 }
