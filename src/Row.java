@@ -4,11 +4,6 @@ public class Row {
 
     public Row(Team team) {
         this.team = team;
-        this.points = 0;
-        this.goalsScored = 0;
-        this.goalsConceded = 0;
-        this.wins = 0;
-        this.losses = 0;
     }
 
     public Team getTeam() {
@@ -35,20 +30,12 @@ public class Row {
         return losses;
     }
 
-    public void goalScored() {
-        goalsScored++;
-    }
-
     public void setGoalsScored(int goalsScored) {
-        this.goalsScored += goalsScored;
-    }
-
-    public void goalConceded() {
-        goalsConceded++;
+        this.goalsScored = goalsScored;
     }
 
     public void setGoalsConceded(int goalsConceded) {
-        this.goalsConceded += goalsConceded;
+        this.goalsConceded = goalsConceded;
     }
 
     public void addWin() {
@@ -56,17 +43,26 @@ public class Row {
         points += 3;
     }
 
-    public void setWins(int wins) {
+    public void addWins(int wins) {
         this.wins += wins;
         points += wins*3;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+        points = wins*3;
     }
 
     public void addLoss() {
         losses++;
     }
 
-    public void setLosses(int losses) {
+    public void addLosses(int losses) {
         this.losses += losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
     }
 
     @Override
