@@ -26,11 +26,37 @@ public class Knockouts implements TournamentStage{
 
         /**
          * adding Match objects in the right order of scheduling the matches
-         * by right order, I mean, as per playingTeams array,
-         * Team 1 vs team 8, Team 2 vs Team 7 etc.
          */
-        for(int i=0; i < n/2; i++){
-            matches.add(new Match(playingTeams.get(i), playingTeams.get(n - i - 1)));
+
+        /**
+         * what i have implemented below is an ideal bracket
+         * so, in the quarters, the exact order (ideal) of scheduling the matches is
+         * A1B4 A3B2 A2B3 A4B1
+         * where A1 A2 A3 A4 is the top 4 teams of group A
+         * and B1 B2 B3 B4 is the top 4 teams of group B
+         *
+         * important point to note here is
+         * initially, the playingTeams array = {A1, A2, A3, A4, B1, B2, B3, B4}
+         * the algo is based on this initial format for the quarters
+         * so, whoever is creating Knockouts object,
+         * make sure, you stick to this order while passing the playingTeam array in the constructor
+         */
+
+        if(n == 8){
+            for(int i=0; i<8; i+=2){
+                int j = i/4 + i%4;
+                matches.add(new Match(playingTeams.get(j), playingTeams.get(7 - j)));
+            }
+        }
+
+        /**
+         * in semis and final, the matches are scheduled just the way they are placed in the playingTeams array
+         */
+
+        else{
+            for(int i=0; i < n/2; i++){
+                matches.add(new Match(playingTeams.get(i), playingTeams.get(n - i - 1)));
+            }
         }
 
         /**Matches are now scheduled!!*/
@@ -44,7 +70,7 @@ public class Knockouts implements TournamentStage{
             match.play();
 
             /**delay*/
-            Delay.makeDelay(4_000);
+            Delay.loadingDelay(4);
 
             /**update the playingTeams array
              * basically, remove the losing team
@@ -57,10 +83,14 @@ public class Knockouts implements TournamentStage{
             goalScorers.addAll(match.getLosingTeamScorers());
 
             /**print Match stats*/
-            System.out.println(match.toString());
+            System.out.println(match);
+            Delay.makeDelay(3_000);
         }
     }
 
+    public ArrayList<Player> getGoalScorers(){
+        return new ArrayList<>(goalScorers);
+    }
 
     /**toString()*/
     public String toString() {
@@ -79,7 +109,6 @@ public class Knockouts implements TournamentStage{
         return s;
     }
 
-
     /**getters & setters*/
     public ArrayList<Team> getPlayingTeams() {
         return new ArrayList<Team>(playingTeams);
@@ -95,10 +124,6 @@ public class Knockouts implements TournamentStage{
 
     public void setMatches(ArrayList<Match> matches) {
         this.matches = matches;
-    }
-
-    public ArrayList<Player> getGoalScorers(){
-        return new ArrayList<>(goalScorers);
     }
 
     public void setGoalScorers(ArrayList<Player> goalScorers) {
