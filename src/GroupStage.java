@@ -4,13 +4,17 @@ public class GroupStage implements TournamentStage {
 	ArrayList<Team>playingTeams;
 	ArrayList<Match>matches;
 	ArrayList<Row>pointsTable;
-	
+	 private ArrayList<Player> goalScorers;
 //	Constructor
-	public GroupStage(ArrayList<Team>t)
+	public GroupStage(ArrayList<Team>teams)
 	{
-		this.playingTeams = t;
+		this.playingTeams = teams;
 		matches = new ArrayList<Match>();
 		pointsTable = new ArrayList<Row>();
+		for(Team t1 : this.playingTeams)
+		{
+			pointsTable.add(new Row(t1));
+		}
 	}
 //	Filling matches ARRAYLIST with scheduled fixtures...
 	@Override
@@ -42,7 +46,57 @@ public class GroupStage implements TournamentStage {
 
 	@Override
 	public void simulate() {
-		
+		int matchesCompleted = 0;
+		/*
+		 * keeps a count of matches completed and used to print points table after 2 matches
+		 */
+		System.out.println("SIMULATING-GROUPSTAGE:");
+		for(Match match : this.matches)
+		{
+			System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
+			Delay.loadingDelay(4);/*
+			it will print something like TeamA VS TeamB
+										 ....(with delay effect)
+			*/
+			match.play();
+			/*
+			 * adding goalscorers ...
+			 */
+			goalScorers.addAll(match.getWinningTeamScorers());
+            goalScorers.addAll(match.getLosingTeamScorers());
+            /*
+             * updating points table...
+             */
+            for(Row r : pointsTable)
+            {
+            	if(r.getTeam().getName().equals(match.getWinner().getName()))
+            	{
+            		r.addWin();
+            		r.setGoalsScored(match.getGoalsWinner());
+            		r.setGoalsConceded(match.getGoalsLoser());
+            	}
+            	else if(r.getTeam().getName().equals(match.getLoser().getName()))
+            	{
+            		r.addLoss();
+            		r.setGoalsScored(match.getGoalsLoser());
+            		r.setGoalsConceded(match.getGoalsWinner());
+            	}
+            }
+            matchesCompleted++;
+            System.out.println(match);//matchstats
+            Delay.makeDelay(1000);
+          
+//            points table at the end of every matchday
+            
+            if(matchesCompleted%2==0)
+            {
+            	for(Row r : pointsTable)
+            	{
+            		System.out.println(r);
+            	}
+            }
+            Delay.makeDelay(3000);
+		}
 	}
 
 	@Override
