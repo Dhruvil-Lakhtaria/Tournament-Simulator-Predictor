@@ -34,8 +34,16 @@ public class Row {
         this.goalsScored = goalsScored;
     }
 
+    public void updateGoalsScored(int goalsScored) {
+        this.goalsScored += goalsScored;
+    }
+
     public void setGoalsConceded(int goalsConceded) {
         this.goalsConceded = goalsConceded;
+    }
+
+    public void updateGoalsConceded(int goalsConceded) {
+        this.goalsConceded += goalsConceded;
     }
 
     public void addWin() {
