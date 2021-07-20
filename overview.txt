@@ -104,13 +104,13 @@ II. Program Structure/Basic API:
 				 int getGoalsConceded()
 				 int getWins()
 				 int getLosses()
-				 void goalScored()
 				 void setGoalsScored()
-				 void goalConceded()
 				 void setGoalsConceded()
 				 void addWin()
+				 void addWins()
 				 void setWins()
 				 void addLoss()
+				 void addLosses()
 				 void setLosses()
 				 toString(). 
 				 
