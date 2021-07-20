@@ -122,13 +122,7 @@ public class GroupStage implements TournamentStage {
 		//after sorting remove last not including last team
 		for(int i = 0;i<4;i++)
 		{
-			for(Team t : this.playingTeams)
-			{
-				if(pointsTable.get(i).getTeam().getName().equals(t.getName()))
-				{
-					qt.add(t);
-				}
-			}
+			qt.add(pointsTable.get(i).getTeam());
 		}
 		return qt;
 	}
