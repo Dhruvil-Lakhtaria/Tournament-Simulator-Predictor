@@ -7,7 +7,7 @@ public class Match {
     private int goalsWinner, goalsLoser;
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
 
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
 
         // /**
         //  * the below block for a = argentina team
@@ -43,12 +43,12 @@ public class Match {
 		// }
 		// System.out.println(b);
 
-        Team[] t = teamBuilder.buildTeam();
+        //Team[] t = teamBuilder.buildTeam();
 
-        Match m1 = new Match(t[0], t[1]);
-        m1.play();
-        System.out.println(m1);
-    }
+        //Match m1 = new Match(t[0], t[1]);
+        //m1.play();
+        //System.out.println(m1);
+    //}
 
     Match(Team team1, Team team2){
 
