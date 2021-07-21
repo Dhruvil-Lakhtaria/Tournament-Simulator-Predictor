@@ -17,7 +17,7 @@ public class Manager{
         }
 
         if (ability < 0){
-            System.out.println("Negative ability in  constructor");
+            System.out.println("Negative ability in constructor");
         }
 
         this.name = name;
