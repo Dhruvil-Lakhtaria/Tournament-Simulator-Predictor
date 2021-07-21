@@ -120,9 +120,9 @@ public class GroupStage implements TournamentStage {
     				else
     				{
     					if(a.getGoalsScored() > b.getGoalsScored())
-    						return 1;
-    					else if(a.getGoalsScored() < b.getGoalsScored())
     						return -1;
+    					else if(a.getGoalsScored() < b.getGoalsScored())
+    						return 1;
     					else
     					{
     						if(a.getTeam().getName().compareToIgnoreCase(b.getTeam().getName()) < 0)
