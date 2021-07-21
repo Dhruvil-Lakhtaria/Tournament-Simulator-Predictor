@@ -1,59 +1,59 @@
 
-public class Manager{
-    private String name;
-    private double ability;
+    public class Manager{
+        private String name;
+        private double ability;
 
-    public static void main(String[] args) {
-        System.out.println("hi hello");
-    }
-
-    Manager(String name, double ability){
-
-        if (name == ""){
-            System.out.println("No Manager name in constructor");
-        }
-        else if (name.contains("[^a-zA-Z ]")){
-            System.out.println("Invalid characters in Manager name in constructor");
+        public static void main(String[] args) {
+            System.out.println("hi hello");
         }
 
-        if (ability < 0){
-            System.out.println("Negative ability in  constructor");
+        Manager(String name, double ability){
+
+            if (name == ""){
+                System.out.println("No Manager name in constructor");
+            }
+            else if (name.contains("[^a-zA-Z ]")){
+                System.out.println("Invalid characters in Manager name in constructor");
+            }
+
+            if (ability < 0){
+                System.out.println("Negative ability in constructor");
+            }
+
+            this.name = name;
+            this.ability = ability;
         }
 
-        this.name = name;
-        this.ability = ability;
-    }
-
-    public double getAbility() {
-        return ability;
-    }
-
-    public void setAbility(double ability) {
-
-        if (ability < 0){
-            System.out.println("Negative ability being set");
+        public double getAbility() {
+            return ability;
         }
 
-        this.ability = ability;
-    }
+        public void setAbility(double ability) {
 
-    public String getName() {
-        return name;
-    }
+            if (ability < 0){
+                System.out.println("Negative ability being set");
+            }
 
-    public void setName(String name) {
-
-        if (name == ""){
-            System.out.println("No Manager name being set");
-        }
-        else if (name.contains("[^a-zA-Z ]")){
-            System.out.println("Invalid characters in Manager name being set");
+            this.ability = ability;
         }
 
-        this.name = name;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String toString() {
-        return "Manager Name: " + this.name + "\nManager Ability: " + this.ability + "\n";
+        public void setName(String name) {
+
+            if (name == ""){
+                System.out.println("No Manager name being set");
+            }
+            else if (name.contains("[^a-zA-Z ]")){
+                System.out.println("Invalid characters in Manager name being set");
+            }
+
+            this.name = name;
+        }
+
+        public String toString() {
+            return "Manager Name: " + this.name + "\nManager Ability: " + this.ability + "\n";
+        }
     }
-}
