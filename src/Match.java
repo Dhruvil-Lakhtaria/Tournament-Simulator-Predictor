@@ -7,46 +7,48 @@ public class Match {
     private int goalsWinner, goalsLoser;
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
 
-    // public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    //     /**
-    //      * the below block for a = argentina team
-    //      */
+        // /**
+        //  * the below block for a = argentina team
+        //  */
 
-    //     Player a1 = new Player("Lionel Messi","FW",10,10,10);
-	// 	Player a2 = new Player("Kun Aguero","FW",9,9.5,9.3);
-	// 	Player a3 = new Player("Leon Paredes","MF",21,8.7,8);
-	// 	ArrayList<Player> ap = new ArrayList<Player>();
-	// 	ap.add(a1);ap.add(a2);ap.add(a3);
-	// 	Manager am = new Manager("Lionel Scaloni",8.5);
-	// 	Team a = new Team("ARGENTINA","ARG",a1,am,8,2,ap);
-	// 	for(Player p : a.getPlayers())
-	// 	{
-	// 		p.setTeam(a);
-	// 	}
-	// 	System.out.println(a);
+        // Player a1 = new Player("Lionel Messi","FW",10,10,10);
+		// Player a2 = new Player("Kun Aguero","FW",9,9.5,9.3);
+		// Player a3 = new Player("Leon Paredes","MF",21,8.7,8);
+		// ArrayList<Player> ap = new ArrayList<Player>();
+		// ap.add(a1);ap.add(a2);ap.add(a3);
+		// Manager am = new Manager("Lionel Scaloni",8.5);
+		// Team a = new Team("ARGENTINA","ARG",a1,am,8,2,ap);
+		// for(Player p : a.getPlayers())
+		// {
+		// 	p.setTeam(a);
+		// }
+		// System.out.println(a);
 
-    //     /**
-    //      * the below block should be for b = brazil team
-    //      */
+        // /**
+        //  * the below block should be for b = brazil team
+        //  */
 
-    //     Player b1 = new Player("Neymar Junior","FW",10,5,10);
-	// 	Player b2 = new Player("thiago silva","FW",9,9.5,9.3);
-	// 	Player b3 = new Player("marcello","MF",21,8.7,8);
-	// 	ArrayList<Player> bp = new ArrayList<Player>();
-	// 	bp.add(b1);bp.add(b2);bp.add(b3);
-	// 	Manager bm = new Manager("Lionel Scaloni",8.9);
-	// 	Team b = new Team("BRAZIL","BRA",b1,bm,3,1,bp);
-	// 	for(Player p : b.getPlayers())
-	// 	{
-	// 		p.setTeam(b);
-	// 	}
-	// 	System.out.println(b);
+        // Player b1 = new Player("Neymar Junior","FW",10,5,10);
+		// Player b2 = new Player("thiago silva","FW",9,9.5,9.3);
+		// Player b3 = new Player("marcello","MF",21,8.7,8);
+		// ArrayList<Player> bp = new ArrayList<Player>();
+		// bp.add(b1);bp.add(b2);bp.add(b3);
+		// Manager bm = new Manager("Lionel Scaloni",8.9);
+		// Team b = new Team("BRAZIL","BRA",b1,bm,3,1,bp);
+		// for(Player p : b.getPlayers())
+		// {
+		// 	p.setTeam(b);
+		// }
+		// System.out.println(b);
 
-    //     Match m1 = new Match(a, b);
-    //     m1.play();
-    //     System.out.println(m1);
-    // }
+        Team[] t = teamBuilder.buildTeam();
+
+        Match m1 = new Match(t[0], t[1]);
+        m1.play();
+        System.out.println(m1);
+    }
 
     Match(Team team1, Team team2){
 
@@ -72,10 +74,11 @@ public class Match {
          * p1 = team1's probability of winning and 
          * p2 = team2's probability of winning 
          * (initially both are equal)
+         * 
+         * in all the explanations, read p1 as p and ignore p2.
          */
 
-        double p1 = 50.0;
-        double p2 = 50.0;
+        double p = 50.0;
 
         /**
          * Since Team ranks are reversed (like the lower the number => the stronger the team)
@@ -83,8 +86,7 @@ public class Match {
          * hence instead of adding difference, we subtract the difference from 50.0
          */
 
-        p1 -= team1.getRank() - team2.getRank();
-        p2 += team1.getRank() - team2.getRank();
+        p -= team1.getRank() - team2.getRank();
 
         /**
          * "Math.abs(pX - 50) < 2" 
@@ -95,8 +97,7 @@ public class Match {
          * that team will get an increase while the other one's will decrease
          */
 
-        p1 += (Math.abs(p1 - 50) < 2) ? team1.getManager().getAbility() - team2.getManager().getAbility() : (team1.getManager().getAbility() - team2.getManager().getAbility()) * 0.5;
-        p2 -= (Math.abs(p2 - 50) < 2) ? team1.getManager().getAbility() - team2.getManager().getAbility() : (team1.getManager().getAbility() - team2.getManager().getAbility()) * 0.5;
+        p += (Math.abs(p - 50) < 2) ? team1.getManager().getAbility() - team2.getManager().getAbility() : (team1.getManager().getAbility() - team2.getManager().getAbility()) * 0.5;
 
         /**
          * as mentioned in the API, affect of starPlayers attribute will depend on the level of the manager
@@ -110,16 +111,13 @@ public class Match {
          */
 
         if (team1.getManager().getAbility() > team2.getManager().getAbility()){
-            p1 += (team1.getManager().getAbility() > 8.5) ? team1.getStarPlayers() * 0.75 : team1.getStarPlayers() * 0.25;
-            p2 -= (team1.getManager().getAbility() > 8.5) ? team1.getStarPlayers() * 0.75 : team1.getStarPlayers() * 0.25;
+            p += (team1.getManager().getAbility() > 8.5) ? team1.getStarPlayers() * 0.75 : team1.getStarPlayers() * 0.25;
         }
         else if (team1.getManager().getAbility() < team2.getManager().getAbility()){
-            p2 += (team2.getManager().getAbility() > 8.5) ? team2.getStarPlayers() * 0.75 : team2.getStarPlayers() * 0.25;
-            p1 -= (team2.getManager().getAbility() > 8.5) ? team2.getStarPlayers() * 0.75 : team2.getStarPlayers() * 0.25;
+            p -= (team2.getManager().getAbility() > 8.5) ? team2.getStarPlayers() * 0.75 : team2.getStarPlayers() * 0.25;
         }
         else{
-            p1 += (team1.getManager().getAbility() > 8.5) ? (team1.getStarPlayers() - team2.getStarPlayers()) * 0.75 : (team1.getStarPlayers() - team2.getStarPlayers()) * 0.25;
-            p2 -= (team1.getManager().getAbility() > 8.5) ? (team1.getStarPlayers() - team2.getStarPlayers()) * 0.75 : (team1.getStarPlayers() - team2.getStarPlayers()) * 0.25;
+            p += (team1.getManager().getAbility() > 8.5) ? (team1.getStarPlayers() - team2.getStarPlayers()) * 0.75 : (team1.getStarPlayers() - team2.getStarPlayers()) * 0.25;
         }
 
         /**
@@ -127,11 +125,9 @@ public class Match {
          * if the value of one team is greater than the other, that team gets incremented a set amount while the other loses the same
          */
 
-        p1 += (team1.getCaptain().getPlayerRating() > team2.getCaptain().getPlayerRating()) ? 0.5 : -0.5;
-        p2 -= (team1.getCaptain().getPlayerRating() > team2.getCaptain().getPlayerRating()) ? 0.5 : -0.5;
+        p += (team1.getCaptain().getPlayerRating() > team2.getCaptain().getPlayerRating()) ? 0.5 : -0.5;
 
-        p1 += (team1.getAvgRating() > team2.getAvgRating()) ? 0.25 : -0.25;
-        p2 -= (team1.getAvgRating() > team2.getAvgRating()) ? 0.25 : -0.25;
+        p += (team1.getAvgRating() > team2.getAvgRating()) ? 0.25 : -0.25;
 
         /**
          * with the final p1 and p2 (probability of team1 and team2 winning respectively), think of everything below p1 till 0 being team1 and the rest being team2 
@@ -142,11 +138,7 @@ public class Match {
          * (if it is correct after testing we can just remove p2 and p1 and replace it with just one single p)
          */
 
-        if (p1 + p2 != 100){
-            System.out.println("Probabilities dont add up to 100");
-        }
-
-        if (Math.random() * 100 < p1){
+        if (Math.random() * 100 < p){
             winner = team1;
             loser = team2;
         }
@@ -156,14 +148,26 @@ public class Match {
         }
 
         /**
-         * for goals scored, we set a 6 goals for a team to score. 
-         * so after generating the goals for the winning team (1 is added because the team cant win unless they atleast score one goal)
-         * and then we keep looping as long as goalsLoser >= goalsWinner (losing team has to score less)
+         * for goals scored, we set a cap of 5 goals for a team to score. 
+         * we randomize the number of goals scored but if its a super high number,
+         * we run another random function to descide wether that super high score is counted or not (because they are rare)
+         * then we assign the value for goalsLoser 
          * (assignment operator returns the value assigned)
          */
 
-        goalsWinner = 1 + (int) (Math.random() * 7);
-        for (goalsLoser = 8; (goalsLoser = (int) (Math.random() * 7)) >= goalsWinner;);
+        boolean flag = true;
+        while (flag){
+            if ((goalsWinner = 1 + (int) (Math.random() * 5)) >= 4){
+                if ((Math.random() * 3) < 2){
+                    flag = false;
+                }
+            }
+            else{
+                flag = false;
+            }
+        }
+
+        goalsLoser = (int) (Math.random() * goalsWinner);
 
         /**
          * called a private helper function since too much code in one function mightve led to mistakes
