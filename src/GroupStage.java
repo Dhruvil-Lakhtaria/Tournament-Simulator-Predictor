@@ -127,8 +127,10 @@ public class GroupStage implements TournamentStage {
     					{
     						if(a.getTeam().getName().compareToIgnoreCase(b.getTeam().getName()) < 0)
     							return -1;
-    						else
+    						else if(a.getTeam().getName().compareToIgnoreCase(b.getTeam().getName()) > 0)
     							return 1;
+    						else
+    							return 0;
     					}
     				}
     			}
