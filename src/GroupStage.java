@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class GroupStage implements TournamentStage {
 	private ArrayList<Team>playingTeams;
@@ -56,10 +57,10 @@ public class GroupStage implements TournamentStage {
 		{
 			System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
 			match.play();
-			Delay.loadingDelay(4);/*
+			Delay.loadingDelay(4);
+			/*
 			*it will print something like TeamA VS TeamB
-			*							 ....(with delay effect)
-			*
+			*							  ....(with delay effect)
 			*/
 			 /*
 			 *  adding goalscorers ...
@@ -74,17 +75,19 @@ public class GroupStage implements TournamentStage {
             	if(r.getTeam().getName().equals(match.getWinner().getName()))
             	{
             		r.addWin();
-            		r.setGoalsScored(match.getGoalsWinner());
-            		r.setGoalsConceded(match.getGoalsLoser());
+            		r.updateGoalsScored(match.getGoalsWinner());
+            		r.updateGoalsConceded(match.getGoalsLoser());
             	}
             	else if(r.getTeam().getName().equals(match.getLoser().getName()))
             	{
             		r.addLoss();
-            		r.setGoalsScored(match.getGoalsLoser());
-            		r.setGoalsConceded(match.getGoalsWinner());
+            		r.updateGoalsScored(match.getGoalsLoser());
+            		r.updateGoalsConceded(match.getGoalsWinner());
             	}
             }
             matchesCompleted++;
+//            sort the updated points table .... 
+            
             System.out.println(match);//matchstats
             Delay.makeDelay(1000);
           
@@ -92,23 +95,63 @@ public class GroupStage implements TournamentStage {
      
             if(matchesCompleted%2==0)
             {
-            	System.out.println(this.showPointTable());
+            	System.out.println(this.showPointsTable());
             }
             Delay.makeDelay(3000);
 		}
 	}
 
-	public String showPointTable()
+	public void sortPointsTable()
 	{
-		String s = "";
+		this.pointsTable.sort(new Comparator<Row>()
+    	{
+    		public int compare(Row a,Row b)
+    		{
+    			if(a.getPoints() > b.getPoints())
+   					return -1;
+    			else if(a.getPoints() < b.getPoints())
+    				return 1;
+    			else
+    			{
+    				if(a.getGoalsScored()-a.getGoalsConceded() > b.getGoalsScored()-b.getGoalsConceded())	
+    					return -1;
+    				else if(a.getGoalsScored()-a.getGoalsConceded() < b.getGoalsScored()-b.getGoalsConceded())
+    					return 1;
+    				else
+    				{
+    					if(a.getGoalsScored() > b.getGoalsScored())
+    						return 1;
+    					else if(a.getGoalsScored() < b.getGoalsScored())
+    						return -1;
+    					else
+    					{
+    						if(a.getTeam().getName().compareToIgnoreCase(b.getTeam().getName()) < 0)
+    							return -1;
+    						else
+    							return 1;
+    					}
+    				}
+    			}
+   			}
+    	}
+	    );
+	}
+	
+	public String showPointsTable()
+	{
+		this.sortPointsTable();
+		String s = String.format("\t%-20s %-20s %-20s %-20s %-20s %-20s", "Team","GoalsScored", "GoalsConceded",
+                "W","L","Points");;
 		for(Row r : pointsTable)
     	{
     		s = s.concat(r.toString()).concat("\n");
     	}
 		return s;
 	}
+	
 	@Override
-	public ArrayList<Player> getGoalScorers(){
+	public ArrayList<Player> getGoalScorers()
+	{
 		return new ArrayList<Player>(this.goalScorers);
 	}
 	
@@ -126,7 +169,20 @@ public class GroupStage implements TournamentStage {
 		}
 		return qt;
 	}
-
+//  just incase required for checking user 
+//	predication with eliminated team
+//	delete later if not required
+	public Team getEliminatedTeam()
+	{
+		this.sortPointsTable();
+		return this.pointsTable.get(4).getTeam();
+	}
+	
+	/*
+	 * note toString of Groupstage is used to print
+	 *  the schedule of groupstage call it after sceduling only......
+	 */
+	
 	public String toString()
 	{
 		String res = "GROUPSTAGE SCHEDULE\n";
