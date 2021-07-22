@@ -87,17 +87,15 @@ public class GroupStage implements TournamentStage {
             }
             matchesCompleted++;
 //            sort the updated points table .... 
-            
             System.out.println(match);//matchstats
-            Delay.makeDelay(1000);
-          
+            Delay.makeDelay(2000);
 //            points table at the end of every matchday
      
             if(matchesCompleted%2==0)
             {
             	System.out.println(this.showPointsTable());
             }
-            Delay.makeDelay(3000);
+            Delay.makeDelay(5000);
 		}
 	}
 
@@ -142,7 +140,7 @@ public class GroupStage implements TournamentStage {
 	public String showPointsTable()
 	{
 		this.sortPointsTable();
-		String s = String.format("\t%-20s %-20s %-20s %-20s %-20s %-20s", "Team","GoalsScored", "GoalsConceded",
+		String s = String.format("\t%-20s %-20s %-20s %-20s %-20s %-20s\n", "Team","GoalsScored", "GoalsConceded",
                 "W","L","Points");;
 		for(Row r : pointsTable)
     	{
