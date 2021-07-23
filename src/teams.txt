@@ -1,189 +1,180 @@
-Argentina
-FIFA code - ARG
-Rankings - 8
-W-D-L - 561-256-220
-Manager - Lionel Scaloni
-Captain - Lionel Messi
-Name|Age|Position|Jersey Number|Goals
-Franco Armani|34|GK|1|0
-Nicolas Tagliafico|31|DF|3|0
-Marcos Acuna|29|DF|8|0
-Nicolas Otamendi|33|DF|19|4
-Lisandro Martinez|23|DF|25|0
-Leon Paredes|27|MF|5|4
-Angel Di Maria|33|MF|11|20
-Rodrigo De Paul|27|MF|7|0
-Sergio Aguero|33|FW|9|41
-Lionel Messi|34|FW|10|75
-Lautaro Martinez|26|FW|22|12
-
-Brazil
-FIFA code - BRA
-Rankings - 3
-W-D-L - 642-207-162
-Manager - Tite
-Captain - Thiago Silva
-Name|Age|Position|Jersey Number|Goals
-Aisson Becker|28|GK|1|0
-Thiago Silva|36|DF|3|7
-Marquinhos|27|DF|4|3
-Alex Sandro|30|DF|6|2
-Eder Militao|23|DF|14|3
-Casemiro|29|MF|5|4
-Fred|28|MF|8|0
-Fabinho|27|MF|15|0
-Gabriel Jesus|24|FW|9|18
-Neymar|29|FW|10|68
-Roberto Firmino|29|FW|20|17
-
 Belgium
-FIFA Code - BEL
-Rankings - 1
-W-D-L - 339-165-28
-Manager - Roberto Martinez
-Captain - Eden Hazard
-Name|Age|Position|Jersey Number|Goals
-Thibaut Courtois|29|GK|1|0
-Toby Alderweireld|32|DF|2|5
-Jan Vertonghen|34|DF|5|9
-Thomas Vermaelen|35|DF|3|2
-Thomas Meunier|29|DF|15|8
-Kevin De Bruyne|30|MF|7|22
-Youri Tielemans|24|MF|8|4
-Thorgan Hazard|28|MF|16|8
-Romelu Lukaku|28|FW|9|63
-Eden Hazard|30|FW|10|32
-Dries Mertens|34|FW|14|21
-
-England
-FIFA Code - ENG
-Rankings - 4
-W-D-L - 583-242-191
-Manager - Gareth Southgate
-Captain - Harry Kane
-Name|Age|Position|Jersey Number|Goals
-Jordan Pickford|27|GK|1|0
-Kyle Walker|31|DF|2|0
-Luke Shaw|25|DF|3|0
-John Stones|27|DF|5|2
-Harry Maguire|28|DF|6|3
-Mason Mount|22|MF|19|4
-Phil Foden|21|MF|20|2
-Bukayo Saka|19|MF|25|1
-Harry Kane|27|FW|9|35
-Raheem Sterling|26|FW|10|17
-Marcus Rashford|23|FW|11|12
-
+FIFA Code-BEL
+Rankings-1
+W-D-L-339-165-28
+Manager-Roberto Martinez-9.1
+Captain-Eden Hazard
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Thibaut Courtois|8.9|GK|1|0|4.4
+Toby Alderweireld|8.5|DF|2|5|5.6
+Jan Vertonghen|8.4|DF|5|9|6.5
+Thomas Vermaelen|8.1|DF|3|2|6.7
+Thomas Meunier|8.2|DF|15|8|6.9
+Kevin De Bruyne|9.3|MF|7|22|8.5
+Youri Tielemans|8.5|MF|8|4|7.4
+Thorgan Hazard|8.2|MF|16|8|8.3
+Romelu Lukaku|8.8|FW|9|63|8.7
+Eden Hazard|9.0|FW|10|32|8.3
+Dries Mertens|8.5|FW|14|21|8.4
 France
-FIFA Code - FRA
-Ranking - 2
-W-D-L - 448-181-240
-Manager - Didier Desschamps
-Captain - Hugo Lloris
-Name|Age|Position|Jersey Number|Goals
-Hugo Lloris|34|GK|1|0
-Benjamin Pavard|25|DF|2|2
-Presnel Kimpembe|25|DF|3|0
-Raphael Varane|28|DF|5|5
-Lucas Hernandez|25|DF|21|0
-Paul Pogba|28|MF|6|11
-NGolo Kante|30|MF|13|2
-Adrien Rabiot|26|MF|14|0
-Antoine Griezmann|30|FW|7|38
-Kylian Mbappe|22|FW|10|17
-Karim Benzema|33|FW|19|31
-
+FIFA Code-FRA
+Ranking-2
+W-D-L-448-181-240
+Manager-Didier Desschamps-9.3
+Captain-Hugo Lloris
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Hugo Lloris|8.6|GK|1|0|4.1
+Benjamin Pavard|8.3|DF|2|2|6.5
+Presnel Kimpembe|8.5|DF|3|0|5.7
+Raphael Varane|8.8|DF|5|5|6.0
+Lucas Hernandez|8.4|DF|21|0|5.7
+Paul Pogba|8.6|MF|6|11|7.5
+NGolo Kante|8.8|MF|13|2|6.9
+Adrien Rabiot|8.2|MF|14|0|7.1
+Antoine Griezmann|9.0|FW|7|38|8.6
+Kylian Mbappe|9.1|FW|10|17|8.7
+Karim Benzema|8.8|FW|19|31|8.6
+Brazil
+FIFA code-BRA
+Rankings-3
+W-D-L-642-207-162
+Manager-Tite-9
+Captain-Thiago Silva
+Name|playerRating|Position|Jersey Number|Goals|Shooting
+Aisson Becker|9.0|GK|1|0|4.3
+Thiago Silva|8.6|DF|3|7|6.0
+Marquinhos|8.7|DF|4|3|6.0
+Alex Sandro|8.4|DF|6|2|6.5
+Eder Militao|8.3|DF|14|3|6.3
+Casemiro|8.9|MF|5|4|7.3
+Fred|8.2|MF|8|0|6.3
+Fabinho|8.6|MF|15|0|6.9
+Gabriel Jesus|8.5|FW|9|18|8.4
+Neymar|9.5|FW|10|68|9.0
+Roberto Firmino|8.7|FW|20|17|8.2
+England
+FIFA Code-ENG
+Rankings-4-9.1
+W-D-L-583-242-191
+Manager-Gareth Southgate-(39,11)
+Captain-Harry Kane
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Jordan Pickford|8.5|GK|1|0|4.2
+Kyle Walker|8.6|DF|2|0|6.5
+Luke Shaw|8.1|DF|3|0|5.9
+John Stones|8.2|DF|5|2|5.9
+Harry Maguire|8.5|DF|6|3|5.7
+Mason Mount|8.5|MF|19|4|7.4
+Phil Foden|8.3|MF|20|2|7.3
+Bukayo Saka|8.0|MF|25|1|5.5
+Harry Kane|9.0|FW|9|35|9.3
+Raheem Sterling|8.8|FW|10|17|8.1
+Marcus Rashford|9.1|FW|11|12|8.8
 Portugal
-FIFA Code - POR
-Ranking - 5
-W-D-L - 309-151-178
-Manager - Fernando Santos
-Captian - Cristiano Ronaldo
-Name|Age|Position|Jersey Number|Goals
-Rui Patricio|33|GK|1|0
-Nelson Semedo|27|DF|2|0
-Pepe|38|DF|3|7
-Ruben Dias|24|DF|4|2
-Raphael Guerreiro|27|DF|5|3
-Bernardo Silva|26|MF|10|7
-Bruno Fernandes|26|MF|11|4
-Renato Sanches|23|MF|16|2
-Diogo Jota|24|FW|21|7
-Cristiano Ronaldo|36|FW|7|109
-Joao Felix|21|FW|23|3
-
+FIFA Code-POR
+Ranking-5
+W-D-L-309-151-178
+Manager-Fernando Santos-8.9
+Captian-Cristiano Ronaldo
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Rui Patricio|8.4|GK|1|0|4.2
+Nelson Semedo|8.3|DF|2|0|6.2
+Pepe|8.2|DF|3|7|6.1
+Ruben Dias|8.4|DF|4|2|5.4
+Raphael Guerreiro|8.5|DF|5|3|7.6
+Bernardo Silva|8.7|MF|10|7|8.0
+Bruno Fernandes|8.6|MF|11|4|8.2
+Renato Sanches|8.2|MF|16|2|6.6
+Diogo Jota|8.2|FW|21|7|8.1
+Cristiano Ronaldo|9.5|FW|7|109|9.5
+Joao Felix|8.3|FW|23|3|8.1
 Spain
-FIFA Code - SPA
-Ranking - 6
-W-D-L - 418-166-132
-Manager - Luis Enrique
-Captain - Sergio Busquets
-Name|Age|Position|Jersey Number|Goals
-Unai Simon|24|GK|23|0
-Cesar Azplicueta|31|DF|2|1
-Aymeric Laporte|27|DF|24|1
-Pau Torres|24|DF|4|1
-Jordi Alba|32|DF|18|8
-Pedri|18|MF|26|0
-Sergio Busquets|32|MF|5|2
+FIFA Code-SPA
+Ranking-6
+W-D-L-418-166-132
+Manager-Luis Enrique-9.5
+Captain-Sergio Busquets
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Unai Simon|8.4|GK|23|0|4.0
+Cesar Azplicueta|8.4|DF|2|1|7.3
+Aymeric Laporte|8.7|DF|24|1|5.6
+Pau Torres|8.4|DF|4|1|5.7
+Jordi Alba|8.5|DF|18|8|7.1
+Pedri|8.8|MF|26|0|6.1
+Sergio Busquets|8.8|MF|5|2|6.2
 Thiago Alcantara|30|MF|10|2
-Alvaro Morata|28|FW|7|21
-Gerard Moreno|29|FW|9|5
-Ferran Torres|21|FW|11|8
-
+Alvaro Morata|8.8|FW|7|21|8.2
+Gerard Moreno|8.4|FW|9|5|8.4
+Ferran Torres|8.3|FW|11|8|7.4
 Italy
-FIFA Code - ITA
-Ranking - 7
-W-D-L - 451-227-162
-Manager-Roberto Mancini
+FIFA Code-ITA
+Ranking-7
+W-D-L-451-227-162
+Manager-Roberto Mancini-9.4
 Captain-Giorgio Chiellini
-Name|Age|Position|Jersey Number|Goals
-Gianluigi Donnarumma|22|GK|21|0
-Leonardo Spinazzola|28|DF|4|0
-Giorgio Chiellini|36|DF|3|8
-Leonardo Bonucci|34|DF|19|7
-Giovanni Di Lorenzo|27|DF|2|0
-Manuel Locatelli|23|MF|5|3
-Marco Verratti|28|MF|6|3
-Nicolo Barella|24|MF|18|6
-Lorenzo Insigne|30|FW|10|10
-Ciro Immobile|31|FW|17|15
-Federico Chiesa|23|FW|14|2
-
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Gianluigi Donnarumma|9.1|GK|21|0|4.0
+Leonardo Spinazzola|8.3|DF|4|0|6.4
+Giorgio Chiellini|8.6|DF|3|8|6.2
+Leonardo Bonucci|8.5|DF|19|7|6.7
+Giovanni Di Lorenzo|8.2|DF|2|0|6.6
+Manuel Locatelli|8.2|MF|5|3|6.5
+Marco Verratti|8.8|MF|6|3|6.5
+Nicolo Barella|8.3|MF|18|6|7.1
+Lorenzo Insigne|8.8|FW|10|10|7.5
+Ciro Immobile|8.7|FW|17|15|9.1
+Federico Chiesa|8.9|FW|14|2|7.7
+Argentina
+FIFA code-ARG
+Rankings-8
+W-D-L-561-256-220
+Manager-Lionel Scaloni-9
+Captain-Lionel Messi
+Name|Player Rating|Position|Jersey Number|Goals|Shooting
+Emiliano Martinez|8.4|GK|1|0|4.1
+Nicolas Tagliafico|8.4|DF|3|0|6.9
+Marcos Acuna|8.2|DF|8|0|6.5
+Nicolas Otamendi|8.1|DF|19|4|5.6
+Lisandro Martinez|8.1|DF|25|0|6.3
+Leon Paredes|8.9|MF|5|4|7.3
+Angel Di Maria|9.0|MF|11|20|8.3
+Rodrigo De Paul|8.4|MF|7|0|7.7
+Sergio Aguero|9.0|FW|9|41|9.3
+Lionel Messi|9.6|FW|10|75|9.5
+Lautaro Martinez|8.5|FW|22|12|8.4
 Denmark
-FIFA CODE - DEN
-Ranking - 9
-W-D-L - 405-179-288
-Manager - Kasper Hjulmand
-Captain - Simon Kjaer
-Name|Age|Position|Jersey Number|Goals
-Kasper Schmeichel|34|GK|1|0
-Andreas Christensen|25|DF|6|2
-Simon Kjaer|32|DF|4|3
-Joakim Maehle|24|DF|5|4
-Jannik Vestergaard|28|DF|3|1
-Christian Eriksen|29|MF|10|36
-Daniel Wass|32|MF|18|0
-Thomas Delaney|29|MF|8|6
-Mikel Damsgaard|21|FW|14|4
-Martin Braithwaite|30|FW|9|10
-Yusuf Poulsen|27|FW|20|10
-
+FIFA CODE-DEN
+Ranking-9
+W-D-L-405-179-288
+Manager-Kasper Hjulmand-8.9
+Captain-Simon Kjaer
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Kasper Schmeichel|8.3|GK|1|0|4.4
+Andreas Christensen|8.2|DF|6|2|5.5
+Simon Kjaer|8.1|DF|4|3|4.4
+Joakim Maehle|7.9|DF|5|4|4.4
+Jannik Vestergaard|7.8|DF|3|1|5.5
+Christian Eriksen|8.5|MF|10|36|7.8
+Daniel Wass|8.0|MF|18|0|7.3
+Thomas Delaney|8.2|MF|8|6|6.8
+Mikel Damsgaard|8.5|FW|14|4|7.9
+Martin Braithwaite|8.2|FW|9|10|8.0
+Yusuf Poulsen|8.1|FW|20|10|7.6
 Croatia
-FIFA CODE - CRO
-Ranking - 10
-W-D-L - 176-85-68
-Manager - Zlatko Dalic
-Captain - Luka Modric
-Name|Age|Position|Jersey Number|Goals
-Dominic Livakovic|26|GK|1|0
-Sime Vrsaljko|29|DF|2|0
-Duje Caleta-Car|24|DF|5|0
-Dejan Lovren|32|DF|6|4
-Domagoj Vida|32|DF|21|4
-Luka Modric|35|MF|10|18
-Marcelo Brozovic|28|MF|11|6
-Mario Pasalic|26|MF|15|4
-Ivan Perisic|32|FW|4|30
-Ante Rebic|27|FW|17|3
-Josip Brekalo|23|FW|7|4
+FIFA CODE-CRO
+Ranking-10
+W-D-L-176-85-68
+Manager-Zlatko Dalic-8.8
+Captain-Luka Modric
+Name|PlayerRating|Position|Jersey Number|Goals|Shooting
+Dominic Livakovic|8.0|GK|1|0|4.0
+Sime Vrsaljko|8.0|DF|2|0|5.6
+Duje Caleta-Car|8.0|DF|5|0|5.7
+Dejan Lovren|8.1|DF|6|4|5.5
+Domagoj Vida|8.0|DF|21|4|6.2
+Luka Modric|9.0|MF|10|18|7.1
+Marcelo Brozovic|8.5|MF|11|6|7.3
+Mario Pasalic|8.0|MF|15|4|7.2
+Ivan Perisic|8.4|FW|4|30|8.0
+Ante Rebic|8.3|FW|17|3|8.2
+Josip Brekalo|7.8|FW|7|4|6.8
