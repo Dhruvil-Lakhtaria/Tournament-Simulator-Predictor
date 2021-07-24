@@ -83,7 +83,7 @@ public class Tournament {
         ArrayList<Team> teamsOfGroup2 = new ArrayList<>();
 
         for(Team t : allTeams){
-            if(allTeams.indexOf(t) < 5){
+            if(allTeams.indexOf(t)%2 == 0){
                 teamsOfGroup1.add(t);
             }
             else
