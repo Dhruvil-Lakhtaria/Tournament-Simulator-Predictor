@@ -95,7 +95,7 @@ public class Tournament {
                 teamsOfGroup2.add(allTeams.get(x+1));
             }
             else if (x == i+1){
-                teamsOfGroup2.add(allTeams.get(x));
+                teamsOfGroup2.add(allTeams.get(x-1));
             }
         }
 
