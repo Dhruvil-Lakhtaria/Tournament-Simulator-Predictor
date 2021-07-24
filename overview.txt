@@ -28,9 +28,9 @@ II. Program Structure/Basic API:
 		}
 
 	Assingned Classes -
-		Abdullah: Team, Row, TournamentStage
-		Advaith: User, Knockouts 
-		Dhruvil: Player, Group
+		Abdullah: Team, Row, TournamentStage(Interface)
+		Advaith: User, Knockouts ,Tournament , Delay
+		Dhruvil: Player, GroupStage , TextFile , Delay
 		Akheel: Manager, Match
 
 	i)Classes:  
