@@ -23,6 +23,7 @@ public class Tournament {
         this.user = user;
 
         this.allTeams = buildTeam(filename);
+        this.goalScorers = new ArrayList<Player>();
     }
 
     private ArrayList<Team> buildTeam(String filename){
@@ -82,12 +83,20 @@ public class Tournament {
         ArrayList<Team> teamsOfGroup1 = new ArrayList<>();
         ArrayList<Team> teamsOfGroup2 = new ArrayList<>();
 
-        for(Team t : allTeams){
-            if(allTeams.indexOf(t)%2 == 0){
-                teamsOfGroup1.add(t);
+        /**
+         * as discussed, pots of teams with ranks (1,2), (3,4), (5,6), (7,8), (9,10) are created
+         * a random number is generated in each pot
+         * one of them is added in group1 and the other in group2*/
+        for(int i=0; i<10; i+=2){
+            int x = i + (int)(2*Math.random());
+            teamsOfGroup1.add(allTeams.get(x));
+
+            if(x == i){
+                teamsOfGroup2.add(allTeams.get(x+1));
             }
-            else
-                teamsOfGroup2.add(t);
+            else if (x == i+1){
+                teamsOfGroup2.add(allTeams.get(x));
+            }
         }
 
         group1 = new GroupStage(teamsOfGroup1);
