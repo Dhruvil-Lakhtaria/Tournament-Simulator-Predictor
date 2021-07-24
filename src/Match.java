@@ -6,54 +6,23 @@ public class Match {
     private Team winner, loser;
     private int goalsWinner, goalsLoser;
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
+    private ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals;
 
-    //public static void main(String[] args) {
+    public static void main(String[] args) {
 
-        // /**
-        //  * the below block for a = argentina team
-        //  */
+        Team[] t = teamBuilder.buildTeam();
 
-        // Player a1 = new Player("Lionel Messi","FW",10,10,10);
-		// Player a2 = new Player("Kun Aguero","FW",9,9.5,9.3);
-		// Player a3 = new Player("Leon Paredes","MF",21,8.7,8);
-		// ArrayList<Player> ap = new ArrayList<Player>();
-		// ap.add(a1);ap.add(a2);ap.add(a3);
-		// Manager am = new Manager("Lionel Scaloni",8.5);
-		// Team a = new Team("ARGENTINA","ARG",a1,am,8,2,ap);
-		// for(Player p : a.getPlayers())
-		// {
-		// 	p.setTeam(a);
-		// }
-		// System.out.println(a);
-
-        // /**
-        //  * the below block should be for b = brazil team
-        //  */
-
-        // Player b1 = new Player("Neymar Junior","FW",10,5,10);
-		// Player b2 = new Player("thiago silva","FW",9,9.5,9.3);
-		// Player b3 = new Player("marcello","MF",21,8.7,8);
-		// ArrayList<Player> bp = new ArrayList<Player>();
-		// bp.add(b1);bp.add(b2);bp.add(b3);
-		// Manager bm = new Manager("Lionel Scaloni",8.9);
-		// Team b = new Team("BRAZIL","BRA",b1,bm,3,1,bp);
-		// for(Player p : b.getPlayers())
-		// {
-		// 	p.setTeam(b);
-		// }
-		// System.out.println(b);
-
-        //Team[] t = teamBuilder.buildTeam();
-
-        //Match m1 = new Match(t[0], t[1]);
-        //m1.play();
-        //System.out.println(m1);
-    //}
+        Match m1 = new Match(t[0], t[1]);
+        m1.play();
+        System.out.println(m1);
+    }
 
     Match(Team team1, Team team2){
 
         winningTeamScorers = new ArrayList<Player>();
         losingTeamScorers = new ArrayList<Player>();
+        winningTeamPlayerGoals = new ArrayList<Integer>();
+        losingTeamPlayerGoals = new ArrayList<Integer>();
 
         if (team1 == null || team2 == null){
             System.out.println("\nNull teams in Match constructor");
@@ -233,6 +202,10 @@ public class Match {
             scorer.addGoal();
             if (!winningTeamScorers.contains(scorer)){
                 winningTeamScorers.add(scorer);
+                winningTeamPlayerGoals.add(1);
+            }
+            else{
+                winningTeamPlayerGoals.set(winningTeamScorers.indexOf(scorer), winningTeamPlayerGoals.get(winningTeamScorers.indexOf(scorer)) + 1);
             }
         }
         
@@ -243,8 +216,17 @@ public class Match {
             scorer.addGoal();
             if (!losingTeamScorers.contains(scorer)){
                 losingTeamScorers.add(scorer);
+                losingTeamPlayerGoals.add(1);
+            }
+            else{
+                losingTeamPlayerGoals.set(losingTeamScorers.indexOf(scorer), losingTeamPlayerGoals.get(losingTeamScorers.indexOf(scorer)) + 1);
             }
         }
+
+        /**
+         * in the above section if the player hasnt scored yet ive added a goal 1 to the <winning/loosing>TeamPlayerGoals
+         * and if the player already has scored, ive incremented his already existing value
+         */
     }
 
     public String toString() {
@@ -259,23 +241,21 @@ public class Match {
 
         String s;
         if (team1 == winner){
-            s = winner.getName() + " vs " + loser.getName() + "\n" + 
-                winner.getFifaCode() + " " + goalsWinner + " - " + goalsLoser + " " + loser.getFifaCode() + "\n\n" +
+            s = winner.getFifaCode() + " " + goalsWinner + " - " + goalsLoser + " " + loser.getFifaCode() + "\n\n" +
                 "Winning Goal Scorers:\n";
         }
         else{
-            s = loser.getName() + " vs " + winner.getName() + "\n" + 
-                loser.getFifaCode() + " " + goalsLoser + " - " + goalsWinner + " " + winner.getFifaCode() + "\n\n" +
+            s = loser.getFifaCode() + " " + goalsLoser + " - " + goalsWinner + " " + winner.getFifaCode() + "\n\n" +
                 "Winning Goal Scorers:\n";
         }
 
         for (Player p : winningTeamScorers){
-            s += p.getName() + "\n";
+            s += p.getName() + " x (" + winningTeamPlayerGoals.get(winningTeamScorers.indexOf(p)) + ")\n";
         }
         if (goalsLoser != 0){
             s += "\nLosing Goal Scorers:\n";
             for (Player p : losingTeamScorers){
-                s += p.getName() + "\n";
+                s += p.getName() + " x (" + losingTeamPlayerGoals.get(losingTeamScorers.indexOf(p)) + ")\n";
             }
         }
 
