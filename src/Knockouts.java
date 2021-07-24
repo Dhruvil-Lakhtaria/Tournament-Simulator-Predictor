@@ -22,7 +22,7 @@ public class Knockouts implements TournamentStage{
         /**
          * get size of playingTeams to help us identify quarters, semis and finale
          */
-        int n = playingTeams.size();
+        int n = this.playingTeams.size();
 
         /**
          * adding Match objects in the right order of scheduling the matches
@@ -54,8 +54,8 @@ public class Knockouts implements TournamentStage{
          */
 
         else{
-            for(int i=0; i < n/2; i++){
-                matches.add(new Match(playingTeams.get(i), playingTeams.get(n - i - 1)));
+            for(int i=0; i<n; i+=2){
+                matches.add(new Match(playingTeams.get(i), playingTeams.get(i+1)));
             }
         }
 
@@ -86,6 +86,8 @@ public class Knockouts implements TournamentStage{
             System.out.println(match);
             Delay.makeDelay(3_000);
         }
+
+        matches.clear();
     }
 
     public ArrayList<Player> getGoalScorers(){

@@ -18,7 +18,7 @@ public class User {
     }
 
     public void setPredictedTeam(String predictedTeam){
-        String[] arr = {"argentina", "brazil", "belgium", "england", "france", "portugal", "spain", "italy"};
+        String[] arr = {"argentina", "brazil", "belgium", "england", "france", "portugal", "spain", "italy", "croatia", "denmark"};
         boolean flag = false;
         for(String s : arr) {
             if (s.equalsIgnoreCase(predictedTeam)) {
