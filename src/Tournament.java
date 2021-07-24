@@ -123,6 +123,9 @@ public class Tournament {
             /**simulate all the matches of that group*/
             group.simulate();
 
+            /**add all goalScorers*/
+            goalScorers.addAll(group.getGoalScorers());
+
             /**sort the points table*/
             group.sortPointsTable();
 
@@ -151,6 +154,7 @@ public class Tournament {
             System.out.println(user);
             System.out.println("\n");
             Delay.loadingDelay(5);
+
         }
 
 
@@ -184,6 +188,10 @@ public class Tournament {
 
             /**simulate the matches in that stage*/
             k.simulate();
+
+
+            /**add all goalScorers*/
+            goalScorers.addAll(k.getGoalScorers());
 
 
             /**after simulating all the matches in that stage
