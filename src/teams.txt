@@ -56,7 +56,7 @@ England
 FIFA Code-ENG
 Rankings-4-9.1
 W-D-L-583-242-191
-Manager-Gareth Southgate-(39,11)
+Manager-Gareth Southgate-9.0
 Captain-Harry Kane
 Name|PlayerRating|Position|Jersey Number|Goals|Shooting
 Jordan Pickford|8.5|GK|1|0|4.2
@@ -102,7 +102,7 @@ Pau Torres|8.4|DF|4|1|5.7
 Jordi Alba|8.5|DF|18|8|7.1
 Pedri|8.8|MF|26|0|6.1
 Sergio Busquets|8.8|MF|5|2|6.2
-Thiago Alcantara|30|MF|10|2
+Thiago Alcantara|8.8|MF|10|2|8.5
 Alvaro Morata|8.8|FW|7|21|8.2
 Gerard Moreno|8.4|FW|9|5|8.4
 Ferran Torres|8.3|FW|11|8|7.4

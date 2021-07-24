@@ -48,23 +48,22 @@ public class GroupStage implements TournamentStage {
 
 	@Override
 	public void simulate() {
-		int matchesCompleted = 0;
+		int matchDay = 1,matchCompleted = 0;
 		/*
 		 * keeps a count of matches completed and used to print points table after 2 matches
 		 */
 		System.out.println("SIMULATING-GROUPSTAGE:");
 		for(Match match : this.matches)
 		{
+			if(matchCompleted%2 == 0)
+			{
+				System.out.println("MATCHDAY - "+ matchDay);
+				matchDay++;
+				Delay.makeDelay(3000);
+			}
 			System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
 			match.play();
-			Delay.loadingDelay(4);
-			/*
-			*it will print something like TeamA VS TeamB
-			*							  ....(with delay effect)
-			*/
-			 /*
-			 *  adding goalscorers ...
-			 */
+			Delay.loadingDelay(5);
 			goalScorers.addAll(match.getWinningTeamScorers());
             goalScorers.addAll(match.getLosingTeamScorers());
             /*
@@ -85,17 +84,17 @@ public class GroupStage implements TournamentStage {
             		r.updateGoalsConceded(match.getGoalsWinner());
             	}
             }
-            matchesCompleted++;
+            matchCompleted++;
 //            sort the updated points table .... 
             System.out.println(match);//matchstats
-            Delay.makeDelay(2000);
+            Delay.makeDelay(5000);
 //            points table at the end of every matchday
      
-            if(matchesCompleted%2==0)
+            if(matchCompleted%2==0)
             {
             	System.out.println(this.showPointsTable());
+            	 Delay.makeDelay(6000);
             }
-            Delay.makeDelay(5000);
 		}
 	}
 
@@ -191,5 +190,9 @@ public class GroupStage implements TournamentStage {
 			res = res + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + "\n";
 		}
 		return res;
+	}
+	public ArrayList<Team> getPlayingTeams()
+	{
+		return new ArrayList<Team>(this.playingTeams);
 	}
 }
