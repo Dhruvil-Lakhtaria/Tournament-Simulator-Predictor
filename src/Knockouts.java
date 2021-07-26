@@ -66,11 +66,12 @@ public class Knockouts implements TournamentStage{
     public void simulate(){
 
         for(Match match : matches){
+            System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
             /**play the match*/
             match.play();
 
             /**delay*/
-            Delay.loadingDelay(4);
+            Delay.loadingDelay(5);
 
             /**update the playingTeams array
              * basically, remove the losing team
@@ -84,7 +85,7 @@ public class Knockouts implements TournamentStage{
 
             /**print Match stats*/
             System.out.println(match);
-            Delay.makeDelay(3_000);
+            Delay.makeDelay(4_000);
         }
 
         matches.clear();
