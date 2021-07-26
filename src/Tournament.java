@@ -65,7 +65,7 @@ public class Tournament {
                     starPlayers++;
 
                 if(d[0].equals(captainName)) {
-                    c = new Player(d[0],d[2],Integer.parseInt(d[3]),Double.parseDouble(d[1]),Double.parseDouble(d[5]));
+                    c = p.get(p.size()-1);
                 }
             }
 
@@ -206,7 +206,7 @@ public class Tournament {
             /**display the user's score*/
             System.out.println(user);
             System.out.println("\n");
-            Delay.loadingDelay(5);
+            Delay.makeDelay(5000);
         }
     }
     /**helper methods*/
