@@ -133,7 +133,7 @@ public class Tournament {
 
             System.out.println("PREDICTING & SIMULATING GROUP" + (g1g2.indexOf(group) + 1));
             System.out.println("Based on the above stats, pick one team which you think will qualify for Knockouts stage");
-            String userPrediction = userInputAndValidation();
+            String userPrediction = userInputAndValidation(group);
             user.setPredictedTeam(userPrediction);
             System.out.println("\n");
 
@@ -201,7 +201,7 @@ public class Tournament {
             /**ask the user for his/her prediction
              * validate the prediction
              * set the user's prediction*/
-            String uPrediction = userInputAndValidation();
+            String uPrediction = userInputAndValidation(k);
             user.setPredictedTeam(uPrediction);
 
 
@@ -299,6 +299,7 @@ public class Tournament {
 
     }
 
+    /**helper methods*/
     private void displayQualifiedTeams() {
         if(k.getPlayingTeams().size() == 4){
             System.out.println("Teams that won the Quarter-Final and qualified for Semi-Final are: ");
@@ -362,21 +363,34 @@ public class Tournament {
         }
     }
 
-    private boolean validatePrediction(String userPrediction) {
-        for(Team t : allTeams){
+    /**validatePrediction() is overloaded
+     * one for Knockouts
+     * other for GroupStage*/
+    private boolean validatePrediction(String userPrediction, GroupStage g) {
+        for(Team t : g.getPlayingTeams()){
+            if(t.getName().equalsIgnoreCase(userPrediction))
+                return true;
+        }
+        return false;
+    }
+    private boolean validatePrediction(String userPrediction, Knockouts k) {
+        for(Team t : k.getPlayingTeams()){
             if(t.getName().equalsIgnoreCase(userPrediction))
                 return true;
         }
         return false;
     }
 
-    private String userInputAndValidation(){
+    /**userInputAndValidation() is overloaded
+     * one for Knockouts
+     * other for GroupStage*/
+    private String userInputAndValidation(GroupStage g){
         String prediction;
         System.out.print("Prediction: ");
         Scanner scanner = new Scanner(System.in);
         prediction = scanner.nextLine();
 
-        while(!validatePrediction(prediction)){
+        while(!validatePrediction(prediction, g)){
             System.out.println("Your prediction doesn't match with any team.");
             System.out.println("ReEnter the Team Name");
             System.out.print("Prediction: ");
@@ -385,6 +399,22 @@ public class Tournament {
         }
         return prediction;
     }
+    private String userInputAndValidation(Knockouts k){
+        String prediction;
+        System.out.print("Prediction: ");
+        Scanner scanner = new Scanner(System.in);
+        prediction = scanner.nextLine();
+
+        while(!validatePrediction(prediction, k)){
+            System.out.println("Your prediction doesn't match with any team.");
+            System.out.println("ReEnter the Team Name");
+            System.out.print("Prediction: ");
+
+            prediction = scanner.nextLine();
+        }
+        return prediction;
+    }
+
 
 
     /**getters & setters*/
