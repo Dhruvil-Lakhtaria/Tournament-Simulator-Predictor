@@ -100,11 +100,11 @@ public class Knockouts implements TournamentStage{
         String s = "";
 
         if(playingTeams.size() == 8)
-            s += "Quarter-Final\n";
+            s += "Quarter-Finals\n";
         else if(playingTeams.size() == 4)
-            s += "Semi-Final\n";
+            s += "Semi-Finals\n";
         else
-            s += "Final\n";
+            s += "Finals\n";
 
         for(Match match : matches){
             s += match.getTeam1().getName() + " vs " + match.getTeam2().getName() + "\n";

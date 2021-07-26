@@ -52,7 +52,6 @@ public class GroupStage implements TournamentStage {
 		/*
 		 * keeps a count of matches completed and used to print points table after 2 matches
 		 */
-		System.out.println("SIMULATING-GROUPSTAGE:");
 		for(Match match : this.matches)
 		{
 			if(matchCompleted%2 == 0)

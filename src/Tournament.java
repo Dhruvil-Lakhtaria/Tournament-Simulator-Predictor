@@ -82,14 +82,9 @@ public class Tournament {
         ArrayList<Team> teamsOfGroup1 = new ArrayList<>();
         ArrayList<Team> teamsOfGroup2 = new ArrayList<>();
 
-        /**
-         * as discussed, pots of teams with ranks (1,2), (3,4), (5,6), (7,8), (9,10) are created
-         * a random number is generated in each pot
-         * one of them is added in group1 and the other in group2*/
         for(int i=0; i<10; i+=2){
             int x = i + (int)(2*Math.random());
             teamsOfGroup1.add(allTeams.get(x));
-
             if(x == i){
                 teamsOfGroup2.add(allTeams.get(x+1));
             }
@@ -97,9 +92,21 @@ public class Tournament {
                 teamsOfGroup2.add(allTeams.get(x-1));
             }
         }
-
         group1 = new GroupStage(teamsOfGroup1);
         group2 = new GroupStage(teamsOfGroup2);
+        ArrayList<GroupStage> g1g2 = new ArrayList<>();
+        g1g2.add(group1);
+        g1g2.add(group2);
+        System.out.println("LOADING GROUPS : ");
+        Delay.loadingDelay(5);
+        for(GroupStage group : g1g2)
+        {
+        	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1));
+            for(Team t : group.getPlayingTeams()){
+                System.out.println(t.getName());
+            	}
+            System.out.println();
+        }
     }
 
     public void start(){
@@ -107,41 +114,27 @@ public class Tournament {
         /**Group Stage*/
         System.out.println("\nTOURNAMENT SIMULATOR & PREDICTOR\n");
         System.out.println("\n----ABOUT----\n\n");
+        this.makeGroups();
         ArrayList<GroupStage> g1g2 = new ArrayList<>();
         g1g2.add(group1);
         g1g2.add(group2);
 
         for(GroupStage group : g1g2){
-            /**display the playingTeams
-             * display stats about each of those teams
-             * based on the playingTeams, the user will predict one team
-             * which he thinks will make it to the next round*/
-            System.out.println("Group" + (g1g2.indexOf(group) + 1));
-            for(Team t : group.getPlayingTeams()){
-                System.out.println(t.getName());
-            }
-            System.out.println("\n");
-
-            /**
-             * akheel & dhruvil
-             * decide on what stats to display
-             * how to display and all that
-             * */
-            System.out.println("---STATISTICS---" +
-                    "\nAkheel & Dhruvil, pls decide on what stats to display here " +
-                    "\nhow to display and all that\n");
-
-            System.out.println("PREDICTING & SIMULATING GROUP" + (g1g2.indexOf(group) + 1));
-            System.out.println("Based on the above stats, pick one team which you think will qualify for Knockouts stage");
+        	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1) + "\n" );
+        	System.out.println(group.showPointsTable());
+            System.out.println("ENTER YOUR PREDICTION FOR GROUP - "+ (g1g2.indexOf(group) + 1));
             String userPrediction = userInputAndValidation(group);
             user.setPredictedTeam(userPrediction);
             System.out.println("\n");
-
+            
             /**schedule the matches and display the schedule*/
+            System.out.println("SCHEDULING MATCHES FOR GROUP - "+ (g1g2.indexOf(group) + 1));
             group.schedule();
+            Delay.loadingDelay(5);
             System.out.println(group);
 
             /**simulate all the matches of that group*/
+            System.out.println("SIMULATING GROUP - " + (g1g2.indexOf(group) + 1) + "\n");
             group.simulate();
 
             /**add all goalScorers*/
@@ -151,8 +144,8 @@ public class Tournament {
             group.sortPointsTable();
 
             /**display the teams that have qualified for Knockouts stage*/
-            System.out.println("\nThe Teams that have qualified for the Knockouts stage from Group"
-            + (g1g2.indexOf(group) + 1) + "are: ");
+            System.out.println("\nThe Teams that have qualified for the Knockouts stage from GROUP - "
+            + (g1g2.indexOf(group) + 1) + " are: ");
             for(Team t : group.getQualifiedTeam()){
                 System.out.println(t.getName());
             }
@@ -160,12 +153,11 @@ public class Tournament {
 
             if(userPrediction.equalsIgnoreCase(group.getEliminatedTeam().getName())){
                 String s = "";
-                s += "Group" + (1 + g1g2.indexOf(group)) +
+                s += "Group - " + (1 + g1g2.indexOf(group)) +
                         "\nThe team that you selected did NOT qualify for the Knockouts stage :(" +
                         "\nBetter luck next time!\n";
                 System.out.println(s);
             }
-
             else{
                 for (Team t : group.getQualifiedTeam()){
                     if(userPrediction.equalsIgnoreCase(t.getName())){
@@ -180,8 +172,6 @@ public class Tournament {
             Delay.loadingDelay(5);
 
         }
-
-
         /**Knockouts Stage*/
         ArrayList<Team> playingTeamsOfQuarterFinal = new ArrayList<>(group1.getQualifiedTeam());
         playingTeamsOfQuarterFinal.addAll(group2.getQualifiedTeam());
@@ -189,120 +179,49 @@ public class Tournament {
         k = new Knockouts(playingTeamsOfQuarterFinal);
         for(int i = 0; i < 3; i++) {
 
-            /**display the playingTeams
-             * based on the playingTeams, the user will predict one team
-             * which he thinks will make it to the next round*/
-            for (Team t : k.getPlayingTeams()) {
-                System.out.println(t.getName());
-            }
+        	displayQualifiedTeams();
             System.out.println("\n");
-
 
             /**ask the user for his/her prediction
              * validate the prediction
              * set the user's prediction*/
             String uPrediction = userInputAndValidation(k);
             user.setPredictedTeam(uPrediction);
-
-
+            
             /**schedule the matches and display the schedule*/
             k.schedule();
             System.out.println(k);
 
-
             /**simulate the matches in that stage*/
             k.simulate();
 
-
             /**add all goalScorers*/
             goalScorers.addAll(k.getGoalScorers());
-
-
-            /**after simulating all the matches in that stage
-             * display the teams which qualified for the next stage*/
-            displayQualifiedTeams();
-
 
             /**check if the predictedTeam has qualified for the next stage
              * if yes, increment the user's score
              * if no, then say better luck next time or something like that*/
             checkUserPredictionWithQualifiedTeams(uPrediction);
 
-
             /**display the user's score*/
             System.out.println(user);
             System.out.println("\n");
             Delay.loadingDelay(5);
-
-//        /**display the playingTeamsOfQuarterFinal
-//         * based on the playingTeamsOfQuarterFinal, the user will predict one team
-//         * which he thinks will make it to the next round*//*
-//        for(Team t : playingTeamsOfQuarterFinal){
-//            System.out.println(t.getName());
-//        }
-//        System.out.println("\n");
-//
-//        *//**create the quarter final object
-//         * schedule the quarters*//*
-//        quarterFinals = new Knockouts(playingTeamsOfQuarterFinal);
-//        quarterFinals.schedule();
-//
-//        *//**the quarter final is scheduled as follows:
-//         * display the schedule*//*
-//        System.out.println("the quarter final is scheduled as follows: ");
-//        System.out.println(quarterFinals);
-//
-//        *//**ask the user for his prediction
-//         * validate the prediction*//*
-//        System.out.println("Based on the above stats, pick one team which you think will qualify for semis");
-//        String userPrediction = userInputAndValidation();
-//        user.setPredictedTeam(userPrediction);
-//
-//        *//**simulate the quarters*//*
-//        quarterFinals.simulate();
-//
-//        *//**after simulating all the matches in that stage
-//         * display the teams which qualified for the next stage*//*
-//        System.out.println("The teams which have qualified for semis are: ");
-//        for(Team t : quarterFinals.getPlayingTeams()){
-//            System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
-//        }
-//
-//        *//**check if the predictedTeam has qualified for the next stage
-//         * if yes, increment the user's score
-//         * if no, then say better luck next time or something like that*//*
-//        boolean flag = false;
-//        for(Team t : quarterFinals.getPlayingTeams()){
-//            if(userPrediction.equalsIgnoreCase(t.getName())){
-//                user.updatePoints(INCREMENT_IN_QUARTERS);
-//                System.out.println("Hurray!!\nYour predicted team made it to the next stage!");
-//                flag = true;
-//                break;
-//            }
-//        }
-//        if(!flag){
-//            System.out.println("Unfortunately, your predicted team didn't qualify for the semis" +
-//                    "\nbetter luck next time");
-//        }
-//
-//        *//**display the user scores*//*
-//        System.out.println(user);
-//        System.out.println("\n");
-//        Delay.loadingDelay(5);*/
-//
-//       String uPrediction = userInputAndValidation();
-//      user.setPredictedTeam(uPrediction);
-//     k.schedule();
-//        k.simulate();
-//       checkUserPredictionWithQualifiedTeams(k, uPrediction);
         }
-
     }
-
     /**helper methods*/
     private void displayQualifiedTeams() {
-        if(k.getPlayingTeams().size() == 4){
-            System.out.println("Teams that won the Quarter-Final and qualified for Semi-Final are: ");
+        if(k.getPlayingTeams().size() == 8)
+        {
+        	System.out.println("QUARTER-FINAL TEAMS - ");
+            for(Team t : k.getPlayingTeams()){
+                System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
+            }
+            System.out.print("\n");
+        }
+    	else if(k.getPlayingTeams().size() == 4)
+    	{
+           System.out.println("SEMI-FINAL TEAMS - ");
             for(Team t : k.getPlayingTeams()){
                 System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
             }
@@ -314,7 +233,7 @@ public class Tournament {
          * but yeah, extra info could be displayed here
          * akheel dhruvil, tell me what extra things you wanna add*/
         else if(k.getPlayingTeams().size() == 2){
-            System.out.println("Teams that won the Semi-Final and will be playing the grand Finale are: ");
+            System.out.println("FINALISTS - ");
             for(Team t : k.getPlayingTeams()){
                 System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
             }
@@ -337,7 +256,7 @@ public class Tournament {
         for(Team t : k.getPlayingTeams()){
             if(userPrediction.equalsIgnoreCase(t.getName())){
                 user.updatePoints(INCREMENT_IN_KNOCKOUTS);
-                System.out.println("Hurray!!\nYour predicted team made it to the next stage!\n");
+                System.out.println("Hurray!! Your predicted team made it to the next stage!\n");
                 flag = true;
                 break;
             }
@@ -353,8 +272,8 @@ public class Tournament {
                 s += "finals";
 
             else {
-                System.out.println("Your predicted Team did NOT win the final. Don't be disheartened" +
-                        "Your team is the Runners-up of the Tournament\n");
+                System.out.println("Your predicted Team did NOT win the final. Don't be disheartened," +
+                        " Your team is the Runners-up of the Tournament.\n");
                 return;
             }
 
