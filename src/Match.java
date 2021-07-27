@@ -8,14 +8,14 @@ public class Match {
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
     private ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals;
 
-    // public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    //     Team[] t = teamBuilder.buildTeam();
+        Team[] t = teamBuilder.buildTeam();
 
-    //     Match m1 = new Match(t[0], t[1]);
-    //     m1.play();
-    //     System.out.println(m1);
-    // }
+        Match m1 = new Match(t[0], t[1]);
+        m1.play();
+        System.out.println(m1);
+    }
 
     Match(Team team1, Team team2){
 
@@ -242,18 +242,18 @@ public class Match {
         String s;
         if (team1 == winner){
             s = winner.getFifaCode() + " " + goalsWinner + " - " + goalsLoser + " " + loser.getFifaCode() + "\n\n" +
-                "Winning Goal Scorers:\n";
+                winner.getName() + " Scorers:\n";
         }
         else{
             s = loser.getFifaCode() + " " + goalsLoser + " - " + goalsWinner + " " + winner.getFifaCode() + "\n\n" +
-                "Winning Goal Scorers:\n";
+                winner.getName() + " Scorers:\n";
         }
 
         for (Player p : winningTeamScorers){
             s += p.getName() + " x (" + winningTeamPlayerGoals.get(winningTeamScorers.indexOf(p)) + ")\n";
         }
         if (goalsLoser != 0){
-            s += "\nLosing Goal Scorers:\n";
+            s += "\n" + loser.getName() + " Scorers:\n";
             for (Player p : losingTeamScorers){
                 s += p.getName() + " x (" + losingTeamPlayerGoals.get(losingTeamScorers.indexOf(p)) + ")\n";
             }
