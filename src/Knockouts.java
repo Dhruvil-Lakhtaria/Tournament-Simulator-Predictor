@@ -22,7 +22,7 @@ public class Knockouts implements TournamentStage{
         /**
          * get size of playingTeams to help us identify quarters, semis and finale
          */
-        int n = playingTeams.size();
+        int n = this.playingTeams.size();
 
         /**
          * adding Match objects in the right order of scheduling the matches
@@ -54,8 +54,8 @@ public class Knockouts implements TournamentStage{
          */
 
         else{
-            for(int i=0; i < n/2; i++){
-                matches.add(new Match(playingTeams.get(i), playingTeams.get(n - i - 1)));
+            for(int i=0; i<n; i+=2){
+                matches.add(new Match(playingTeams.get(i), playingTeams.get(i+1)));
             }
         }
 
@@ -66,11 +66,12 @@ public class Knockouts implements TournamentStage{
     public void simulate(){
 
         for(Match match : matches){
+            System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
             /**play the match*/
             match.play();
 
             /**delay*/
-            Delay.loadingDelay(4);
+            Delay.loadingDelay(3);
 
             /**update the playingTeams array
              * basically, remove the losing team
@@ -79,15 +80,42 @@ public class Knockouts implements TournamentStage{
 
             /**update the goalScorer array
              * add the goal scorers of the match (from both losing team & winning team)*/
-            goalScorers.addAll(match.getWinningTeamScorers());
-            goalScorers.addAll(match.getLosingTeamScorers());
-
+            for(Player p : match.getWinningTeamScorers())
+			{
+				boolean notPresent = true;
+				for(Player P : this.goalScorers)
+				{
+					if(p.getName().equals(P.getName()))
+					{
+						notPresent = false;
+						break;
+					}
+				}
+				if(notPresent)
+					this.goalScorers.add(p);
+			}
+			for(Player p : match.getLosingTeamScorers())
+			{
+				boolean notPresent = true;
+				for(Player P : this.goalScorers)
+				{
+					if(p.getName().equals(P.getName()))
+					{
+						notPresent = false;
+						break;
+					}
+				}
+				if(notPresent)
+					this.goalScorers.add(p);
+			}
+			
             /**print Match stats*/
             System.out.println(match);
-            Delay.makeDelay(3_000);
+            Delay.makeDelay(4_000);
         }
+        matches.clear();
     }
-
+    
     public ArrayList<Player> getGoalScorers(){
         return new ArrayList<>(goalScorers);
     }
@@ -97,11 +125,11 @@ public class Knockouts implements TournamentStage{
         String s = "";
 
         if(playingTeams.size() == 8)
-            s += "Quarter-Final\n";
+            s += "Quarter-Finals\n";
         else if(playingTeams.size() == 4)
-            s += "Semi-Final\n";
+            s += "Semi-Finals\n";
         else
-            s += "Final\n";
+            s += "Finals\n";
 
         for(Match match : matches){
             s += match.getTeam1().getName() + " vs " + match.getTeam2().getName() + "\n";
