@@ -71,7 +71,7 @@ public class Knockouts implements TournamentStage{
             match.play();
 
             /**delay*/
-            Delay.loadingDelay(5);
+            Delay.loadingDelay(3);
 
             /**update the playingTeams array
              * basically, remove the losing team
@@ -80,17 +80,42 @@ public class Knockouts implements TournamentStage{
 
             /**update the goalScorer array
              * add the goal scorers of the match (from both losing team & winning team)*/
-            goalScorers.addAll(match.getWinningTeamScorers());
-            goalScorers.addAll(match.getLosingTeamScorers());
-
+            for(Player p : match.getWinningTeamScorers())
+			{
+				boolean notPresent = true;
+				for(Player P : this.goalScorers)
+				{
+					if(p.getName().equals(P.getName()))
+					{
+						notPresent = false;
+						break;
+					}
+				}
+				if(notPresent)
+					this.goalScorers.add(p);
+			}
+			for(Player p : match.getLosingTeamScorers())
+			{
+				boolean notPresent = true;
+				for(Player P : this.goalScorers)
+				{
+					if(p.getName().equals(P.getName()))
+					{
+						notPresent = false;
+						break;
+					}
+				}
+				if(notPresent)
+					this.goalScorers.add(p);
+			}
+			
             /**print Match stats*/
             System.out.println(match);
             Delay.makeDelay(4_000);
         }
-
         matches.clear();
     }
-
+    
     public ArrayList<Player> getGoalScorers(){
         return new ArrayList<>(goalScorers);
     }

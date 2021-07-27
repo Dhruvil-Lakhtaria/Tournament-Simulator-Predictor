@@ -8,15 +8,6 @@ public class Match {
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
     private ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals;
 
-    public static void main(String[] args) {
-
-        Team[] t = teamBuilder.buildTeam();
-
-        Match m1 = new Match(t[0], t[1]);
-        m1.play();
-        System.out.println(m1);
-    }
-
     Match(Team team1, Team team2){
 
         winningTeamScorers = new ArrayList<Player>();

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class GroupStage implements TournamentStage {
 	private ArrayList<Team>playingTeams;
@@ -49,6 +50,8 @@ public class GroupStage implements TournamentStage {
 	@Override
 	public void simulate() {
 		int matchDay = 1,matchCompleted = 0;
+		Scanner sc = new Scanner(System.in);
+		String check;
 		/*
 		 * keeps a count of matches completed and used to print points table after 2 matches
 		 */
@@ -58,13 +61,39 @@ public class GroupStage implements TournamentStage {
 			{
 				System.out.println("MATCHDAY - "+ matchDay);
 				matchDay++;
-				Delay.makeDelay(3000);
+				Delay.makeDelay(1000);
 			}
 			System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
 			match.play();
-			Delay.loadingDelay(5);
-			goalScorers.addAll(match.getWinningTeamScorers());
-            goalScorers.addAll(match.getLosingTeamScorers());
+			Delay.loadingDelay(3);
+				for(Player p : match.getWinningTeamScorers())
+				{
+					boolean notPresent = true;
+					for(Player P : this.goalScorers)
+					{
+						if(p.getName().equals(P.getName()))
+						{
+							notPresent = false;
+							break;
+						}
+					}
+					if(notPresent)
+						this.goalScorers.add(p);
+				}
+				for(Player p : match.getLosingTeamScorers())
+				{
+					boolean notPresent = true;
+					for(Player P : this.goalScorers)
+					{
+						if(p.getName().equals(P.getName()))
+						{
+							notPresent = false;
+							break;
+						}
+					}
+					if(notPresent)
+						this.goalScorers.add(p);
+				}
             /*
              * updating points table...
              */
@@ -86,13 +115,37 @@ public class GroupStage implements TournamentStage {
             matchCompleted++;
 //            sort the updated points table .... 
             System.out.println(match);//matchstats
-            Delay.makeDelay(5000);
+            Delay.makeDelay(2000);
 //            points table at the end of every matchday
      
             if(matchCompleted%2==0)
             {
-            	System.out.println(this.showPointsTable());
-            	 Delay.makeDelay(6000);
+            	System.out.print("Enter [1] for POINTS TABLE\n      [2] for TOP SCORER\n      [3] for SCHEDULE\n      [KEY] to continue :");
+            	while(true)
+            	{
+            		int breakCondition = 0;
+            		check = sc.nextLine();
+            		switch(check)
+            		{
+            		case "1" : 	System.out.println(this.showPointsTable());
+            					break;
+            		case "2" :
+            				   	System.out.println(this.showGoalScorer());
+            				   	break;
+            		case "3" : 	for(int i = matchCompleted;i<this.matches.size();i++)
+			            		{
+            						System.out.print(this.matches.get(i).getTeam1().getName() + " vs " + this.matches.get(i).getTeam2().getName() + "\n");
+			            		}
+            					break;
+            		default : 
+            					breakCondition = 1;
+            					break;
+            		}
+            		if(breakCondition==1)
+            			break;
+            		else
+            			System.out.print("SELECT FROM GIVEN OPTIONS : ");
+            	}
             }
 		}
 	}
@@ -134,7 +187,21 @@ public class GroupStage implements TournamentStage {
     	}
 	    );
 	}
-	
+	public void sortScorers()
+	{
+		this.goalScorers.sort(new Comparator<Player>()
+				{
+					public int compare(Player a,Player b)
+					{
+						if(a.getGoals() > b.getGoals())
+							return -1;
+						else if(a.getGoals() < b.getGoals())
+							return 1;
+						else
+							return 0;
+					}
+				});
+	}
 	public String showPointsTable()
 	{
 		this.sortPointsTable();
@@ -146,7 +213,16 @@ public class GroupStage implements TournamentStage {
     	}
 		return s;
 	}
-	
+	public String showGoalScorer()
+	{
+		this.sortScorers();
+		String s = "TOP SCORERS :\n";
+		for(int i = 0;i<5&&i<this.goalScorers.size();i++)
+		{
+			s = s + Integer.toString(i+1) +"."+  this.goalScorers.get(i).getName() + " - " + this.goalScorers.get(i).getGoals() + "\n";
+		}
+		return s;
+	}
 	@Override
 	public ArrayList<Player> getGoalScorers()
 	{

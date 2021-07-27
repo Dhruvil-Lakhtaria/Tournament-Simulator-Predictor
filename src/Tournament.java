@@ -98,23 +98,33 @@ public class Tournament {
         g1g2.add(group1);
         g1g2.add(group2);
         System.out.println("LOADING GROUPS : ");
-        Delay.loadingDelay(5);
+        Delay.loadingDelay(3);
         for(GroupStage group : g1g2)
         {
-        	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1));
+        	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1) + "\n");
             for(Team t : group.getPlayingTeams()){
                 System.out.println(t.getName());
             	}
             System.out.println();
+            Delay.makeDelay(5000);
         }
     }
 
     public void start(){
 
         /**Group Stage*/
-        System.out.println("\nTOURNAMENT SIMULATOR & PREDICTOR\n");
-        System.out.println("\n----ABOUT----\n\n");
+        System.out.println("\nTOURNAMENT SIMULATOR & PREDICTOR: \n");
+        System.out.println("Registered teams are:");
+        for(Team t : this.allTeams)
+        {
+        	System.out.println(t.getName());
+        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Press  [ENTER] to form Groups : ");
+        String check = sc.nextLine();
+        
         this.makeGroups();
+        
         ArrayList<GroupStage> g1g2 = new ArrayList<>();
         g1g2.add(group1);
         g1g2.add(group2);
@@ -122,6 +132,28 @@ public class Tournament {
         for(GroupStage group : g1g2){
         	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1) + "\n" );
         	System.out.println(group.showPointsTable());
+        	while(true)
+            {
+            	System.out.print("Enter [TEAMNAME] to see detail/[Y] to continue :");
+            	check = sc.next();
+            	if(check.toLowerCase().equals("y"))
+            		break;
+            	else
+            	{
+            		if(this.validatePrediction(check, group))
+            		{
+            			for(Team t : group.getPlayingTeams())
+            			{
+            				if(t.getName().equals(check)) {
+            					System.out.println(t);
+            					break;
+            					}
+            			}
+            		}
+            		else
+            			System.out.println("Enter valid [TEAMNAME]");
+            	}
+            }
             System.out.println("ENTER YOUR PREDICTION FOR GROUP - "+ (g1g2.indexOf(group) + 1));
             String userPrediction = userInputAndValidation(group);
             user.setPredictedTeam(userPrediction);
@@ -132,16 +164,14 @@ public class Tournament {
             group.schedule();
             Delay.loadingDelay(5);
             System.out.println(group);
-
+            System.out.print("Press [ENTER] to Simulate Group - "+ (g1g2.indexOf(group) + 1) + ": ");
+            check = sc.nextLine();
             /**simulate all the matches of that group*/
             System.out.println("SIMULATING GROUP - " + (g1g2.indexOf(group) + 1) + "\n");
             group.simulate();
 
             /**add all goalScorers*/
             goalScorers.addAll(group.getGoalScorers());
-
-            /**sort the points table*/
-            group.sortPointsTable();
 
             /**display the teams that have qualified for Knockouts stage*/
             System.out.println("\nThe Teams that have qualified for the Knockouts stage from GROUP - "
@@ -171,7 +201,7 @@ public class Tournament {
             System.out.println("\n");
             Delay.loadingDelay(5);
 
-        }
+        } 
         /**Knockouts Stage*/
         ArrayList<Team> playingTeamsOfQuarterFinal = new ArrayList<>(group1.getQualifiedTeam());
         playingTeamsOfQuarterFinal.addAll(group2.getQualifiedTeam());
