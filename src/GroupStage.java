@@ -50,6 +50,7 @@ public class GroupStage implements TournamentStage {
 	@Override
 	public void simulate() {
 		int matchDay = 1,matchCompleted = 0;
+		Scanner sc = new Scanner(System.in);
 		String check;
 		/*
 		 * keeps a count of matches completed and used to print points table after 2 matches
@@ -123,9 +124,7 @@ public class GroupStage implements TournamentStage {
             	while(true)
             	{
             		int breakCondition = 0;
-					Scanner sc = new Scanner(System.in);
             		check = sc.nextLine();
-					sc.close();
             		switch(check)
             		{
             		case "1" : 	System.out.println(this.showPointsTable());
