@@ -7,9 +7,9 @@ public class Tournament {
     private GroupStage group1;
     private GroupStage group2;
     private Knockouts k;
-    // private Knockouts quarterFinals;
-    // private Knockouts semiFinals;
-    // private Knockouts finals;
+//    private Knockouts quarterFinals;
+//    private Knockouts semiFinals;
+//    private Knockouts finals;
     private ArrayList<Player> goalScorers;
     private ArrayList<Team> allTeams;
     private User user;
@@ -238,9 +238,7 @@ public class Tournament {
             System.out.println("\n");
             Delay.makeDelay(5000);
         }
-        // sc.close();
     }
-
     /**helper methods*/
     private void displayQualifiedTeams() {
         if(k.getPlayingTeams().size() == 8)
@@ -348,10 +346,8 @@ public class Tournament {
 
             prediction = scanner.nextLine();
         }
-        // scanner.close();
         return prediction;
     }
-
     private String userInputAndValidation(Knockouts k){
         String prediction;
         System.out.print("Prediction: ");
@@ -365,7 +361,6 @@ public class Tournament {
 
             prediction = scanner.nextLine();
         }
-        // scanner.close();
         return prediction;
     }
 

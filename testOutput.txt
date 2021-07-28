@@ -1,0 +1,699 @@
+# A test run by Abdullah at 28/7 2:03 a.m ist. Issues and bugs faced present in the file IssuesAndBugs.txt
+
+# Program start
+
+ENTER YOUR NAME:Abdullah Rafi
+
+TOURNAMENT SIMULATOR & PREDICTOR:
+
+Registered teams are:
+Belgium
+France
+Brazil
+England
+Portugal
+Spain
+Italy
+Argentina
+Denmark
+Croatia
+Press  [ENTER] to form Groups :
+
+LOADING GROUPS :
+...
+GROUP - 1
+
+France
+England
+Portugal
+Italy
+Denmark
+
+GROUP - 2
+
+Belgium
+Brazil
+Spain
+Argentina
+Croatia
+
+GROUP - 1
+
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Denmark              0                    0                    0                    0                    0
+	England              0                    0                    0                    0                    0
+	France               0                    0                    0                    0                    0
+	Italy                0                    0                    0                    0                    0
+	Portugal             0                    0                    0                    0                    0
+
+Enter [TEAMNAME] to see detail/[Y] to continue :Denmark
+DENMARK (DEN)-9
+Manager: Kasper Hjulmand
+Lineup:
+GK-1-Kasper Schmeichel
+DF-6-Andreas Christensen
+DF-4-Simon Kjaer(c)
+DF-5-Joakim Maehle
+DF-3-Jannik Vestergaard
+MF-10-Christian Eriksen
+MF-18-Daniel Wass
+MF-8-Thomas Delaney
+FW-14-Mikel Damsgaard
+FW-9-Martin Braithwaite
+FW-20-Yusuf Poulsen
+
+Enter [TEAMNAME] to see detail/[Y] to continue :England
+ENGLAND (ENG)-4
+Manager: Gareth Southgate
+Lineup:
+GK-1-Jordan Pickford
+DF-2-Kyle Walker
+DF-3-Luke Shaw
+DF-5-John Stones
+DF-6-Harry Maguire
+MF-19-Mason Mount
+MF-20-Phil Foden
+MF-25-Bukayo Saka
+FW-9-Harry Kane(c)
+FW-10-Raheem Sterling
+FW-11-Marcus Rashford
+
+Enter [TEAMNAME] to see detail/[Y] to continue :y
+ENTER YOUR PREDICTION FOR GROUP - 1
+Prediction: Denmark
+
+
+SCHEDULING MATCHES FOR GROUP - 1
+.....
+GROUPSTAGE SCHEDULE
+France vs England
+Portugal vs Italy
+Denmark vs France
+England vs Portugal
+Italy vs Denmark
+France vs Portugal
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+
+Press [ENTER] to Simulate Group - 1: SIMULATING GROUP - 1
+
+MATCHDAY - 1
+France VS England
+...
+FRA 0 - 1 ENG
+
+England Scorers:
+Raheem Sterling x (1)
+
+Portugal VS Italy
+...
+POR 4 - 5 ITA
+
+Italy Scorers:
+Federico Chiesa x (2)
+Ciro Immobile x (3)
+
+Portugal Scorers:
+Pepe x (1)
+Diogo Jota x (1)
+Renato Sanches x (1)
+Cristiano Ronaldo x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :3
+Denmark vs France
+England vs Portugal
+Italy vs Denmark
+France vs Portugal
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 2
+TOP SCORERS :
+1.Ciro Immobile - 3
+2.Federico Chiesa - 2
+3.Raheem Sterling - 1
+4.Pepe - 1
+5.Diogo Jota - 1
+
+SELECT FROM GIVEN OPTIONS : 3
+Denmark vs France
+England vs Portugal
+Italy vs Denmark
+France vs Portugal
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Italy                5                    4                    1                    0                    3
+	England              1                    0                    1                    0                    3
+	Denmark              0                    0                    0                    0                    0
+	Portugal             4                    5                    0                    1                    0
+	France               0                    1                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 3
+MATCHDAY - 2
+
+Denmark VS France
+...
+DEN 0 - 5 FRA
+
+France Scorers:
+Hugo Lloris x (1)
+Karim Benzema x (2)
+Kylian Mbappe x (2)
+
+England VS Portugal
+...
+ENG 1 - 0 POR
+
+England Scorers:
+John Stones x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :MATCHDAY - 3
+Italy VS Denmark
+...
+ITA 4 - 0 DEN
+
+Italy Scorers:
+Giovanni Di Lorenzo x (1)
+Ciro Immobile x (2)
+Leonardo Bonucci x (1)
+
+France VS Portugal
+...
+FRA 0 - 1 POR
+
+Portugal Scorers:
+Bruno Fernandes x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :3
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 3
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 3
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Italy                9                    4                    2                    0                    6
+	England              2                    0                    2                    0                    6
+	France               5                    2                    1                    2                    3
+	Portugal             5                    6                    1                    2                    3
+	Denmark              0                    9                    0                    2                    0
+
+SELECT FROM GIVEN OPTIONS : 3
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Italy                9                    4                    2                    0                    6
+	England              2                    0                    2                    0                    6
+	France               5                    2                    1                    2                    3
+	Portugal             5                    6                    1                    2                    3
+	Denmark              0                    9                    0                    2                    0
+
+SELECT FROM GIVEN OPTIONS : 3
+England vs Italy
+Portugal vs Denmark
+Italy vs France
+Denmark vs England
+SELECT FROM GIVEN OPTIONS :
+
+MATCHDAY - 4
+England VS Italy
+...
+ENG 1 - 2 ITA
+
+Italy Scorers:
+Ciro Immobile x (1)
+Federico Chiesa x (1)
+
+England Scorers:
+Mason Mount x (1)
+
+Portugal VS Denmark
+...
+POR 3 - 5 DEN
+
+Denmark Scorers:
+Christian Eriksen x (2)
+Mikel Damsgaard x (2)
+Yusuf Poulsen x (1)
+
+Portugal Scorers:
+Diogo Jota x (1)
+Cristiano Ronaldo x (1)
+Pepe x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :MATCHDAY - 5
+Italy VS France
+...
+ITA 2 - 0 FRA
+
+Italy Scorers:
+Lorenzo Insigne x (1)
+Nicolo Barella x (1)
+
+Denmark VS England
+...
+DEN 0 - 1 ENG
+
+England Scorers:
+Harry Kane x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :
+
+
+The Teams that have qualified for the Knockouts stage from GROUP - 1 are:
+Italy
+England
+France
+Portugal
+
+
+Group - 1
+The team that you selected did NOT qualify for the Knockouts stage :(
+Better luck next time!
+
+User Details
+Name: Abdullah
+Points: 0
+
+
+.....
+GROUP - 2
+
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Argentina            0                    0                    0                    0                    0
+	Belgium              0                    0                    0                    0                    0
+	Brazil               0                    0                    0                    0                    0
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    0                    0                    0                    0
+
+Enter [TEAMNAME] to see detail/[Y] to continue :y
+ENTER YOUR PREDICTION FOR GROUP - 2
+Prediction: Brazil
+
+
+SCHEDULING MATCHES FOR GROUP - 2
+.....
+GROUPSTAGE SCHEDULE
+Belgium vs Brazil
+Spain vs Argentina
+Croatia vs Belgium
+Brazil vs Spain
+Argentina vs Croatia
+Belgium vs Spain
+Brazil vs Argentina
+Spain vs Croatia
+Argentina vs Belgium
+Croatia vs Brazil
+
+Press [ENTER] to Simulate Group - 2: SIMULATING GROUP - 2
+
+MATCHDAY - 1
+Belgium VS Brazil
+...
+BEL 5 - 3 BRA
+
+Belgium Scorers:
+Kevin De Bruyne x (2)
+Dries Mertens x (1)
+Romelu Lukaku x (2)
+
+Brazil Scorers:
+Roberto Firmino x (1)
+Eder Militao x (1)
+Neymar x (1)
+
+Spain VS Argentina
+...
+SPA 0 - 1 ARG
+
+Argentina Scorers:
+Rodrigo De Paul x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Belgium              5                    3                    1                    0                    3
+	Argentina            1                    0                    1                    0                    3
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    1                    0                    1                    0
+	Brazil               3                    5                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Belgium              5                    3                    1                    0                    3
+	Argentina            1                    0                    1                    0                    3
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    1                    0                    1                    0
+	Brazil               3                    5                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 2
+TOP SCORERS :
+1.Kevin De Bruyne - 2
+2.Romelu Lukaku - 2
+3.Dries Mertens - 1
+4.Roberto Firmino - 1
+5.Eder Militao - 1
+
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Belgium              5                    3                    1                    0                    3
+	Argentina            1                    0                    1                    0                    3
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    1                    0                    1                    0
+	Brazil               3                    5                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 2
+TOP SCORERS :
+1.Kevin De Bruyne - 2
+2.Romelu Lukaku - 2
+3.Dries Mertens - 1
+4.Roberto Firmino - 1
+5.Eder Militao - 1
+
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Belgium              5                    3                    1                    0                    3
+	Argentina            1                    0                    1                    0                    3
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    1                    0                    1                    0
+	Brazil               3                    5                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 3
+Croatia vs Belgium
+Brazil vs Spain
+Argentina vs Croatia
+Belgium vs Spain
+Brazil vs Argentina
+Spain vs Croatia
+Argentina vs Belgium
+Croatia vs Brazil
+SELECT FROM GIVEN OPTIONS : 3
+Croatia vs Belgium
+Brazil vs Spain
+Argentina vs Croatia
+Belgium vs Spain
+Brazil vs Argentina
+Spain vs Croatia
+Argentina vs Belgium
+Croatia vs Brazil
+SELECT FROM GIVEN OPTIONS : 1
+	Team                 GoalsScored          GoalsConceded        W                    L                    Points
+	Belgium              5                    3                    1                    0                    3
+	Argentina            1                    0                    1                    0                    3
+	Croatia              0                    0                    0                    0                    0
+	Spain                0                    1                    0                    1                    0
+	Brazil               3                    5                    0                    1                    0
+
+SELECT FROM GIVEN OPTIONS : 2
+TOP SCORERS :
+1.Kevin De Bruyne - 2
+2.Romelu Lukaku - 2
+3.Dries Mertens - 1
+4.Roberto Firmino - 1
+5.Eder Militao - 1
+
+SELECT FROM GIVEN OPTIONS :
+MATCHDAY - 2
+Croatia VS Belgium
+...
+CRO 0 - 1 BEL
+
+Belgium Scorers:
+Kevin De Bruyne x (1)
+
+Brazil VS Spain
+...
+BRA 2 - 0 SPA
+
+Brazil Scorers:
+Neymar x (1)
+Roberto Firmino x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :
+MATCHDAY - 3
+Argentina VS Croatia
+...
+ARG 1 - 0 CRO
+
+Argentina Scorers:
+Rodrigo De Paul x (1)
+
+Belgium VS Spain
+...
+BEL 3 - 2 SPA
+
+Belgium Scorers:
+Thomas Vermaelen x (1)
+Romelu Lukaku x (1)
+Kevin De Bruyne x (1)
+
+Spain Scorers:
+Cesar Azplicueta x (1)
+Thiago Alcantara x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :
+MATCHDAY - 4
+Brazil VS Argentina
+...
+BRA 1 - 0 ARG
+
+Brazil Scorers:
+Fred x (1)
+
+Spain VS Croatia
+...
+SPA 0 - 4 CRO
+
+Croatia Scorers:
+Mario Pasalic x (1)
+Ante Rebic x (2)
+Ivan Perisic x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :
+MATCHDAY - 5
+Argentina VS Belgium
+...
+ARG 3 - 2 BEL
+
+Argentina Scorers:
+Sergio Aguero x (1)
+Leon Paredes x (1)
+Lionel Messi x (1)
+
+Belgium Scorers:
+Thomas Meunier x (1)
+Romelu Lukaku x (1)
+
+Croatia VS Brazil
+...
+CRO 3 - 2 BRA
+
+Croatia Scorers:
+Ante Rebic x (1)
+Duje Caleta-Car x (1)
+Luka Modric x (1)
+
+Brazil Scorers:
+Roberto Firmino x (1)
+Neymar x (1)
+
+Enter [1] for POINTS TABLE
+      [2] for TOP SCORER
+      [3] for SCHEDULE
+      [KEY] to continue :
+
+The Teams that have qualified for the Knockouts stage from GROUP - 2 are:
+Belgium
+Argentina
+Croatia
+Spain
+
+
+User Details
+Name: Abdullah
+Points: 5
+
+
+.....
+QUARTER-FINAL TEAMS -
+Italy (ITA)
+England (ENG)
+France (FRA)
+Portugal (POR)
+Belgium (BEL)
+Argentina (ARG)
+Croatia (CRO)
+Brazil (BRA)
+
+
+
+Prediction: Brazil
+Quarter-Finals
+Italy vs Brazil
+France vs Argentina
+England vs Croatia
+Portugal vs Belgium
+
+Italy VS Brazil
+...
+ITA 1 - 5 BRA
+
+Brazil Scorers:
+Neymar x (3)
+Roberto Firmino x (1)
+Gabriel Jesus x (1)
+
+Italy Scorers:
+Leonardo Bonucci x (1)
+
+France VS Argentina
+...
+FRA 1 - 0 ARG
+
+France Scorers:
+NGolo Kante x (1)
+
+England VS Croatia
+...
+ENG 1 - 2 CRO
+
+Croatia Scorers:
+Ante Rebic x (2)
+
+England Scorers:
+Raheem Sterling x (1)
+
+Portugal VS Belgium
+...
+POR 2 - 1 BEL
+
+Portugal Scorers:
+Cristiano Ronaldo x (1)
+Rui Patricio x (1)
+
+Belgium Scorers:
+Kevin De Bruyne x (1)
+
+Hurray!! Your predicted team made it to the next stage!
+
+User Details
+Name: Abdullah
+Points: 15
+
+
+SEMI-FINAL TEAMS -
+France (FRA)
+Portugal (POR)
+Croatia (CRO)
+Brazil (BRA)
+
+
+
+Prediction: Croatia
+Semi-Finals
+France vs Portugal
+Croatia vs Brazil
+
+France VS Portugal
+...
+FRA 0 - 2 POR
+
+Portugal Scorers:
+Renato Sanches x (1)
+Cristiano Ronaldo x (1)
+
+Croatia VS Brazil
+...
+CRO 3 - 1 BRA
+
+Croatia Scorers:
+Marcelo Brozovic x (1)
+Ante Rebic x (1)
+Ivan Perisic x (1)
+
+Brazil Scorers:
+Neymar x (1)
+
+Hurray!! Your predicted team made it to the next stage!
+
+User Details
+Name: Abdullah
+Points: 25
+
+
+FINALISTS -
+Portugal (POR)
+Croatia (CRO)
+
+
+Prediction: Portugal
+Finals
+Portugal vs Croatia
+
+Portugal VS Croatia
+...
+POR 2 - 1 CRO
+
+Portugal Scorers:
+Bruno Fernandes x (1)
+Bernardo Silva x (1)
+
+Croatia Scorers:
+Ivan Perisic x (1)
+
+Hurray!! Your predicted team made it to the next stage!
+
+User Details
+Name: Abdullah
+Points: 35
+
+
+
+Process finished with exit code 0
+
+# Program Run End

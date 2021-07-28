@@ -3,9 +3,9 @@
         private String name;
         private double ability;
 
-        public static void main(String[] args) {
-            System.out.println("hi hello");
-        }
+//         public static void main(String[] args) {
+//             System.out.println("hi hello");
+//         }
 
         Manager(String name, double ability){
 

@@ -117,18 +117,21 @@ II. Program Structure/Basic API:
 				 toString(). 
 				 
 		Match -
-			fields: Team team1, Team winner, goalsWinner, Player[] winningTeamScorers,
-				Team team2, Team loser,	 goalsLoser,  Player[] losingTeamScorers  
-			methods: 	Match(Team1, team2)
-					play(),			
+			fields: - Team team1, team2, winner, loser
+				- int goalsWinner, goalsLoser
+				- ArrayList<Player> winningTeamScorers, losingTeamScorers
+				- ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals
+			methods: + Match(team1, team2)
+				 + void play()
+				 - void determineGoalScorers()
+				 + String toString()
+				 + getters and setters.  
 								//fields determining outcomes
-									//1. int difference of teamRank (w=1)
-									//2. double managerAbility (if teams are close w=1, else w=0.5)
-									//3. int starPlayers (depends on manager ability)
-									//4. double captainAbility (value added and subtracted -> 0.5)
-									//5. int avgPlayerRatingDiff (value added and subtracted -> 0.25)
-				 toString(),
-				 getters and setters.  
+								//1. int difference of teamRank (w=1)
+								//2. double managerAbility (if teams are close w=1, else w=0.5)
+								//3. int starPlayers (depends on manager ability)
+								//4. double captainAbility (value added and subtracted -> 0.5)
+								//5. int avgPlayerRatingDiff (value added and subtracted -> 0.25)
 				 
 		Team -
 			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, int rank, int starPlayers	
@@ -145,17 +148,17 @@ II. Program Structure/Basic API:
 				 getters and setters.  
 				 
 		Manager -
-			fields: String name, double ability
-			methods: Manager(fields...)
-				 toString()
-				 getters and setters  
+			fields: - String name
+				- double ability
+			methods: + public Manager(fields...)
+				 + public String toString()
+				 + getters and setters  
   
   
 
 
 Group.simulate() output structure for reference:  
 
-```
 					{
 					  
 					  Match day #1
@@ -182,8 +185,3 @@ Group.simulate() output structure for reference:
 					  .
 					  Match day #5
 					}
-
-				
-
-	
-	
