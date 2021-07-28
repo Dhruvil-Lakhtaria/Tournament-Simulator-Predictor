@@ -238,7 +238,7 @@ public class Tournament {
             System.out.println("\n");
             Delay.makeDelay(5000);
         }
-        sc.close();
+        // sc.close();
     }
 
     /**helper methods*/
@@ -348,7 +348,7 @@ public class Tournament {
 
             prediction = scanner.nextLine();
         }
-        scanner.close();
+        // scanner.close();
         return prediction;
     }
 
@@ -365,7 +365,7 @@ public class Tournament {
 
             prediction = scanner.nextLine();
         }
-        scanner.close();
+        // scanner.close();
         return prediction;
     }
 

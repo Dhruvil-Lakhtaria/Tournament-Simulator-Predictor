@@ -50,6 +50,7 @@ public class GroupStage implements TournamentStage {
 	@Override
 	public void simulate() {
 		int matchDay = 1,matchCompleted = 0;
+		Scanner sc = new Scanner(System.in);     
 		String check;
 		/*
 		 * keeps a count of matches completed and used to print points table after 2 matches
@@ -116,16 +117,14 @@ public class GroupStage implements TournamentStage {
             System.out.println(match);//matchstats
             Delay.makeDelay(2000);
 //            points table at the end of every matchday
-     
+
             if(matchCompleted%2==0)
             {
             	System.out.print("Enter [1] for POINTS TABLE\n      [2] for TOP SCORER\n      [3] for SCHEDULE\n      [KEY] to continue :");
             	while(true)
             	{
             		int breakCondition = 0;
-					Scanner sc = new Scanner(System.in);
             		check = sc.nextLine();
-					sc.close();
             		switch(check)
             		{
             		case "1" : 	System.out.println(this.showPointsTable());
@@ -148,6 +147,7 @@ public class GroupStage implements TournamentStage {
             			System.out.print("SELECT FROM GIVEN OPTIONS : ");
             	}
             }
+			// sc.close();
 		}
 	}
 
