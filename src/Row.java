@@ -73,9 +73,19 @@ public class Row {
         this.losses = losses;
     }
 
+    /**
+     * For Abdullah:
+     * 
+     * changed the formatting a liiiittle bit. to match the changes in GroupStage's showPointsTable() or smthn. 
+     * Unfortunately i frgt to comment out ur inititial code (though its pretty much the same just changing the numbers in format specifiers)
+     * So if ur fine w this then ok, but if ur not, idm pls change however u wish, its ur class afterall.
+     * 
+     * Just a headsup, whatever change u make in Row, ull have to make the appropriate change in GroupStage's showPointsTable() method as well
+     */
+
     @Override
     public String toString() {
-        return String.format("\t%-20s %-20s %-20s %-20s %-20s %-20s", team.getName(), goalsScored, goalsConceded,
-                                wins, losses, points);
+        return String.format("\t\t| %-10s | %12s | %14s | %-1s | %-1s | %6s |", team.getName(), Integer.toString(goalsScored) + " ".repeat(6), Integer.toString(goalsConceded) + " ".repeat(7),
+                                wins, losses, Integer.toString(points) + " ".repeat(2));
     }
 }

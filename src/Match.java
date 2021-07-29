@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class Match {
     
     private Team team1, team2;
@@ -237,27 +238,69 @@ public class Match {
          * but then it would be weird that the winner is always on one side
          * after showing the teams playing and the score line, we show goalscorers for winning and then losing.
          * (if needed we can make them side by side, but not a priority for now)
+         * 
+         * ----------------------------------------------------------------------------------------------------
+         * 
+         * Current code for showing the results with an indentation + goalscorers side by side + proper order.
          */
 
         String s;
         if (team1 == winner){
-            s = winner.getFifaCode() + " " + goalsWinner + " - " + goalsLoser + " " + loser.getFifaCode() + "\n\n" +
-                winner.getName() + " Scorers:\n";
+            s = winner.getFifaCode() + " " + goalsWinner + " - " + goalsLoser + " " + loser.getFifaCode() + "\n\n";
         }
         else{
-            s = loser.getFifaCode() + " " + goalsLoser + " - " + goalsWinner + " " + winner.getFifaCode() + "\n\n" +
-                winner.getName() + " Scorers:\n";
+            s = loser.getFifaCode() + " " + goalsLoser + " - " + goalsWinner + " " + winner.getFifaCode() + "\n\n";
         }
-
-        for (Player p : winningTeamScorers){
-            s += p.getName() + " x (" + winningTeamPlayerGoals.get(winningTeamScorers.indexOf(p)) + ")\n";
-        }
-        if (goalsLoser != 0){
-            s += "\n" + loser.getName() + " Scorers:\n";
-            for (Player p : losingTeamScorers){
-                s += p.getName() + " x (" + losingTeamPlayerGoals.get(losingTeamScorers.indexOf(p)) + ")\n";
+ 
+        int i = 0;
+        String t = (goalsLoser != 0) ? loser.getName() + " Scorers:" : "";
+        if (team1 == winner){
+            s += " ".repeat(winner.getName().length() + 6 + loser.getName().length()) + 
+                String.format("%-30s %-20s", winner.getName() + " Scorers:", t + "\n");
+            for (; i < winningTeamScorers.size() && i < losingTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(winner.getName().length() + 6 + loser.getName().length()) + 
+                    String.format("%-30s %-20s", winningTeamScorers.get(i).getName() + " x (" + winningTeamPlayerGoals.get(i) + ")",
+                                                 losingTeamScorers.get(i).getName() + " x (" + losingTeamPlayerGoals.get(i) + ")\n");
+            }
+            for (; i < winningTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(winner.getName().length() + 6 + loser.getName().length()) + 
+                    winningTeamScorers.get(i).getName() + " x (" + winningTeamPlayerGoals.get(i) + ")\n";
+            }
+            for (; i < losingTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(winner.getName().length() + 37 + loser.getName().length()) + 
+                    losingTeamScorers.get(i).getName() + " x (" + losingTeamPlayerGoals.get(i) + ")\n";
             }
         }
+        else{
+            s += " ".repeat(loser.getName().length() + 6 + winner.getName().length()) + 
+                String.format("%-30s %-20s", t , winner.getName() + " Scorers:\n");
+            for (; i < losingTeamScorers.size() && i < winningTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(loser.getName().length() + 6 + winner.getName().length()) + 
+                    String.format("%-30s %-20s", losingTeamScorers.get(i).getName() + " x (" + losingTeamPlayerGoals.get(i) + ")",
+                                                 winningTeamScorers.get(i).getName() + " x (" + winningTeamPlayerGoals.get(i) + ")\n");
+            }
+            for (; i < losingTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(loser.getName().length() + 6 + winner.getName().length()) + 
+                    losingTeamScorers.get(i).getName() + " x (" + losingTeamPlayerGoals.get(i) + ")\n";
+            }
+            for (; i < winningTeamScorers.size(); ++i){
+                s += "\r" + " ".repeat(loser.getName().length() + 37 + winner.getName().length()) + 
+                    winningTeamScorers.get(i).getName() + " x (" + winningTeamPlayerGoals.get(i) + ")\n";
+            }
+        }
+
+        // s += winner.getName() + " Scorers:\n";
+        // for (Player p : winningTeamScorers){
+        //     s += p.getName() + " x (" + winningTeamPlayerGoals.get(winningTeamScorers.indexOf(p)) + ")\n";
+        // }
+        // if (goalsLoser != 0){
+        //     s += "\n" + loser.getName() + " Scorers:\n";
+        //     for (Player p : losingTeamScorers){
+        //         s += p.getName() + " x (" + losingTeamPlayerGoals.get(losingTeamScorers.indexOf(p)) + ")\n";
+        //     }
+        // }
+
+
 
         return s;
     }

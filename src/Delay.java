@@ -21,6 +21,19 @@ public final class Delay {
         } catch (InterruptedException e) {
         }
     }
+
+    public static void specificDelay(int n, int x) {
+        try {
+            for(int i = 0;i<n;i++)
+            {
+            	System.out.print(".");
+            	Thread.sleep(x);
+            }
+            // System.out.println();
+        }
+        catch (InterruptedException e) {
+        }
+    }
 }
 
 
