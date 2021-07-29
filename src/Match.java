@@ -128,7 +128,7 @@ public class Match {
         boolean flag = true;
         while (flag){
             if ((goalsWinner = 1 + (int) (Math.random() * 5)) >= 4){
-                if ((Math.random() * 3) < 2){
+                if ((Math.random() * 3) < 1){
                     flag = false;
                 }
             }
