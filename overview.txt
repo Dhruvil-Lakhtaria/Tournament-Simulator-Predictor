@@ -73,13 +73,13 @@ II. Program Structure/Basic API:
 			+ ArrayList<Player> getGoalscorers()
 		}  
 		
-		Group implements TournamentStage - 			
+		GrouStage implements TournamentStage - 			
 			fields: - ArrayList<Team>playingsTeams
 				- ArrayList<Match>mathces
 				- ArrayList<Row>pointsTable
 				- ArrayList<Player>goalScorers
 				
-			methods: + Group(ArrayList<Team>teams) 
+			methods: + GroupStage(ArrayList<Team>teams) 
 				 + void schedule()   //fills matches ArrayList 
 				 + void simulate()   //runs all matches in matches, manipulates pointsTable, goals of players are updated
 				 + void sortPointsTable()
