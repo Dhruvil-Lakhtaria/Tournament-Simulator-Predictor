@@ -276,8 +276,8 @@ public class GroupStage implements TournamentStage {
 		String s = "\t\t" + "_".repeat(63) + String.format("\n\t\t" + Color.ANSI_UNDERLINE + "| %-10s | %-12s | %-14s | %-1s | %-1s | %-6s |" + Color.ANSI_RESET + "\n",
 								 "   Team", "Goals Scored", "Goals Conceded", "W", "L", "Points");
 		for(Row r : pointsTable) {
-			if (pointsTable.indexOf(r) == 4) s += Color.ANSI_UNDERLINE + r.toString() + Color.ANSI_RESET + "\n";
-			else s += r.toString() + "\n";
+			if (pointsTable.indexOf(r) == 4) s += "\t\t" + Color.ANSI_UNDERLINE + r.toString() + Color.ANSI_RESET + "\n";
+			else s += "\t\t" + r.toString() + "\n";
     	}
 		return s;
 	}

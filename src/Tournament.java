@@ -132,16 +132,6 @@ public class Tournament {
         g1g2.add(group1);
         g1g2.add(group2);
         System.out.print("         Making Groups     \r");
-        // displayGroups();
-        // for(GroupStage group : g1g2)
-        // {
-        // 	System.out.println("GROUP - " + (g1g2.indexOf(group) + 1) + "\n");
-        //     for(Team t : group.getPlayingTeams()){
-        //         System.out.println(t.getName());
-        //     	}
-        //     System.out.println();
-        //     Delay.makeDelay(5000);
-        // }
     }
 
     /**
@@ -183,7 +173,6 @@ public class Tournament {
          * 
          * Note that makeGroups only makes the groups. does NOT print out the groups.
          */
-        // Scanner sc = new Scanner(System.in);
         System.out.print(Color.ANSI_CYAN + "\n<Press [KEY] to form Groups>" + Color.ANSI_RESET);
         Scanner sc = new Scanner(System.in);
         String check = sc.nextLine();
@@ -199,8 +188,6 @@ public class Tournament {
              * Invoked makeDelay (doesnt print anything, simply physical delay) at the beginning of every loop to seperate it from the remaining parts of the program
              * followed by printing out both groups (both groups are displayed both times, feels like a more whole picture of the group stages tbh..)
              */
-        	// System.out.println("GROUP - " + (g1g2.indexOf(group) + 1) + "\n" );
-        	// System.out.println(group.showPointsTable());
             Delay.makeDelay(300);
             displayGroups();
             /**
@@ -327,8 +314,6 @@ public class Tournament {
             Delay.makeDelay(450);
         	displayQualifiedTeams();
 
-            // String uPrediction = userInputAndValidation(k);
-            // user.setPredictedTeam(uPrediction);
             String s;
             switch (k.getPlayingTeams().size()) {
                 case 8: s = "Quarter-Final"; break;
@@ -358,11 +343,6 @@ public class Tournament {
              * if yes, increment the user's score
              * if no, then say better luck next time or something like that*/
             checkUserPredictionWithQualifiedTeams(userPrediction,s);
-
-            /**display the user's score*/
-            // System.out.println(user);
-            // System.out.println("\n");
-            // Delay.makeDelay(5000);
         }
 
         System.out.print(("-".repeat(30)) + "\n");
@@ -387,43 +367,6 @@ public class Tournament {
             System.out.println(String.format("%-10s %6s", t.getName(), t.getFifaCode()));
         }
         System.out.println(".".repeat(20));
-        
-        // if(k.getPlayingTeams().size() == 8) {
-        // 	System.out.println("QUARTER-FINAL TEAMS - ");
-        //     for(Team t : k.getPlayingTeams()) {
-        //         System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
-        //     }
-        //     System.out.print("\n");
-        // }
-    	// else if(k.getPlayingTeams().size() == 4) {
-        //    System.out.println("SEMI-FINAL TEAMS - ");
-        //     for(Team t : k.getPlayingTeams()) {
-        //         System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
-        //     }
-        //     System.out.print("\n");
-        // }
-
-        /**this is for finals..
-         * for the time being, i have kept it simple itself
-         * but yeah, extra info could be displayed here
-         * akheel dhruvil, tell me what extra things you wanna add*/
-        // else if(k.getPlayingTeams().size() == 2){
-        //     System.out.println("FINALISTS - ");
-        //     for(Team t : k.getPlayingTeams()){
-        //         System.out.println(t.getName() + " (" + t.getFifaCode() + ")");
-        //     }
-        // }
-
-        // else if (k.getPlayingTeams().size() == 1){
-        //     System.out.println(k.getPlayingTeams().get(0).getName()
-        //             + " (" + k.getPlayingTeams().get(0).getFifaCode() + ")"
-        //             + "WON the Tournament!!\n");
-        //     System.out.println("\n----other final details-----\n");
-        // }
-        // else{
-        //     System.out.println("\n\n\nsomething is wrong\n\n");
-        // }
-
     }
 
     /**
@@ -471,35 +414,6 @@ public class Tournament {
 
         Delay.makeDelay(450);
         System.out.println("\n" + user.getName() + "'s Points At End Of " + kStage + ": " + user.getPoints() + "\n");
-
-        // boolean flag = false;
-        // for(Team t : k.getPlayingTeams()){
-        //     if(userPrediction.equalsIgnoreCase(t.getName())){
-        //         user.updatePoints(INCREMENT_IN_KNOCKOUTS);
-        //         System.out.println("Hurray!! Your predicted team made it to the next stage!\n");
-        //         flag = true;
-        //         break;
-        //     }
-        // }
-
-        // if(!flag){
-        //     String s = "";
-        //     if(k.getPlayingTeams().size() == 4){
-        //         s += "semi-finals";
-        //     }
-
-        //     else if(k.getPlayingTeams().size() == 2)
-        //         s += "finals";
-
-        //     else {
-        //         System.out.println("Your predicted Team did NOT win the final. Don't be disheartened," +
-        //                 " Your team is the Runners-up of the Tournament.\n");
-        //         return;
-        //     }
-
-        //     System.out.println("Unfortunately, your predicted team didn't qualify for the " + s +
-        //             "\nbetter luck next time\n");
-        // }
     }
 
     /**

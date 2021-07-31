@@ -85,7 +85,7 @@ public class Row {
 
     @Override
     public String toString() {
-        return String.format("\t\t| %-10s | %12s | %14s | %-1s | %-1s | %6s |", team.getName(), Integer.toString(goalsScored) + " ".repeat(6), Integer.toString(goalsConceded) + " ".repeat(7),
+        return String.format("| %-10s | %12s | %14s | %-1s | %-1s | %6s |", team.getName(), Integer.toString(goalsScored) + " ".repeat(6), Integer.toString(goalsConceded) + " ".repeat(7),
                                 wins, losses, Integer.toString(points) + " ".repeat(2));
     }
 }

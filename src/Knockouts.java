@@ -95,16 +95,13 @@ public class Knockouts implements TournamentStage{
     public void simulate(){
 
         for(Match match : matches){
-            // System.out.println(match.getTeam1().getName() + " VS " + match.getTeam2().getName());
-            Delay.makeDelay(450);
+            Delay.makeDelay(500);
             System.out.print("\n" + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + ":\r");
-			Delay.specificDelay(match.getTeam1().getName().length() + 4 + match.getTeam2().getName().length(), 80);
+			Delay.specificDelay(match.getTeam1().getName().length() + 4 + match.getTeam2().getName().length(), 160);
 
             /**play the match*/
             match.play();
 			System.out.print("\r" + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + ": " + match);
-
-            // Delay.loadingDelay(3);
 
             /**
              * Adding winner to qualifiedTeams, Adding loser to eliminatedTeams, Removing loser from playingTeams
@@ -115,14 +112,6 @@ public class Knockouts implements TournamentStage{
 
             /**update the goalScorer array
              * add the goal scorers of the match (from both losing team & winning team)*/
-            // ArrayList<Player> scorers = new ArrayList<>();
-            // scorers.addAll(match.getWinningTeamScorers());
-            // scorers.addAll(match.getLosingTeamScorers());
-            // for(Player p : scorers){
-            //     if(!(scorers.contains(p))){
-            //         this.goalScorers.add(p);
-            //     }
-            // }
             ArrayList<Player> scorers = new ArrayList<>(match.getWinningTeamScorers());
             scorers.addAll(match.getLosingTeamScorers());
             for(Player p : scorers) if(!(goalScorers.contains(p))) this.goalScorers.add(p);
@@ -134,20 +123,8 @@ public class Knockouts implements TournamentStage{
         matches.clear();
     }
 
-    /**
-     * For Advaith: 
-     * 
-     * I have commented out the printing of stage since thats being done in the call-ee itself. If you are ok with this, delete the comments and lmk
-     * If not u can delete mine and uncomment urs, and make the necessary changes in Tournament.java
-     */
     public String toString() {
         String s = "";
-        // if(playingTeams.size() == 8)
-        //     s += "Quarter-Finals\n";
-        // else if(playingTeams.size() == 4)
-        //     s += "Semi-Finals\n";
-        // else
-        //     s += "Finals\n";
         for(Match match : matches){
             s += match.getTeam1().getName() + " vs " + match.getTeam2().getName() + "\n";
         }
