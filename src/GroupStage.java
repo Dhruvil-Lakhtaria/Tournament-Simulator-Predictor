@@ -50,6 +50,9 @@ public class GroupStage implements TournamentStage {
 	/**
 	 * for Dhruvil: (I have commented out every code of urs that I have replaced. so if u want to revert, u can just uncomment no problem :D)
 	 * 
+	 * I have added a small parameter see inside the simulate method. basically if the user wants to see every single detail then he can,
+	 * but otherwise we can just let the simulation happen on its own and show him the details at the end. If you dont understand just run the code it might make sense.
+	 * 
 	 * I have removed int matchDay since its basically just matchCompleted/2, and we dont use it anywhere else except outputs,
 	 * if you want to keep it still and use it np just uncomment it and change the "matchCompleted/2" to matchDay stuff.
 	 * 
@@ -61,6 +64,10 @@ public class GroupStage implements TournamentStage {
 		int matchCompleted = 0;
 		Scanner sc = new Scanner(System.in);
 		String check;
+
+		System.out.print(Color.ANSI_CYAN + "\n<Press [1] if you want to be able to see details after every Match Day> " + Color.ANSI_RESET);
+		int see = (sc.nextLine().strip().equalsIgnoreCase("1")) ? 1 : 0;
+
 		/*
 		 * we loop through every match that has been scheduled. 
 		 * 1. if the matchCompleted is an even number => one match day is over, so we print out details of that matchday.
@@ -95,21 +102,21 @@ public class GroupStage implements TournamentStage {
 			 * my uncommented current code cos the file feels too large. Its totally up to you though :P)
 			 */
 
-			// for (Player p : match.getWinningTeamScorers()) if (!goalScorers.contains(p)) goalScorers.add(p);
-			// for (Player p : match.getLosingTeamScorers()) if (!goalScorers.contains(p)) goalScorers.add(p);
-			// sortScorers();
-
-			for (Player p : match.getWinningTeamScorers()) {
-				if (!goalScorers.contains(p)) {
-					goalScorers.add(p);
-				}
-			}
-			for (Player p : match.getLosingTeamScorers()) {
-				if (!goalScorers.contains(p)) {
-					goalScorers.add(p);
-				}
-			}
+			for (Player p : match.getWinningTeamScorers()) if (!goalScorers.contains(p)) goalScorers.add(p);
+			for (Player p : match.getLosingTeamScorers()) if (!goalScorers.contains(p)) goalScorers.add(p);
 			sortScorers();
+
+			// for (Player p : match.getWinningTeamScorers()) {
+			// 	if (!goalScorers.contains(p)) {
+			// 		goalScorers.add(p);
+			// 	}
+			// }
+			// for (Player p : match.getLosingTeamScorers()) {
+			// 	if (!goalScorers.contains(p)) {
+			// 		goalScorers.add(p);
+			// 	}
+			// }
+			// sortScorers();
 
 			// for(Player p : match.getWinningTeamScorers())
 			// {
@@ -178,27 +185,34 @@ public class GroupStage implements TournamentStage {
 			 * (Your call.)
 			 */
 
-            if(matchCompleted % 2 == 0) {
+            if(matchCompleted % 2 == 0 && see == 1) {
             	// System.out.print("Enter [1] for POINTS TABLE\n      [2] for TOP SCORER\n      [3] for SCHEDULE\n      [KEY] to continue :");
 				// System.out.print("\n"+ Color.ANSI_CYAN + Color.ANSI_UNDERLINE + "Information after Match Day " + matchDay + Color.ANSI_UNDERLINE + ":\n[1] Points Table\n[2] Top Scorer\n[3] Schedule\n[ENTER] Continue Simulation");
-            	do {
+            	Delay.makeDelay(450);
+				do {
 					System.out.print("\n" + Color.ANSI_CYAN + Color.ANSI_UNDERLINE + "Information after Match Day " + (matchCompleted / 2) + Color.ANSI_RESET + Color.ANSI_CYAN + ":\n" + 
 											String.format("%7s Points Table\n%7s Top Scorer\n%7s Schedule\n[ENTER] Continue Simulation\n", "[  1  ]", "[  2  ]", "[  3  ]") + 
 											"Enter Choice: " + Color.ANSI_RESET);
             		// int breakCondition = 0;
             		check = sc.nextLine();
-            		switch (check) {
-            		case "1" : 	System.out.println("\n" + this.showPointsTable()); break;
-            		case "2" : 	System.out.print("\n" + this.showGoalScorer()); break;
-            		case "3" : 	System.out.println("\n" + Color.ANSI_UNDERLINE + "Scheduled Matches Remaining" + Color.ANSI_RESET + ":");
-								if (matchCompleted >= matches.size()) System.out.println("No more matches to be played!");
-								for(int i = matchCompleted;i<this.matches.size();i++) System.out.println(this.matches.get(i).getTeam1().getName() + " vs " + this.matches.get(i).getTeam2().getName());
-            					break;
-					case "" : 	System.out.println(); break;
-            		default : 	System.out.println("\n" + Color.ANSI_RED + "Invalid Choice!" + Color.ANSI_RESET); break;
+            		switch (check.strip()) {
+            			case "1":	System.out.println("\n" + this.showPointsTable()); break;
+            			case "2":	System.out.print("\n" + this.showGoalScorer()); break;
+            			case "3":	System.out.println("\n" + Color.ANSI_UNDERLINE + "Scheduled Matches Remaining" + Color.ANSI_RESET + ":");
+									if (matchCompleted >= matches.size()) System.out.println("No more matches to be played!");
+									for(int i = matchCompleted;i<this.matches.size(); i++, Delay.makeDelay(90)) System.out.println(this.matches.get(i).getTeam1().getName() + " vs " + this.matches.get(i).getTeam2().getName());
+            						break;
+						case "" : 	System.out.println(); break;
+            			default : 	System.out.println("\n" + Color.ANSI_RED + "Invalid Choice!" + Color.ANSI_RESET); break;
             		}
-            	} while (check != "");
+					Delay.makeDelay(450);
+            	} while (check.strip() != "");
             }
+			else if (see != 1 && matchCompleted == 10) {
+				Delay.makeDelay(450);
+				System.out.println("\n" + this.showPointsTable());
+				System.out.print("\n" + this.showGoalScorer());
+			}
 		}
 	}
 
@@ -271,7 +285,7 @@ public class GroupStage implements TournamentStage {
 	public String showGoalScorer() {
 		this.sortScorers();
 		String s = Color.ANSI_UNDERLINE + "Top Scorers" + Color.ANSI_RESET + ":\n";
-		for(int i = 0; i < 5 && i < this.goalScorers.size(); i++) {
+		for(int i = 0; i < 5 && i < this.goalScorers.size(); i++, Delay.makeDelay(90)) {
 			s = s + Integer.toString(i+1) +"."+ this.goalScorers.get(i).getName() + " - " + this.goalScorers.get(i).getGoals() + "\n";
 		}
 		return s;

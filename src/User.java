@@ -17,7 +17,7 @@ public class User {
      * (the previous version of the code advaith wrote is commented in just in case)
      */
     private void setName(String name) {
-        while (!(name.matches("^[a-zA-Z]*$")) || name.length() == 0){
+        while (!(name.strip().matches("^[a-zA-Z ]*$")) || name.strip().length() == 0){
             System.out.print(Color.ANSI_RED + "Invalid Name!\n" + Color.ANSI_CYAN + "Please Enter Again: " + Color.ANSI_RESET);
             name = new Scanner(System.in).nextLine();
         }
@@ -38,10 +38,11 @@ public class User {
      * and since userInputAndValidation() accounts (and loops for) invalid cases, we can rest assured we get valid team names here)
      */
     public void setPredictedTeam(String predictedTeam){
-        String[] arr = {"argentina", "brazil", "belgium", "england", "france", "portugal", "spain", "italy", "croatia", "denmark"};
+        String[] arr = {"argentina", "brazil", "belgium", "england", "france", "portugal", "spain", "italy", "croatia", "denmark",
+                        "arg",       "bra",    "bel",     "eng",     "fra",    "por",      "spa",   "ita",   "cro",     "den"};
         boolean flag = false;
         for(String s : arr) {
-            if (s.equalsIgnoreCase(predictedTeam)) {
+            if (s.equalsIgnoreCase(predictedTeam.strip())) {
                 flag = true;
                 break;
             }
