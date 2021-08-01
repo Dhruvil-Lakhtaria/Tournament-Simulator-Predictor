@@ -38,19 +38,6 @@ public class Knockouts implements TournamentStage{
             }
         }
         else{
-            /**copy all the teams from qualifiedTeams to playingTeams in the same order for the next stage 
-             * dont do playingTeams = qualifiedTeam
-             * cause then, both will reference the same object in memeory, which is not desirable.
-             * could have avoided the first foor loop and just written qualifiedTeams instead of playingTeam
-             * but this was done intentionally.
-             * though logically, it is the same thing, you don't use the term "qualifiedTeams", even before a match is scheduled
-             * so if we stick to this definition -->
-             * playingTeams is the list of current teams that are playing that stage.
-             * qualifiedTeams is the list of teams qualified from the previous stage.
-            */
-            for(Team t : qualifiedTeams){
-                playingTeams.set(qualifiedTeams.indexOf(t), t);
-            }
             for(int i=0; i<n; i+=2){
                 matches.add(new Match(playingTeams.get(i), playingTeams.get(i+1)));
             }
@@ -67,6 +54,8 @@ public class Knockouts implements TournamentStage{
      * 2. playing the match and then printing the match
      * 3. making all required changes to qualified, eliminated and playing teams.
      * 4. adding goalscorers.
+     * 
+     * After the for loop we set the playing teams for the next round.
      */
     public void simulate(){
         for(Match match : matches){
@@ -88,6 +77,9 @@ public class Knockouts implements TournamentStage{
             ArrayList<Player> scorers = new ArrayList<>(match.getWinningTeamScorers());
             scorers.addAll(match.getLosingTeamScorers());
             for(Player p : scorers) if(!(goalScorers.contains(p))) this.goalScorers.add(p);
+        }
+        for(Team t : qualifiedTeams){
+            playingTeams.set(qualifiedTeams.indexOf(t), t);
         }
         matches.clear();
     }
