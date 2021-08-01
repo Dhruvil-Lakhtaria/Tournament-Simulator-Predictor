@@ -8,7 +8,7 @@ public final class Delay {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
         }
-    }
+    } 
 //    this is for showing delay with loading effect....
     public static void loadingDelay(int n) {
         try {

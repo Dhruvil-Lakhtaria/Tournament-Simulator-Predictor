@@ -336,12 +336,8 @@ public class Tournament {
             System.out.println("\r" + " ".repeat(23 + s.length()) + "\r" + k);
             k.simulate();
 
-            /**add all goalScorers*/
             goalScorers.addAll(k.getGoalScorers());
 
-            /**check if the predictedTeam has qualified for the next stage
-             * if yes, increment the user's score
-             * if no, then say better luck next time or something like that*/
             checkUserPredictionWithQualifiedTeams(userPrediction,s);
         }
 
