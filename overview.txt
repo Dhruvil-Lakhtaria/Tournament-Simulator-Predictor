@@ -28,10 +28,10 @@ II. Program Structure/Basic API:
 		}
 
 	Assingned Classes -
-		Abdullah: Team, Row, TournamentStage(Interface)
-		Advaith: User, Knockouts ,Tournament , Delay
-		Dhruvil: Player, GroupStage , TextFile , Delay
-		Akheel: Manager, Match
+		Abdullah: Team, Row, TournamentStage(Interface), Color
+		Advaith: User, Knockouts, Tournament, Delay
+		Dhruvil: Player, GroupStage, TextFile, Delay, Main
+		Akheel: Manager, Match, Tournament
 
 	i)Classes:  
 	
@@ -68,23 +68,28 @@ II. Program Structure/Basic API:
 				 getters and setters.  
 				 
 		Interface TournamentStage {
-			schedule()
-			simulate()
-			getGoalscorers()
+			+ void schedule()
+			+ void simulate()
+			+ ArrayList<Player> getGoalscorers()
 		}  
 		
-		Group implements TournamentStage - 			
-			fields: Team[5], Match[] matches, Row[5] pointsTable
-			methods: Group(Team[]) 
-				schedule(),			//creates Match objects (keeping in mind teams can't have consecutive matches)
-								//fills in matches array and then prints the schedule
-
-				 simulate(),			//runs all matches in matches, manipulates pointsTable, goals of players are updated
-								//use helper methods where required
-				 				//prints details of every match in each matchday
-								//prints points table at end of every matchday
-
-				 qualifiedTeams(),		//returns top 4 teams in pointsTable  
+		GrouStage implements TournamentStage - 			
+			fields: - ArrayList<Team>playingsTeams
+				- ArrayList<Match>mathces
+				- ArrayList<Row>pointsTable
+				- ArrayList<Player>goalScorers
+				
+			methods: + GroupStage(ArrayList<Team>teams) 
+				 + void schedule()   //fills matches ArrayList 
+				 + void simulate()   //runs all matches in matches, manipulates pointsTable, goals of players are updated
+				 + void sortPointsTable()
+				 + void sortScorers()
+				 + String showPointsTable()
+				 + String showGoalScorers()
+				 + ArrayList<Player> getGoalScorers()
+				 + ArrayList<Team> getQualifiedTeams()	
+				 + String toString() //print groupstage schedule
+				 + getter for remaining fields
 				 
 		Knockouts implements TournamentStage - 
 			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
@@ -97,24 +102,15 @@ II. Program Structure/Basic API:
 			fields: Team, points, goalsScored, goalsConceded, wins, losses
 				//winning team +3 points
 				//losing 0.
-			methods: Row(Team)
-				 Team getTeam()
-				 int getPoints()
-				 int getGoalsScored()
-				 int getGoalsConceded()
-				 int getWins()
-				 int getLosses()
-				 void setGoalsScored()
-				 void updateGoalsScored()
-				 void setGoalsConceded()
-				 void updateGoalsConceded()
-				 void addWin()
-				 void addWins()
-				 void setWins()
-				 void addLoss()
-				 void addLosses()
-				 void setLosses()
-				 toString(). 
+			methods: + Row(Team)
+				 + getters and setters
+				 + void updateGoalsScored()
+				 + void updateGoalsConceded()
+				 + void addWin()
+				 + void addWins()
+				 + void addLoss()
+				 + void addLosses()
+				 + toString(). 
 				 
 		Match -
 			fields: - Team team1, team2, winner, loser
@@ -135,17 +131,22 @@ II. Program Structure/Basic API:
 				 
 		Team -
 			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, int rank, int starPlayers	
-			methods: Team(Player[] players, name, fifaCode, Captain, int starPlayer,.....)
-				 toString(),
-				 getAvgRating()
-				 getters and setters.  
+			methods: +Team(All fields)
+				 + double getAvgRating()
+				 + toString()
+				 + getters 
 				 
 		Player -	
-			fields: String name, String Club, double playerRating, double shootingAbility, int goals, Team team 
-			methods: Player(fields...)
-				 toString(),
-				 setTeam(),
-				 getters and setters.  
+			fields: - String name,position
+				- double playerRating,shootingAbility
+				- int goals,jerseyNumber
+				- Team team 
+				
+			methods: + Player(String name.String pos,int jerseyNo,double playerRating,double shootingAbility)
+				 + void setTeam(Team t)
+				 + void addGoals()
+				 + String toString() 
+				 getters and setters for remaining fields....  
 				 
 		Manager -
 			fields: - String name
