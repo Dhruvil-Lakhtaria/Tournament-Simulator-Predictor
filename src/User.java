@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class User {
@@ -22,11 +20,6 @@ public class User {
             name = new Scanner(System.in).nextLine();
         }
         this.name = name;
-        // if(name.equals(""))
-        //     System.out.println("No user name is entered!");
-        // else if(!(name.matches("^[a-zA-Z]*$")))
-        //     System.out.println("User Name has invalid characters. Must contain only alphabets\nPlease Enter Again: ");
-        // this.name = name;
     }
 
     /**
@@ -34,7 +27,7 @@ public class User {
      * The way this method is called from other classes pretty much ensures no chance for invalid teams to be entered
      * But check is necessary nonetheless 
      * 
-     * (For refference, in Tournament class' start method, userInputAndValidation() is called before setPredictedTeam()
+     * (For reference, in Tournament class' start method, userInputAndValidation() is called before setPredictedTeam()
      * and since userInputAndValidation() accounts (and loops for) invalid cases, we can rest assured we get valid team names here)
      */
     public void setPredictedTeam(String predictedTeam){
@@ -70,7 +63,6 @@ public class User {
                 "\nPoints: " + points;
     }
 
-    //getters
     public String getName() {
         return name;
     }

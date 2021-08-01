@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Match {
     
     private Team team1, team2;
@@ -8,15 +7,6 @@ public class Match {
     private int goalsWinner, goalsLoser;
     private ArrayList<Player> winningTeamScorers, losingTeamScorers;
     private ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals;
-
-    // public static void main(String[] args) {
-
-    //     Team[] t = teamBuilder.buildTeam();
-
-    //     Match m1 = new Match(t[0], t[1]);
-    //     m1.play();
-    //     System.out.println(m1);
-    // }
 
     Match(Team team1, Team team2){
 
@@ -150,23 +140,12 @@ public class Match {
     private void determineGoalScorers(){
 
         /**
-         * ---------------------- initial method how implemented (can be found in earlier commit) --------------------------
-         * (since not exactly specified but was discussed in meeting only, this can be ignored or kept for discussion if needed)
-         * two for loops, one to account for all of the winning goals, the other to account for loosing.
-         * for each goal we generate a random value from [0,10)
-         * this is used as the least rating a player needs to score that particular goal
-         * then we keep looping (using random indexs) until we come across a scorer with ability >= requirement
-         * we add a goal to the tally of the scorer and if the scorer hasnt already scored, 
-         * we add him to the ArrayList for his team's scorers
-         * -----------------------------------------------------------------------------------------------------------------
-         * 
          * we create two ArrayLists (one with probabilities of winners scoring and another with losers)
          * by probabilities we mean we weighted ability of the players in that team, where the weight of the ability is the value of the ability itself
          * ie, an abiliity 10 will have a weight 10 & an ability 5 will have a weight 5
          * since a player of ability 10 is way more likely to score than a player with ability 5.
          * we add these values repeatedly into the ArrayLists.
          */
-
 
         ArrayList<Double> winGoalProbabilities = new ArrayList<>();
         ArrayList<Double> loseGoalProbabilities = new ArrayList<>();
@@ -288,28 +267,8 @@ public class Match {
                     winningTeamScorers.get(i).getName() + " x (" + winningTeamPlayerGoals.get(i) + ")\n";
             }
         }
-
-        // s += winner.getName() + " Scorers:\n";
-        // for (Player p : winningTeamScorers){
-        //     s += p.getName() + " x (" + winningTeamPlayerGoals.get(winningTeamScorers.indexOf(p)) + ")\n";
-        // }
-        // if (goalsLoser != 0){
-        //     s += "\n" + loser.getName() + " Scorers:\n";
-        //     for (Player p : losingTeamScorers){
-        //         s += p.getName() + " x (" + losingTeamPlayerGoals.get(losingTeamScorers.indexOf(p)) + ")\n";
-        //     }
-        // }
-
-
-
         return s;
     }
-
-    /**
-     * getters and setters
-     * (checked for input values for setters)
-     * (couldnt think of an invalid case for the winningTeamScorers and losingTeamScorers ArrayLists, any insight?)
-     */
 
     public Team getTeam1() {
         return team1;

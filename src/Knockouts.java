@@ -7,8 +7,6 @@ public class Knockouts implements TournamentStage{
     private ArrayList<Team> qualifiedTeams;
     private ArrayList<Team> eliminatedTeams;
     
-
-    /**constructor*/
     Knockouts(ArrayList<Team> playingTeams){
         this.playingTeams = playingTeams;
         matches = new ArrayList<>();
@@ -17,47 +15,28 @@ public class Knockouts implements TournamentStage{
         eliminatedTeams = new ArrayList<>();
     }
 
-    /**methods implemented from Interface
-     * schedule()
-     * simulate()
-     * getGoalScorers()
-     * */
-
+    /**
+     * schedule() creates Match objects and fills them into the matches ArrayList in the correct order (keeping the tournament brackets in mind)
+     * 
+     * 1. we get the size of playingTeams ArrayList to know whether the stage is a quarter-final, semi-final or a final.
+     * 2. if we are scheduling for the quarterfinals (n == 8): 
+     *          - Initially, the playingTeams ArrayList = {A1, A2, A3, A4, B1, B2, B3, B4} 
+     *            where A1 A2 A3 A4 is the top 4 teams of group A
+     *              &   B1 B2 B3 B4 is the top 4 teams of group B
+     *          - The matchups in quarters are = {A1B4, A3B2, A2B3, A4B1}
+     *    if we are scheduling for semifinals or finals (n != 8):
+     *          - Matches are scheduled in the same way as they are placd in playingTeams ArrayList
+     */
+    @Override
     public void schedule(){
-        /**
-         * get size of playingTeams to help us identify quarters, semis and finale
-         */
         int n = this.playingTeams.size();
 
-        /**
-         * adding Match objects in the right order of scheduling the matches
-         */
-
-        /**
-         * what i have implemented below is an ideal bracket
-         * so, in the quarters, the exact order (ideal) of scheduling the matches is
-         * A1B4 A3B2 A2B3 A4B1
-         * where A1 A2 A3 A4 is the top 4 teams of group A
-         * and B1 B2 B3 B4 is the top 4 teams of group B
-         *
-         * important point to note here is
-         * initially, the playingTeams array = {A1, A2, A3, A4, B1, B2, B3, B4}
-         * the algo is based on this initial format for the quarters
-         * so, whoever is creating Knockouts object,
-         * make sure, you stick to this order while passing the playingTeam array in the constructor
-         */
-
         if(n == 8){
-            for(int i=0; i<8; i+=2){
-                int j = i/4 + i%4;
+            for(int i=0, j = i/4 + i%4; i<8; i+=2, j = i/4 + i%4) {
+                // int j = i/4 + i%4;
                 matches.add(new Match(playingTeams.get(j), playingTeams.get(7 - j)));
             }
         }
-
-        /**
-         * in semis and final, the matches are scheduled just the way they are placed in the playingTeams array
-         */
-
         else{
             /**copy all the teams from qualifiedTeams to playingTeams in the same order for the next stage 
              * dont do playingTeams = qualifiedTeam
@@ -79,46 +58,36 @@ public class Knockouts implements TournamentStage{
 
         qualifiedTeams.clear();
         eliminatedTeams.clear();
-
-        /**Matches are now scheduled!!*/
-
     }
 
     /**
-     * 1. Print out which match is being played (also doing a lil formatting to show that its being played)
+     * simulate() loops for every match in matches ArrayList
+     * 
+     * 1. Print out which match is being played
      * 2. playing the match and then printing the match
      * 3. making all required changes to qualified, eliminated and playing teams.
-     * 4. adding goalscorers.(For Advaith: your previous code was good and worked, i just made it a bit shorter. if u want you can compare)
-     *    If no issue then delete comments or wtv ur call.
-     * 5. then the loop continues for every match^
+     * 4. adding goalscorers.
      */
     public void simulate(){
-
         for(Match match : matches){
+            /**1 */
             Delay.makeDelay(500);
             System.out.print("\n" + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + ":\r");
 			Delay.specificDelay(match.getTeam1().getName().length() + 4 + match.getTeam2().getName().length(), 160);
 
-            /**play the match*/
+            /**2 */
             match.play();
 			System.out.print("\r" + match.getTeam1().getName() + " vs " + match.getTeam2().getName() + ": " + match);
 
-            /**
-             * Adding winner to qualifiedTeams, Adding loser to eliminatedTeams, Removing loser from playingTeams
-             */
+            /**3 */
             qualifiedTeams.add(match.getWinner());
             eliminatedTeams.add(match.getLoser());
             playingTeams.remove(match.getLoser());
 
-            /**update the goalScorer array
-             * add the goal scorers of the match (from both losing team & winning team)*/
+            /**4 */
             ArrayList<Player> scorers = new ArrayList<>(match.getWinningTeamScorers());
             scorers.addAll(match.getLosingTeamScorers());
             for(Player p : scorers) if(!(goalScorers.contains(p))) this.goalScorers.add(p);
-			
-            /**print Match stats*/
-            // System.out.println(match);
-            // Delay.makeDelay(4_000);
         }
         matches.clear();
     }
@@ -130,12 +99,7 @@ public class Knockouts implements TournamentStage{
         }
         return s;
     }
-    
-    public ArrayList<Player> getGoalScorers(){
-        return new ArrayList<>(goalScorers);
-    }
 
-    /**getters & setters*/
     public ArrayList<Team> getPlayingTeams() {
         return new ArrayList<Team>(playingTeams);
     }
@@ -152,8 +116,8 @@ public class Knockouts implements TournamentStage{
         return new ArrayList<>(matches);
     }
 
-    public void setGoalScorers(ArrayList<Player> goalScorers) {
-        this.goalScorers = goalScorers;
+    public ArrayList<Player> getGoalScorers(){
+        return new ArrayList<>(goalScorers);
     }
 
     public void setPlayingTeams(ArrayList<Team> playingTeams) {
@@ -170,5 +134,9 @@ public class Knockouts implements TournamentStage{
 
     public void setMatches(ArrayList<Match> matches) {
         this.matches = matches;
+    }
+
+    public void setGoalScorers(ArrayList<Player> goalScorers) {
+        this.goalScorers = goalScorers;
     }
 }
