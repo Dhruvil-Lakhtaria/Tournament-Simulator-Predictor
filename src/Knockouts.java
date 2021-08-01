@@ -32,8 +32,8 @@ public class Knockouts implements TournamentStage{
         int n = this.playingTeams.size();
 
         if(n == 8){
-            for(int i=0, j = i/4 + i%4; i<8; i+=2, j = i/4 + i%4) {
-                // int j = i/4 + i%4;
+            for(int i=0; i<8; i+=2) {
+                int j = i/4 + i%4;
                 matches.add(new Match(playingTeams.get(j), playingTeams.get(7 - j)));
             }
         }
@@ -78,6 +78,7 @@ public class Knockouts implements TournamentStage{
             scorers.addAll(match.getLosingTeamScorers());
             for(Player p : scorers) if(!(goalScorers.contains(p))) this.goalScorers.add(p);
         }
+	    /**copy each team from qualifiedTeam to playingTeam to maintain the same order of matches */
         for(Team t : qualifiedTeams){
             playingTeams.set(qualifiedTeams.indexOf(t), t);
         }
