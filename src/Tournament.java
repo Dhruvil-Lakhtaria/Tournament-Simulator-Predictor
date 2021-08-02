@@ -179,7 +179,7 @@ public class Tournament {
                 System.out.print(Color.ANSI_CYAN + "Enter [TEAMNAME] from group I" + "I".repeat(g1g2.indexOf(group)) + " whose details are required / press [Y] to continue: " + Color.ANSI_RESET);
                 check = sc.nextLine();
                 if(!check.strip().equalsIgnoreCase("y")) {
-                    if(this.validatePrediction(check.strip(), group)) for (Team t : group.getPlayingTeams()) if (check.strip().equalsIgnoreCase(t.getName()) || check.strip().equalsIgnoreCase(t.getFifaCode())) System.out.print(t);
+                    if(this.validatePrediction(check.strip(), group)) {for (Team t : group.getPlayingTeams()) if (check.strip().equalsIgnoreCase(t.getName()) || check.strip().equalsIgnoreCase(t.getFifaCode())) System.out.print(t);}
                     else System.out.println(Color.ANSI_RED + "Invalid Team!" + Color.ANSI_RESET);
                 }
             } while (!check.strip().equalsIgnoreCase("y"));
