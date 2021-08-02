@@ -95,7 +95,7 @@ public class Tournament {
      * after makeGroups() is called in start(),there is nothing else to be done other than outputting the groups
      * which is intern done by another helper function displayGroups()
      */
-    public void makeGroups(){
+    private void makeGroups(){
         ArrayList<Team> teamsOfGroup1 = new ArrayList<>();
         ArrayList<Team> teamsOfGroup2 = new ArrayList<>();
 
