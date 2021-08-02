@@ -26,21 +26,21 @@ public class Row {
         return wins;
     }
 
-    public int getLosses() {
-        return losses;
-    }
+//    public int getLosses() {
+//        return losses;
+//    }
 
-    public void setGoalsScored(int goalsScored) {
-        this.goalsScored = goalsScored;
-    }
+//    public void setGoalsScored(int goalsScored) {
+//        this.goalsScored = goalsScored;
+//    }
 
     public void updateGoalsScored(int goalsScored) {
         this.goalsScored += goalsScored;
     }
 
-    public void setGoalsConceded(int goalsConceded) {
-        this.goalsConceded = goalsConceded;
-    }
+//    public void setGoalsConceded(int goalsConceded) {
+//        this.goalsConceded = goalsConceded;
+//    }
 
     public void updateGoalsConceded(int goalsConceded) {
         this.goalsConceded += goalsConceded;
@@ -51,27 +51,27 @@ public class Row {
         points += 3;
     }
 
-    public void addWins(int wins) {
-        this.wins += wins;
-        points += wins*3;
-    }
+//    public void addWins(int wins) {
+//        this.wins += wins;
+//        points += wins*3;
+//    }
 
-    public void setWins(int wins) {
-        this.wins = wins;
-        points = wins*3;
-    }
+//    public void setWins(int wins) {
+//        this.wins = wins;
+//        points = wins*3;
+//    }
 
     public void addLoss() {
         losses++;
     }
 
-    public void addLosses(int losses) {
-        this.losses += losses;
-    }
+//    public void addLosses(int losses) {
+//        this.losses += losses;
+//    }
 
-    public void setLosses(int losses) {
-        this.losses = losses;
-    }
+//    public void setLosses(int losses) {
+//        this.losses = losses;
+//    }
 
     @Override
     public String toString() {

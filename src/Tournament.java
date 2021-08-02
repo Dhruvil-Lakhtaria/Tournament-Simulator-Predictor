@@ -279,7 +279,7 @@ public class Tournament {
             check = sc.nextLine();
             if(k.getPlayingTeams().size() == 2) {
                 System.out.println("\n" + Color.ANSI_UNDERLINE + "Final Match" + Color.ANSI_RESET + ":");
-                System.out.print("Scheduling" + s + "\r");
+                System.out.print("Scheduling " + s + "\r");
             }
             else {
                 System.out.println("\n" + Color.ANSI_UNDERLINE + "Schedule of Matches in " + s + Color.ANSI_RESET + ":");
@@ -302,7 +302,6 @@ public class Tournament {
         System.out.print(("-".repeat(30)) + "\n");
         Delay.makeDelay(1000);
         System.out.print("\n" + Color.ANSI_GREEN + String.format("%23s", "TOURNAMENT OVER!") + Color.ANSI_RESET);
-
     }
     
     /**
@@ -422,27 +421,27 @@ public class Tournament {
         return prediction;
     }
 
-    public ArrayList<Team> getAllTeams() {
-        return allTeams;
-    }
+//    public ArrayList<Team> getAllTeams() {
+//        return allTeams;
+//    }
 
-    public GroupStage getGroup1() {
-        return group1;
-    }
+//    public GroupStage getGroup1() {
+//        return group1;
+//    }
 
-    public GroupStage getGroup2() {
-        return group2;
-    }
+//    public GroupStage getGroup2() {
+//        return group2;
+//    }
 
-    public void setAllTeams(ArrayList<Team> allTeams) {
-        this.allTeams = allTeams;
-    }
+//    public void setAllTeams(ArrayList<Team> allTeams) {
+//        this.allTeams = allTeams;
+//    }
 
-    public void setGroup1(GroupStage group1) {
-        this.group1 = group1;
-    }
+//    public void setGroup1(GroupStage group1) {
+//        this.group1 = group1;
+//    }
 
-    public void setGroup2(GroupStage group2) {
-        this.group2 = group2;
-    }
+//    public void setGroup2(GroupStage group2) {
+//        this.group2 = group2;
+//    }
 }

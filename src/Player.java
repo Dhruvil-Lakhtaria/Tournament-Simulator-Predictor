@@ -41,18 +41,18 @@ public class Player{
 	{
 		return this.name;
 	}
-	public void setPlayerRating(double r)
-	{
-		this.playerRating = r;
-	}
-	public void setShootingAbility(double s)
-	{
-		this.shootingAbility = s;
-	}
-	public void setName(String n)
-	{
-		this.name = n;
-	}
+//	public void setPlayerRating(double r)
+//	{
+//		this.playerRating = r;
+//	}
+//	public void setShootingAbility(double s)
+//	{
+//		this.shootingAbility = s;
+//	}
+//	public void setName(String n)
+//	{
+//		this.name = n;
+//	}
 
 	public String toString()
 	{

@@ -28,7 +28,7 @@ public class GroupStage implements TournamentStage {
 	 * 
 	 * So that the final schedule is: (0,1), (2,3), (4,0), (1,2), (3,4), (0,2), (1,3), (2,4), (3,0), (4,1)
 	 */
-	@Override
+	
 	public void schedule() {
 		for(int i = 0; i <= 8; i += 2) matches.add(new Match(playingTeams.get(i % 5), playingTeams.get((i + 1) % 5)));
 

@@ -105,31 +105,31 @@ public class Knockouts implements TournamentStage{
         return new ArrayList<Team>(eliminatedTeams);
     }
 
-    public ArrayList<Match> getMatches() {
-        return new ArrayList<>(matches);
-    }
+//    public ArrayList<Match> getMatches() {
+//        return new ArrayList<>(matches);
+//    }
 
     public ArrayList<Player> getGoalScorers(){
         return new ArrayList<>(goalScorers);
     }
 
-    public void setPlayingTeams(ArrayList<Team> playingTeams) {
-        this.playingTeams = playingTeams;
-    }
+//    public void setPlayingTeams(ArrayList<Team> playingTeams) {
+//        this.playingTeams = playingTeams;
+//    }
 
-    public void setQualifiedTeams(ArrayList<Team> qualifiedTeams) {
-        this.qualifiedTeams = qualifiedTeams;
-    }
+//    public void setQualifiedTeams(ArrayList<Team> qualifiedTeams) {
+//        this.qualifiedTeams = qualifiedTeams;
+//    }
 
-    public void setEliminatedTeams(ArrayList<Team> eliminatedTeams) {
-        this.eliminatedTeams = eliminatedTeams;
-    }
+//    public void setEliminatedTeams(ArrayList<Team> eliminatedTeams) {
+//        this.eliminatedTeams = eliminatedTeams;
+//    }
 
-    public void setMatches(ArrayList<Match> matches) {
-        this.matches = matches;
-    }
+//    public void setMatches(ArrayList<Match> matches) {
+//        this.matches = matches;
+//    }
 
-    public void setGoalScorers(ArrayList<Player> goalScorers) {
-        this.goalScorers = goalScorers;
-    }
+//    public void setGoalScorers(ArrayList<Player> goalScorers) {
+//        this.goalScorers = goalScorers;
+//    }
 }

@@ -320,53 +320,53 @@ public class Match {
         return new ArrayList<Player>(losingTeamScorers);
     }
 
-    public void setTeam1(Team team1) {
-        if (team1 == null){
-            System.out.println("\nnull team in setter");
-        }
-        this.team1 = team1;
-    }
+//    public void setTeam1(Team team1) {
+//        if (team1 == null){
+//            System.out.println("\nnull team in setter");
+//        }
+//        this.team1 = team1;
+//    }
 
-    public void setTeam2(Team team2) {
-        if (team1 == null){
-            System.out.println("\nnull team in setter");
-        }
-        this.team2 = team2;
-    }
+//    public void setTeam2(Team team2) {
+//        if (team1 == null){
+//            System.out.println("\nnull team in setter");
+//        }
+//        this.team2 = team2;
+//    }
 
-    public void setWinner(Team winner) {
-        if (winner == null){
-            System.out.println("\nnull winner in setter");
-        }
-        this.winner = winner;
-    }
+//    public void setWinner(Team winner) {
+//        if (winner == null){
+//            System.out.println("\nnull winner in setter");
+//        }
+//        this.winner = winner;
+//    }
 
-    public void setLoser(Team loser) {
-        if (loser == null){
-            System.out.println("\nnull loser in setter");
-        }
-        this.loser = loser;
-    }
+//    public void setLoser(Team loser) {
+//        if (loser == null){
+//            System.out.println("\nnull loser in setter");
+//        }
+//        this.loser = loser;
+//    }
 
-    public void setGoalsWinner(int goalsWinner) {
-        if (goalsWinner < 0){
-            System.out.println("\nInvalid goalsWinner in setter");
-        }
-        this.goalsWinner = goalsWinner;
-    }
+//    public void setGoalsWinner(int goalsWinner) {
+//        if (goalsWinner < 0){
+//            System.out.println("\nInvalid goalsWinner in setter");
+//        }
+//        this.goalsWinner = goalsWinner;
+//    }
 
-    public void setGoalsLoser(int goalsLoser) {
-        if (goalsLoser < 0){
-            System.out.println("\nInvalid goalsLoser in setter");
-        }
-        this.goalsLoser = goalsLoser;
-    }
+//    public void setGoalsLoser(int goalsLoser) {
+//        if (goalsLoser < 0){
+//            System.out.println("\nInvalid goalsLoser in setter");
+//        }
+//        this.goalsLoser = goalsLoser;
+//    }
 
-    public void setWinningTeamScorers(ArrayList<Player> winningTeamScorers) {
-        this.winningTeamScorers = winningTeamScorers;
-    }
+//    public void setWinningTeamScorers(ArrayList<Player> winningTeamScorers) {
+//        this.winningTeamScorers = winningTeamScorers;
+//    }
 
-    public void setLosingTeamScorers(ArrayList<Player> losingTeamScorers) {
-        this.losingTeamScorers = losingTeamScorers;
-    }
+//    public void setLosingTeamScorers(ArrayList<Player> losingTeamScorers) {
+//        this.losingTeamScorers = losingTeamScorers;
+//    }
 }
