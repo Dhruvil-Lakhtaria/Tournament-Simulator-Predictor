@@ -36,14 +36,35 @@ II. Program Structure/Basic API:
 	i)Classes:  
 	
 		User -
-			fields: name, points, prediction
-			methods: toString(),
-				 getters and setters.  
+			fields: - String name
+				- String predictedTeam
+				- int points
+			methods: + User(String name)
+				 + updatePoints()
+				 - private setName(String name)
+				 toString()
+				 getters and setters
   
 		Tournament -
-			fields: Group1, Group2, Knockout q, Knockout s, Knockout f, Player[] goalScorers, Team[] allTeams, User
-			methods: Tournament(String fileName, User u) //file containing teams, parses Text file
-				 start() {
+			fields: - GroupStage group1
+				- GroupStage group1
+				- Knockouts k
+				- ArrayList<Player> goalScorers
+				- ArrayList<Team> allTeams
+				- User user
+				- int INCREMENT_IN_GROUP_STAGE = 5
+				- int INCREMENT_IN_KNOCKOUTS = 10
+			methods: + Tournament(String fileName, User u) //file containing teams, parses Text file
+				 - ArrayList<Team> buildTeam(String filename)
+				 - void makeGroups()
+				 - void displayGroups()
+				 - void displayQualifiedTeams()
+				 - void checkUserPredictionWithQualifiedTeams(String userPrediction, String kStage)
+				 - boolean validatePrediction(String userPrediction, GroupStage g)
+				 - boolean validatePrediction(String userPrediction, Knockouts k)
+				 - String userInputAndValidation(GroupStage g)
+				 - String userInputAndValidation(Knockouts k)
+				 + void start() {
 					
 					//take prediction
 					//Simulate Group1
@@ -60,12 +81,9 @@ II. Program Structure/Basic API:
 					.
 					.
 					.
-					
-					
-				},
-				 toString(), 
-				 makeGroups(),
-				 getters and setters.  
+					}
+				 + toString(), 
+				 + getters and setters.  
 				 
 		Interface TournamentStage {
 			+ void schedule()
@@ -74,52 +92,68 @@ II. Program Structure/Basic API:
 		}  
 		
 		GrouStage implements TournamentStage - 			
-			fields: - ArrayList<Team>playingsTeams
-				- ArrayList<Match>mathces
-				- ArrayList<Row>pointsTable
-				- ArrayList<Player>goalScorers
+			fields: - ArrayList<Team> playingsTeams
+				- ArrayList<Match> mathces
+				- ArrayList<Row> pointsTable
+				- ArrayList<Player> goalScorers
 				
-			methods: + GroupStage(ArrayList<Team>teams) 
-				 + void schedule()   //fills matches ArrayList 
-				 + void simulate()   //runs all matches in matches, manipulates pointsTable, goals of players are updated
+			methods: + GroupStage(ArrayList<Team> teams) 
+				 + void schedule()   			//fills matches ArrayList 
+				 + void simulate()   			//runs all matches in matches, manipulates pointsTable, goals of players are updated
 				 + void sortPointsTable()
 				 + void sortScorers()
 				 + String showPointsTable()
 				 + String showGoalScorers()
-				 + ArrayList<Player> getGoalScorers()
-				 + ArrayList<Team> getQualifiedTeams()	
-				 + String toString() //print groupstage schedule
-				 + getter for remaining fields
+				 + ArrayList<Team> getEliminatedTeam()
+				 + ArrayList<Team> getQualifiedTeam()	
+				 + String toString() 			//print groupstage schedule
+				 + getters for remaining feilds
 				 
 		Knockouts implements TournamentStage - 
-			fields: Team[] playingTeams, Match[] matches, Team[] qualified 
-			methods: Knockouts(Team[])
-				 schedule(), 			//similar to Group.schedule (brackets order must be maintained)
-				 simulate(),			//similar to Group.simulate() (no pointsTable to output, no match day)
-				 qualifiedTeams(), 		//returns qualified teams.  
+			fields: - ArrayList<Team> playingTeams
+				- ArrayList<Match> matches
+				- ArrayList<Player> goalScorers
+				- ArrayList<Team> qualifiedTeams 
+				- ArrayList<Team> eliminatedTeams 
+			methods: + Knockouts(ArrayList<Team> playingTeams)
+				 + void schedule() 			//similar to Group.schedule (brackets order must be maintained)
+				 + void simulate()			//similar to Group.simulate() (no pointsTable to output, no match day)
+				 + String toString()
+				 + getters and setters  
 				 
 		Row -
-			fields: Team, points, goalsScored, goalsConceded, wins, losses
+			fields: - Team team
+				- int points
+				- int goalsScored
+				- int goalsConceded
+				- int wins
+				- int losses
 				//winning team +3 points
 				//losing 0.
 			methods: + Row(Team)
-				 + getters and setters
 				 + void updateGoalsScored()
 				 + void updateGoalsConceded()
 				 + void addWin()
 				 + void addWins()
 				 + void addLoss()
 				 + void addLosses()
-				 + toString(). 
+				 + toString()
+				 + getters and setters
 				 
 		Match -
-			fields: - Team team1, team2, winner, loser
-				- int goalsWinner, goalsLoser
-				- ArrayList<Player> winningTeamScorers, losingTeamScorers
-				- ArrayList<Integer> winningTeamPlayerGoals, losingTeamPlayerGoals
+			fields: - Team team1
+				- Team team2
+				- Team winner
+				- Team loser
+				- int goalsWinner
+				- int goalsLoser
+				- ArrayList<Player> winningTeamScorers
+				- ArrayList<Player> losingTeamScorers
+				- ArrayList<Integer> winningTeamPlayerGoals
+				- ArrayList<Integer> losingTeamPlayerGoals
 			methods: + Match(team1, team2)
-				 + void play()
 				 - void determineGoalScorers()
+				 + void play()
 				 + String toString()
 				 + getters and setters.  
 								//fields determining outcomes
@@ -130,23 +164,30 @@ II. Program Structure/Basic API:
 								//5. int avgPlayerRatingDiff (value added and subtracted -> 0.25)
 				 
 		Team -
-			fields: Player[] players, String name, String fifaCode, Player Captain, Manager manager, int rank, int starPlayers	
+			fields: - String name
+				- String fifaCode
+				- Player Captain
+				- Manager manager
+				- int rank
+				- int starPlayers
+				- ArrayList<Player> players
 			methods: +Team(All fields)
 				 + double getAvgRating()
 				 + toString()
 				 + getters 
 				 
 		Player -	
-			fields: - String name,position
-				- double playerRating,shootingAbility
-				- int goals,jerseyNumber
+			fields: - String name
+				- String position
+				- double playerRating
+				- double shootingAbility
+				- int goals
+				- int jerseyNumber
 				- Team team 
-				
 			methods: + Player(String name.String pos,int jerseyNo,double playerRating,double shootingAbility)
-				 + void setTeam(Team t)
-				 + void addGoals()
+				 + void addGoal()
 				 + String toString() 
-				 getters and setters for remaining fields....  
+				 + getters and setters  
 				 
 		Manager -
 			fields: - String name
