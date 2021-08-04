@@ -224,7 +224,10 @@ public class GroupStage implements TournamentStage {
 	{
 		return new ArrayList<Player>(this.goalScorers);
 	}
-
+	public void setGoalScorer(ArrayList<Player>scorers)
+	{
+		this.goalScorers = scorers;
+	}
 	public ArrayList<Team> getPlayingTeams()
 	{
 		return new ArrayList<Team>(this.playingTeams);

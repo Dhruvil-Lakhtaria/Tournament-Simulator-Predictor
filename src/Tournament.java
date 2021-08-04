@@ -204,7 +204,8 @@ public class Tournament {
             group.simulate();
             group.sortPointsTable();
             goalScorers.addAll(group.getGoalScorers());
-
+            
+            if(g1g2.indexOf(group) == 0)this.group2.setGoalScorer(this.goalScorers);
             /**5 */
             Delay.makeDelay(450);
 
