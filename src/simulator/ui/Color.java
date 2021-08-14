@@ -23,7 +23,7 @@
  * Be consistent in the colors used.
  *
  */
- 
+ package simulator.ui;
   
 public class Color {
     public static final String ANSI_UNDERLINE = "\u001B[4m";

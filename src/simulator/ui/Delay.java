@@ -1,3 +1,4 @@
+package simulator.ui;
 public final class Delay {
 
     private Delay() {

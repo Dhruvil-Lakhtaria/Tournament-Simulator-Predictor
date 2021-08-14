@@ -1,5 +1,7 @@
-import java.util.Scanner;
+package simulator;
 
+import java.util.Scanner;
+import simulator.ui.*;
 public class User {
     private String name;
     private int points = 0;

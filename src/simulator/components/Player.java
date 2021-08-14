@@ -1,3 +1,4 @@
+package simulator.components;
 
 public class Player{
 	private String name,position;

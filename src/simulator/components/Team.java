@@ -1,3 +1,5 @@
+package simulator.components;
+
 import java.util.ArrayList;
 
 public class Team {

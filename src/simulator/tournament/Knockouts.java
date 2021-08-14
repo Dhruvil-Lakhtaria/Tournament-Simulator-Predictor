@@ -1,4 +1,7 @@
+package simulator.tournament;
+import simulator.components.*;
 import java.util.ArrayList;
+import simulator.ui.*;
 
 public class Knockouts implements TournamentStage{
     private ArrayList<Team> playingTeams;

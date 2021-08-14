@@ -1,6 +1,9 @@
+package simulator.tournament;
+import simulator.components.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
+import simulator.ui.*;
 
 public class GroupStage implements TournamentStage {
 	private ArrayList<Team> playingTeams;

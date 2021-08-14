@@ -1,8 +1,10 @@
+package simulator.components;
+
 public class Manager{
         private String name;
         private double ability;
 
-        Manager(String name, double ability){
+        public Manager(String name, double ability){
 
             if (name == ""){
                 System.out.println("No Manager name in constructor");

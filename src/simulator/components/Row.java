@@ -1,3 +1,5 @@
+package simulator.components;
+
 public class Row {
     private Team team;
     private int points, goalsScored, goalsConceded, wins, losses;

@@ -1,5 +1,9 @@
+package simulator;
+
 import java.util.Scanner;
 
+import simulator.tournament.Tournament;
+import simulator.ui.*;
 public class Main {
 
 	/**

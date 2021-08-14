@@ -1,8 +1,11 @@
+package simulator.tournament;
+import simulator.User;
+import simulator.components.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import simulator.ui.*;
 public class Tournament {
     private GroupStage group1;
     private GroupStage group2;
