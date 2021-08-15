@@ -372,10 +372,20 @@ public class Tournament {
         x = (kStage == "Final") ? "" : " <------";
         for (Team t : k.getQualifiedTeams()) {
             if (userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())) {
-                System.out.println(t.getName() + x);
-                user.updatePoints(INCREMENT_IN_KNOCKOUTS);
+            	user.updatePoints(INCREMENT_IN_KNOCKOUTS);
+            	if(kStage.equals("Final"))
+            	{
+            		System.out.println(k.getQualifiedTeams().get(0));
+            		return;
+            	}
+            	System.out.println(t.getName() + x); 
             }
             else{
+            	if(kStage.equals("Final"))
+            	{
+            		System.out.println(k.getQualifiedTeams().get(0));
+            		return;
+            	}
                 System.out.println(t.getName());
             }
         }
