@@ -4,6 +4,7 @@ import simulator.components.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 import simulator.ui.*;
 public class Tournament {
@@ -19,11 +20,7 @@ public class Tournament {
 
     /**
      * 1. Performs check on user
-     * 2. Invokes helper function buildTeam() (to help..build...team XD) 
-     * 
-     * Less chance that the user check over here will come out true as well,
-     * Since the user constructor (which takes care of invalid names) was called before passing the user to tournament.
-     * Nevertheless check still necessary
+     * 2. Invokes helper function buildTeam() that builds the team by parsing the text file and storing data in respective component classes
      */
     public Tournament(User user, String filename) {
         if(user == null)
@@ -36,13 +33,13 @@ public class Tournament {
 
     /**
      * 1. initializes a String content = ""
-     * 2. appends everything in textfile into content (seperated by a "\n")
+     * 2. appends everything in text file into content (separated by a "\n")
      * 3. splits content into data (splits according to "\n")
      * 4. Loops through data, reading values and instantiating objects
-     *    - Stores the captains name seperately
-     *    - While going through the players and instantiating Player objects, 
-     *      if the current players name is the captains name, 
-     *      then a refference to that player is assigned to "captain" attribute
+     *    - Stores the captains name separately
+     *    - While going through the players and instantiating Player objects,
+     *      if the current players name is the captains name,
+     *      then a reference to that player is assigned to "captain" attribute
      * 5. After creating and adding all Players and managers into the team,
      *    All players are looped through AGAIN, this time to set all of their "team" attribute values
      */
@@ -75,7 +72,7 @@ public class Tournament {
             ArrayList<Player> players = new ArrayList<Player>();
             Player captain = null;
             int  starPlayers = 0;
-            
+
             for(int k = 7;k<18;k++) {
                 String d[] = data[j+k].split("\\|");
                 players.add(new Player(d[0],d[2],Integer.parseInt(d[3]),Double.parseDouble(d[1]),Double.parseDouble(d[5])));
@@ -92,11 +89,8 @@ public class Tournament {
     }
 
     /**
-     * makeGroups draws at random from different pots with 2 teams each
-     * it prints out an initial "Making groups" with a carriage return at the end.
-     * This is done because within the main program workFlow, 
-     * after makeGroups() is called in start(),there is nothing else to be done other than outputting the groups
-     * which is intern done by another helper function displayGroups()
+     * makeGroups is responsible for bifurcating the teams into 2 groups (5 in each group)
+     * it is implemented by drawing at random from different pots with 2 teams each, putting each of the 2 teams in their respective groups
      */
     private void makeGroups(){
         ArrayList<Team> teamsOfGroup1 = new ArrayList<>();
@@ -121,7 +115,7 @@ public class Tournament {
     }
 
     /**
-     * displayGroups() merely formats the output better and shows all teams in both groups. 
+     * displayGroups() shows all teams in both groups and formats the output
      * this method is called twice in the program right before each group prediction is asked.
      */
     private void displayGroups() {
@@ -134,11 +128,11 @@ public class Tournament {
     /**
      * a. Start with a message signifying the tournament part of project is starting.
      *    after which, we display all the teams that have qualified for the tournament (all 1-10 teams are displayed in a list).
-     * b. After prompting and recieving any key from the user to form groups, we invoke makeGroups() and add the two groups into g1g2 (an ArrayList of groups)
+     * b. After prompting and receiving any key from the user to form groups, we invoke makeGroups() and add the two groups into g1g2 (an ArrayList of group)
      * c. Loop through groups (explained in detail inside)
      * d. After prompting user to move on to KnockOut Stages, we initialize the teams that qualified into the knockout stages
-     * e. Loop through knockoutrounds (explained in detail inside)
-     * f. Finally we print that the tournament is over
+     * e. Loop through knockouts (for each Knockout stage -> quarters, semis and finals) (explained in detail inside)
+     * f. --Tournament is over--
      */
     public void start(){
         /**a */
@@ -146,7 +140,7 @@ public class Tournament {
         Delay.specificDelay(3,500);
         System.out.println("\n" + Color.ANSI_UNDERLINE + "Teams Qualified for the Tournament:" + Color.ANSI_RESET);
         for(Team t : this.allTeams) System.out.println(String.format("%-5s", "(" + t.getRank() + ")") + t.getName());
-        
+
         /**b */
         System.out.print(Color.ANSI_CYAN + "\n<Press [KEY] to form Groups>" + Color.ANSI_RESET);
         Scanner sc = new Scanner(System.in);
@@ -158,25 +152,25 @@ public class Tournament {
 
         /**
          * c. For each group:
-         * 
-         * 1. Invoke a makeDelay() to seperate from other groups and then display the two group's teams.
-         * 2. Prompt user for either a teamname that he/she wants information about (from said group) a "y/Y" to continue with simulation. 
-         *    The information about the team is shown using toString() of the team object and The choice is shown until y/Y is entered.
+         *
+         * 1. Invoke a makeDelay() to separate from other groups and then display the two group's teams.
+         * 2. Prompt user for either a team name that he/she wants information about (from said group) or a "y/Y" to continue with simulation.
+         *    The information about the team is shown using toString() of the team object and the choice is shown until y/Y is entered.
          * 3. We then prompt the user for prediction (calls userInputAndValidation(Group) to loop until valid prediction is entered).
-         * 4. We then prompt the user for scheduling the group folowed by one more prompt for simulating the group
+         * 4. We then prompt the user for scheduling the group followed by one more prompt for simulating the group
          *    after each of those, group.schedule() and group.simulate() are called respectively
-         *    after simulating, we also immediately sort the pointsTable of the group (for safety) and add all its goalScorers to the list maintained here.
-         * 5. After each group we print out results of the group wrt the user: 
+         *    after simulating, sort the pointsTable of the group and add all its goalScorers to the list maintained here.
+         * 5. After each group we print results of the group wrt the user:
          *      5.i)    group is over
-         *      5.ii)   which all teams qualified, 
-         *      5.iii)  whether his team qualified, 
+         *      5.ii)   which all teams qualified,
+         *      5.iii)  whether his team qualified,
          *      5.iv)   his points.
          */
         for(GroupStage group : g1g2){
             /**1 */
             Delay.makeDelay(300);
             displayGroups();
-            
+
             /**2 */
             do {
                 System.out.print(Color.ANSI_CYAN + "Enter [TEAMNAME] from group I" + "I".repeat(g1g2.indexOf(group)) + " whose details are required / press [Y] to continue: " + Color.ANSI_RESET);
@@ -186,13 +180,13 @@ public class Tournament {
                     else System.out.println(Color.ANSI_RED + "Invalid Team!" + Color.ANSI_RESET);
                 }
             } while (!check.strip().equalsIgnoreCase("y"));
-            
+
             /**3 */
             System.out.print("\n" + Color.ANSI_CYAN + "Enter your prediction for group I"+ "I".repeat(g1g2.indexOf(group)) + ": " + Color.ANSI_RESET);
             String userPrediction = userInputAndValidation(group);
             user.setPredictedTeam(userPrediction);
             System.out.println();
-            
+
             /**4 */
             System.out.print(Color.ANSI_CYAN + "<Press [KEY] to Schedule Matches in Group I" + "I".repeat(g1g2.indexOf(group)) + ">" + Color.ANSI_RESET);
             check = sc.nextLine();
@@ -207,7 +201,7 @@ public class Tournament {
             group.simulate();
             group.sortPointsTable();
             goalScorers.addAll(group.getGoalScorers());
-            
+
             if(g1g2.indexOf(group) == 0)this.group2.setGoalScorer(this.goalScorers);
             /**5 */
             Delay.makeDelay(450);
@@ -229,8 +223,8 @@ public class Tournament {
             /**5.iii) */
             if(userPrediction.strip().equalsIgnoreCase(group.getEliminatedTeam().getName()) || userPrediction.strip().equalsIgnoreCase(group.getEliminatedTeam().getFifaCode())){
                 Delay.makeDelay(1000);
-                String s = Color.ANSI_RED + "\nThe team that you selected (" + group.getEliminatedTeam().getName().toUpperCase() + ") did not make it out of Group " + "I".repeat(g1g2.indexOf(group) + 1) + 
-                     " and hence hasn't qualified for the Knockout Stage :(" + "\nBetter luck next time!" + Color.ANSI_RESET;
+                String s = Color.ANSI_RED + "\nThe team that you selected (" + group.getEliminatedTeam().getName().toUpperCase() + ") did not make it out of Group " + "I".repeat(g1g2.indexOf(group) + 1) +
+                        " and hence hasn't qualified for the Knockout Stage :(" + "\nBetter luck next time!" + Color.ANSI_RESET;
                 System.out.println(s);
             }
 
@@ -249,28 +243,25 @@ public class Tournament {
 
         /**
          * e. For each KnockoutRound:
-         * 
-         * 1. We invoke makeDelay to seperate each Knockout Stage from one another and then print out the teams available for this coming knockout stage.
+         *
+         * 1. We invoke makeDelay to separate each Knockout Stage from one another and then print out the teams available for this coming knockout stage.
          * 2. We prompt and then take users input for Prediction for current stage.
          * 3. We prompt to start scheduling and simulating that stage (both in one prompt, different from how groups was done^)
-         *    to reduce the number of breaks and make it feel bit more free.
-         *    This way, the next Break or User moment will be only after everything about this stage is done.
          * 4. After getting the prompt, we schedule the stage, print the schedule, and simulate the stage (working of simulate() is in Knockouts.java)
-         *    (All extra clutter near the schedule() and simulate() calls are for formatting) 
-         * 5. After a stage has been simulated, we add the Knockouts.goalScorers to the list of goalScorers maintained here
-         *    We then check whether the users team has moved on to the next stage (or won the final) and print out accordingly (Also prints out the user score)
+         * 5. After a stage has been simulated, we update the goalScorers list maintained here by adding players who scored goals in the Knockouts stage ( explained in detail inside)
+         *    We then check whether the users team has moved on to the next stage (or won the final) and print accordingly (Also prints out the user score)
          */
         for(int i = 0; i < 3; i++) {
             /**1 */
             Delay.makeDelay(450);
-        	displayQualifiedTeams();
+            displayQualifiedTeams();
 
             /**2 */
             String s;
             switch (k.getPlayingTeams().size()) {
                 case 8: s = "Quarter-Final"; break;
                 case 4: s = "Semi-Final"; break;
-                case 2: s = "Final"; break; 
+                case 2: s = "Final"; break;
                 default:s = Color.ANSI_YELLOW + "Number of teams < 2 within k.playingTeams" + Color.ANSI_RESET; break;
             }
             System.out.print("\n" + Color.ANSI_CYAN + "Enter your prediction for "+ s + ": " + Color.ANSI_RESET);
@@ -287,7 +278,7 @@ public class Tournament {
             }
             else {
                 System.out.println("\n" + Color.ANSI_UNDERLINE + "Schedule of Matches in " + s + Color.ANSI_RESET + ":");
-                System.out.print("Scheduling Matches for " + s + "\r");	
+                System.out.print("Scheduling Matches for " + s + "\r");
             }
 
             /**4 */
@@ -299,6 +290,22 @@ public class Tournament {
 
             /**5 */
             goalScorers.addAll(k.getGoalScorers());
+
+            /**sort the goalScorers list in decreasing order of goals scored*/
+            sortGoalScorers();
+
+            /**remove duplicate player objects (for safety, if the same player had been added if he scored in different stages of the tournament)*/
+            ArrayList<Player> uniqueGoalScorers = new ArrayList<>();
+            for(Player p : goalScorers){
+                if(!uniqueGoalScorers.contains(p)){
+                    uniqueGoalScorers.add(p);
+                }
+            }
+            goalScorers = uniqueGoalScorers;
+
+            /**display the top 5 scorers of the tournament so far*/
+            System.out.println("\n" + showGoalScorers());
+
             checkUserPredictionWithQualifiedTeams(userPrediction,s);
         }
 
@@ -307,7 +314,26 @@ public class Tournament {
         Delay.makeDelay(1000);
         System.out.print("\n" + Color.ANSI_GREEN + String.format("%23s", "TOURNAMENT OVER!") + Color.ANSI_RESET);
     }
-    
+
+    /**
+     * uses the Comparator Interface to sort the Players in decreasing order of their goals scored.
+     */
+    private void sortGoalScorers() {
+        goalScorers.sort(new Comparator<Player>() {
+            @Override
+            public int compare(Player a, Player b) {
+                return Integer.compare(b.getGoals(), a.getGoals());
+            }
+        });
+    }
+
+    public String showGoalScorers(){
+        String s = Color.ANSI_UNDERLINE + "Top Scorers in the Tournament so far" + Color.ANSI_RESET + ":\n";
+        for(int i = 0; i < 5 && i < goalScorers.size(); i++, Delay.makeDelay(90))
+            s += (i+1) +"."+ goalScorers.get(i).getName() + " - " + goalScorers.get(i).getGoals() + "\n";
+        return s;
+    }
+
     /**
      * Displayed the stage followed by the teams that qualified for that stage
      */
@@ -316,7 +342,7 @@ public class Tournament {
         switch (k.getPlayingTeams().size()) {
             case 8: s = Color.ANSI_UNDERLINE + "Quarter-Final Teams" + Color.ANSI_RESET + ":"; break;
             case 4: s = Color.ANSI_UNDERLINE + "Semi-Final Teams" + Color.ANSI_RESET + ":"; break;
-            case 2: s = Color.ANSI_UNDERLINE + "Final Teams" + Color.ANSI_RESET + ":"; break; 
+            case 2: s = Color.ANSI_UNDERLINE + "Final Teams" + Color.ANSI_RESET + ":"; break;
             default:s = Color.ANSI_YELLOW + "Number of teams < 2 within k.playingTeams" + Color.ANSI_RESET; break;
         }
         System.out.println(s);
@@ -330,9 +356,9 @@ public class Tournament {
 
     /**
      * We call three delays in this function (normal delays, only physical stopping of program, no output) to give user time to read
-     * 
-     * 1. After printing that the previous stage is over (and the 1st delay), we print the teams remaining for next round.
-     * 2. Then after the 2nd delay, we print whether or not the users team was eliminated.
+     *
+     * 1. After printing that the previous stage is over, we print the teams remaining for next round.
+     * 2. Then after the 2nd delay, we print whether the users team was eliminated.
      * 3. Lastly the 3rd delay is followed by the user details
      */
     private void checkUserPredictionWithQualifiedTeams(String userPrediction, String kStage) {
@@ -342,7 +368,7 @@ public class Tournament {
         Delay.makeDelay(1000);
         String x = (kStage == "Final") ? "\nWinner of Finals" : "\nTeams Qualified for Next Stage";
         System.out.println(Color.ANSI_UNDERLINE + x + Color.ANSI_RESET + ":");
-            
+
         x = (kStage == "Final") ? "" : " <------";
         for (Team t : k.getQualifiedTeams()) {
             if (userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())) {
@@ -356,17 +382,17 @@ public class Tournament {
 
         /**2 */
         for (Team t : k.getEliminatedTeams()) {
-        Delay.makeDelay(450);
+            Delay.makeDelay(450);
             if(userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())){
                 Delay.makeDelay(450);
                 String s = "";
                 if (kStage == "Finals") {
-                    s = Color.ANSI_RED + "\nThe team that you selected (" + t.getName().toUpperCase() + ") lost the " + kStage + 
-                               ".\nBut on the bright side, it is the second best team in the world! " + Color.ANSI_RESET;
+                    s = Color.ANSI_RED + "\nThe team that you selected (" + t.getName().toUpperCase() + ") lost the " + kStage +
+                            ".\nBut on the bright side, it is the second best team in the world! " + Color.ANSI_RESET;
                 }
                 else {
-                    s = Color.ANSI_RED + "\nThe team that you selected (" + t.getName().toUpperCase() + ") did not make it out of " + kStage + 
-                               " and hence hasn't qualified for the Next Stage :(" + Color.ANSI_RESET;
+                    s = Color.ANSI_RED + "\nThe team that you selected (" + t.getName().toUpperCase() + ") did not make it out of " + kStage +
+                            " and hence hasn't qualified for the Next Stage :(" + Color.ANSI_RESET;
                 }
                 System.out.println(s);
             }
@@ -397,9 +423,9 @@ public class Tournament {
 
     /**
      * 1. Since tournament.start() already prompted once for the prediction, we first take the input within userInputAndValidation()
-     * 2. then we repeatedly ask the user to enter a prediction until we recieves a valid one.
+     * 2. then we repeatedly ask the user to enter a prediction until we receive a valid one.
      *    we call validatePrediction(String, Group) or validatePrediction(String, Knockouts) to check if the predicted team is valid for a particular group or knockout stage.
-     * 3. finally we return the valid prediction once we recieve
+     * 3. Finally, we return the valid prediction once we receive
      */
     private String userInputAndValidation(GroupStage g) {
         Scanner scanner = new Scanner(System.in);
@@ -412,7 +438,7 @@ public class Tournament {
         }
         return prediction;
     }
-    
+
     private String userInputAndValidation(Knockouts k) {
         Scanner scanner = new Scanner(System.in);
         String prediction = scanner.nextLine();
@@ -425,27 +451,4 @@ public class Tournament {
         return prediction;
     }
 
-//    public ArrayList<Team> getAllTeams() {
-//        return allTeams;
-//    }
-
-//    public GroupStage getGroup1() {
-//        return group1;
-//    }
-
-//    public GroupStage getGroup2() {
-//        return group2;
-//    }
-
-//    public void setAllTeams(ArrayList<Team> allTeams) {
-//        this.allTeams = allTeams;
-//    }
-
-//    public void setGroup1(GroupStage group1) {
-//        this.group1 = group1;
-//    }
-
-//    public void setGroup2(GroupStage group2) {
-//        this.group2 = group2;
-//    }
 }
