@@ -307,6 +307,10 @@ public class Tournament {
             System.out.println("\n" + showGoalScorers());
 
             checkUserPredictionWithQualifiedTeams(userPrediction,s);
+            if(i != 2){
+                System.out.print(Color.ANSI_CYAN + "<Press [KEY] to continue to the next stage> " + Color.ANSI_RESET);
+                sc.nextLine();
+            }
         }
 
         /**f */
@@ -365,28 +369,28 @@ public class Tournament {
         /**1 */
         Delay.makeDelay(450);
         System.out.println("\n" + ("-".repeat(31 - ((kStage.length() + 5)/2))) + kStage + " Over" + ("-".repeat(31 - ((kStage.length() + 5)/2))));
-        // Delay.makeDelay(1000);
+        Delay.makeDelay(1000);
         String x = (kStage == "Final") ? "\nWinner of Finals" : "\nTeams Qualified for Next Stage";
-        System.out.println(Color.ANSI_UNDERLINE + x + Color.ANSI_RESET + ":");
+        System.out.println(Color.ANSI_UNDERLINE + x + Color.ANSI_RESET + ":\n");
 
-        x = (kStage == "Final") ? "" : " <------";
+        x = (kStage == "Final") ? "\n" : " <------";
         for (Team t : k.getQualifiedTeams()) {
             if (userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())) {
-            	user.updatePoints(INCREMENT_IN_KNOCKOUTS);
-            	if(kStage.equals("Final"))
-            	{
-                    Delay.makeDelay(10000);
-            		System.out.println(k.getQualifiedTeams().get(0));
-            		return;
-            	}
-            	System.out.println(t.getName() + x); 
+                user.updatePoints(INCREMENT_IN_KNOCKOUTS);
+                if(kStage == "Final")
+                {
+                    Delay.makeDelay(4000);
+                    System.out.println(k.getQualifiedTeams().get(0));
+                    return;
+                }
+                System.out.println(t.getName() + x);
             }
             else{
-            	if(kStage.equals("Final"))
-            	{
-            		System.out.println(k.getQualifiedTeams().get(0));
-            		return;
-            	}
+                if(kStage.equals("Final"))
+                {
+                    System.out.println(k.getQualifiedTeams().get(0));
+                    return;
+                }
                 System.out.println(t.getName());
             }
         }
