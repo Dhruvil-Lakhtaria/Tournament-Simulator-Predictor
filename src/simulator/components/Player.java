@@ -60,11 +60,11 @@ public class Player{
 		if(this.team.getCaptain().getName().equals(this.name))
 		{
 
-				return this.position + "-"+ this.jerseyNumber + "-" + this.name + "(c)";
+				return this.position + "-"+ this.jerseyNumber + "-" + this.name + "(c)" + this.playerRating;
 		}
 		else
 		{
-			return this.position + "-"+ this.jerseyNumber + "-" + this.name;
+			return this.position + "-"+ this.jerseyNumber + "-" + this.name + "-" + this.playerRating;
 			}
 	}
 }
