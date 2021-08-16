@@ -365,7 +365,7 @@ public class Tournament {
         /**1 */
         Delay.makeDelay(450);
         System.out.println("\n" + ("-".repeat(31 - ((kStage.length() + 5)/2))) + kStage + " Over" + ("-".repeat(31 - ((kStage.length() + 5)/2))));
-        Delay.makeDelay(1000);
+        // Delay.makeDelay(1000);
         String x = (kStage == "Final") ? "\nWinner of Finals" : "\nTeams Qualified for Next Stage";
         System.out.println(Color.ANSI_UNDERLINE + x + Color.ANSI_RESET + ":");
 
@@ -375,6 +375,7 @@ public class Tournament {
             	user.updatePoints(INCREMENT_IN_KNOCKOUTS);
             	if(kStage.equals("Final"))
             	{
+                    Delay.makeDelay(10000);
             		System.out.println(k.getQualifiedTeams().get(0));
             		return;
             	}
