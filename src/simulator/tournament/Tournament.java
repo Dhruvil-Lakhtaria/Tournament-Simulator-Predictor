@@ -332,7 +332,7 @@ public class Tournament {
     }
 
     public String showGoalScorers(){
-        String s = Color.ANSI_UNDERLINE + "Top Scorers in the Tournament so far" + Color.ANSI_RESET + ":\n";
+        String s = Color.ANSI_UNDERLINE + "Top Scorers" + Color.ANSI_RESET + ":\n";
         for(int i = 0; i < 5 && i < goalScorers.size(); i++, Delay.makeDelay(90))
             s += (i+1) +"."+ goalScorers.get(i).getName() + " - " + goalScorers.get(i).getGoals() + "\n";
         return s;
@@ -377,11 +377,11 @@ public class Tournament {
         for (Team t : k.getQualifiedTeams()) {
             if (userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())) {
                 user.updatePoints(INCREMENT_IN_KNOCKOUTS);
+                Delay.makeDelay(500);
                 if(kStage == "Final")
                 {
-                    Delay.makeDelay(4000);
                     System.out.println(k.getQualifiedTeams().get(0));
-                    return;
+                    continue;
                 }
                 System.out.println(t.getName() + x);
             }
@@ -389,7 +389,7 @@ public class Tournament {
                 if(kStage.equals("Final"))
                 {
                     System.out.println(k.getQualifiedTeams().get(0));
-                    return;
+                    continue;
                 }
                 System.out.println(t.getName());
             }
@@ -401,7 +401,7 @@ public class Tournament {
             if(userPrediction.strip().equalsIgnoreCase(t.getName()) || userPrediction.strip().equalsIgnoreCase(t.getFifaCode())){
                 Delay.makeDelay(450);
                 String s = "";
-                if (kStage == "Finals") {
+                if (kStage == "Final") {
                     s = Color.ANSI_RED + "\nThe team that you selected (" + t.getName().toUpperCase() + ") lost the " + kStage +
                             ".\nBut on the bright side, it is the second best team in the world! " + Color.ANSI_RESET;
                 }
