@@ -25,32 +25,7 @@ public class Manager{
             return ability;
         }
 
-//        public void setAbility(double ability) {
-//
-//            if (ability < 0){
-//                System.out.println("Negative ability being set");
-//            }
-//
-//            this.ability = ability;
-//        }
-
         public String getName() {
             return name;
         }
-
-//        public void setName(String name) {
-//
-//            if (name == ""){
-//                System.out.println("No Manager name being set");
-//            }
-//            else if (name.contains("[^a-zA-Z ]")){
-//                System.out.println("Invalid characters in Manager name being set");
-//            }
-//
-//            this.name = name;
-//        }
-
-//        public String toString() {
-//            return "Manager Name: " + this.name + "\nManager Ability: " + this.ability + "\n";
-//        }
-    }
+}
