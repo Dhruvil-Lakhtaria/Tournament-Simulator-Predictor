@@ -214,15 +214,8 @@ public class Match {
     public String toString() {
 
         /**
-         * first case is if team1 won and team2 lost and other case is vice versa
-         * couldve just done winner vs loser order output 
-         * but then it would be weird that the winner is always on one side
-         * after showing the teams playing and the score line, we show goalscorers for winning and then losing.
-         * (if needed we can make them side by side, but not a priority for now)
-         * 
-         * ----------------------------------------------------------------------------------------------------
-         * 
-         * Current code for showing the results with an indentation + goalscorers side by side + proper order.
+         * first case is if team1 won and team2 lost and other case is vice versa.
+         * code for showing the results with an indentation + goalscorers side by side + proper order.
          */
 
         String s;
@@ -321,54 +314,4 @@ public class Match {
         }
         return new ArrayList<Player>(losingTeamScorers);
     }
-
-//    public void setTeam1(Team team1) {
-//        if (team1 == null){
-//            System.out.println("\nnull team in setter");
-//        }
-//        this.team1 = team1;
-//    }
-
-//    public void setTeam2(Team team2) {
-//        if (team1 == null){
-//            System.out.println("\nnull team in setter");
-//        }
-//        this.team2 = team2;
-//    }
-
-//    public void setWinner(Team winner) {
-//        if (winner == null){
-//            System.out.println("\nnull winner in setter");
-//        }
-//        this.winner = winner;
-//    }
-
-//    public void setLoser(Team loser) {
-//        if (loser == null){
-//            System.out.println("\nnull loser in setter");
-//        }
-//        this.loser = loser;
-//    }
-
-//    public void setGoalsWinner(int goalsWinner) {
-//        if (goalsWinner < 0){
-//            System.out.println("\nInvalid goalsWinner in setter");
-//        }
-//        this.goalsWinner = goalsWinner;
-//    }
-
-//    public void setGoalsLoser(int goalsLoser) {
-//        if (goalsLoser < 0){
-//            System.out.println("\nInvalid goalsLoser in setter");
-//        }
-//        this.goalsLoser = goalsLoser;
-//    }
-
-//    public void setWinningTeamScorers(ArrayList<Player> winningTeamScorers) {
-//        this.winningTeamScorers = winningTeamScorers;
-//    }
-
-//    public void setLosingTeamScorers(ArrayList<Player> losingTeamScorers) {
-//        this.losingTeamScorers = losingTeamScorers;
-//    }
 }
