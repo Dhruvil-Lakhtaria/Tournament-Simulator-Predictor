@@ -19,7 +19,7 @@ public class Knockouts implements TournamentStage{
     }
 
     /**
-     * schedule() creates Match objects and fills them into the matches ArrayList in the correct order (keeping the tournament brackets in mind)
+     * schedule() creates Match objects and fills them into the matches ArrayList in the correct order
      *
      * 1. we get the size of playingTeams ArrayList to know whether the stage is a quarter-final, semi-final or a final.
      * 2. if we are scheduling for the quarterfinals (n == 8): 
@@ -28,7 +28,7 @@ public class Knockouts implements TournamentStage{
      *              &   B1 B2 B3 B4 is the top 4 teams of group B
      *          - The matchups in quarters are = {A1B4, A3B2, A2B3, A4B1}
      *    if we are scheduling for semifinals or finals (n != 8):
-     *          - Matches are scheduled in the same way as they are placd in playingTeams ArrayList
+     *          - Matches are scheduled in the same way as they are placed in playingTeams ArrayList
      */
     @Override
     public void schedule(){
