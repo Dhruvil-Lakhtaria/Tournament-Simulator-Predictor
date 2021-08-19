@@ -124,9 +124,7 @@ public class GroupStage implements TournamentStage {
 		}
 	}
 
-	/**
-	 * Sorts the points table based on their points and then goal difference
-	 */
+	//Sorts the points table based on their points and then goal difference
 	public void sortPointsTable() {
 		this.pointsTable.sort(
 			new Comparator<Row>() {
@@ -163,12 +161,6 @@ public class GroupStage implements TournamentStage {
 		);
 	}
 
-	/**
-	 * 1. As mentioned earlier, the sorting of pointsTable was only happening when u call showPointsTable.
-	 * 	  Although its corrected now, still think its a good idea to include it here as well just for safety 
-	 * 2. Formatted output of top heading/titles row
-	 * 3. If it is the last row, We Underline the entire output so as to make it look like the table is closed
-	 */
 	public String showPointsTable() {
 		this.sortPointsTable();
 		String s = "\t\t" + "_".repeat(63) + String.format("\n\t\t" + Color.ANSI_UNDERLINE + "| %-10s | %-12s | %-14s | %-1s | %-1s | %-6s |" + Color.ANSI_RESET + "\n",
@@ -189,9 +181,8 @@ public class GroupStage implements TournamentStage {
 		return s;
 	}
 
-	/*
-	 * Note: toString() of GroupStage only prints out the schedule of matches.
-	 */
+	
+	 // Note: toString() of GroupStage only prints out the schedule of matches.
 	public String toString() {
 		String res = "";
 		for(Match match : this.matches) {
@@ -200,10 +191,6 @@ public class GroupStage implements TournamentStage {
 		return res;
 	}
 	
-	/**
-	 * Returns top 4 teams from points Table
-	 * we call sortPointsTable() before doing the return operations
-	 */
 	public ArrayList<Team> getQualifiedTeam() {
 		sortPointsTable();
 		ArrayList<Team>qt = new ArrayList<Team>();
@@ -214,9 +201,6 @@ public class GroupStage implements TournamentStage {
 		return qt;
 	}
 
-	/**
-	 * Returns the team at Row with index [LAST_INDEX] in the points table
-	 */
 	public Team getEliminatedTeam(){
 		sortPointsTable();
 		return this.pointsTable.get(4).getTeam();
