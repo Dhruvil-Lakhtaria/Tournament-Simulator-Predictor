@@ -18,7 +18,7 @@ public class Main {
 		System.out.print(Color.ANSI_CYAN + "Enter Your Name: " + Color.ANSI_RESET);
 		String name = new String(sc.nextLine());
 		User u = new User(name);
-		Tournament FIFAWORLDCUP = new Tournament(u,"teams.txt");
+		Tournament FIFAWORLDCUP = new Tournament(u,"data\\teams.txt");
 		FIFAWORLDCUP.start();
 		sc.close();
 	}
